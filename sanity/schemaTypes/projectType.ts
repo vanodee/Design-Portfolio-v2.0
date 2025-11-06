@@ -1,5 +1,6 @@
 // schemas/projectType.ts
 import { defineType, defineField } from 'sanity'
+import CategoryWithSyncInput from '../components/categoryWithSyncInput'
 
 export const projectType = defineType({
   name: 'project',
@@ -52,13 +53,18 @@ export const projectType = defineType({
       group: 'general',
       to: [{ type: 'category' }],
       validation: (Rule) => Rule.required(),
+      components: {
+        input: CategoryWithSyncInput,
+      },
     }),
 
     // ---------- Hidden Category Field ------------------
     defineField({
         name: 'categoryName',
-        title: 'Category Name',
+        title: 'Project Category [Autofill]',
         type: 'string',
+        group: 'general',
+        readOnly: true,
         // hidden: true, // Hide it in Studio
     }),
     // ---------------------------------------------------
@@ -111,7 +117,7 @@ export const projectType = defineType({
       type: 'text',
       group: 'project-specific',
       rows: 2,
-      hidden: ({ parent }) => !['Logo Designs', 'Brand Designs'].includes(parent?.categoryTitle),
+      hidden: ({ parent }) => !['Logo Designs', 'Brand Designs'].includes(parent?.categoryName),
     }),
     defineField({
       name: 'clientContacts',
@@ -127,7 +133,7 @@ export const projectType = defineType({
           ],
         },
       ],
-      hidden: ({ parent }) => !['Logo Designs', 'Brand Designs'].includes(parent?.categoryTitle),
+      hidden: ({ parent }) => !['Logo Designs', 'Brand Designs'].includes(parent?.categoryName),
     }),
     defineField({
       name: 'jobSummary',
@@ -135,14 +141,14 @@ export const projectType = defineType({
       type: 'text',
       group: 'project-specific',
       rows: 3,
-      hidden: ({ parent }) => !['Logo Designs', 'Brand Designs'].includes(parent?.categoryTitle),
+      hidden: ({ parent }) => !['Logo Designs', 'Brand Designs'].includes(parent?.categoryName),
     }),
     defineField({
       name: 'liveMedia',
       title: 'Live Media (Optional Video or Link)',
       type: 'url',
       group: 'project-specific',
-      hidden: ({ parent }) => !['Logo Designs', 'Brand Designs'].includes(parent?.categoryTitle),
+      hidden: ({ parent }) => !['Logo Designs', 'Brand Designs'].includes(parent?.categoryName),
     }),
     defineField({
       name: 'landscapeImages',
@@ -150,7 +156,7 @@ export const projectType = defineType({
       type: 'array',
       group: 'project-specific',
       of: [{ type: 'image', options: { hotspot: true } }],
-      hidden: ({ parent }) => !['Logo Designs', 'Brand Designs'].includes(parent?.categoryTitle),
+      hidden: ({ parent }) => !['Logo Designs', 'Brand Designs'].includes(parent?.categoryName),
     }),
     defineField({
       name: 'portraitImages',
@@ -158,7 +164,7 @@ export const projectType = defineType({
       type: 'array',
       group: 'project-specific',
       of: [{ type: 'image', options: { hotspot: true } }],
-      hidden: ({ parent }) => !['Logo Designs', 'Brand Designs'].includes(parent?.categoryTitle),
+      hidden: ({ parent }) => !['Logo Designs', 'Brand Designs'].includes(parent?.categoryName),
     }),
     defineField({
       name: 'designRationale',
@@ -166,7 +172,7 @@ export const projectType = defineType({
       type: 'text',
       group: 'project-specific',
       rows: 3,
-      hidden: ({ parent }) => !['Logo Designs', 'Brand Designs'].includes(parent?.categoryTitle),
+      hidden: ({ parent }) => !['Logo Designs', 'Brand Designs'].includes(parent?.categoryName),
     }),
     defineField({
       name: 'projectConclusion',
@@ -174,7 +180,7 @@ export const projectType = defineType({
       type: 'text',
       group: 'project-specific',
       rows: 3,
-      hidden: ({ parent }) => !['Logo Designs', 'Brand Designs'].includes(parent?.categoryTitle),
+      hidden: ({ parent }) => !['Logo Designs', 'Brand Designs'].includes(parent?.categoryName),
     }),
   ],
 })
