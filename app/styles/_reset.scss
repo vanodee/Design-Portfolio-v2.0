@@ -18,10 +18,20 @@
 
 body {
   @include font($fs-base);
+  @include flex(column, center, start);
   color: $grey-20;
   background: $primary-90;
+  width: 100dvw;
+  height: 100dvh;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+}
+
+main {
+  @include flex(column, center, start);
+  height: 100%;
+  width: 100%;
+  max-width: 1400px;
 }
 
 img, picture, video, canvas, svg {

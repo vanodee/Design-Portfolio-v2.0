@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import "./styles/globals.scss";
+import DynamicBackground from "./components/DynamicBackground/DynamicBackground";
 
 const outfit = Outfit({ 
   subsets: ['latin'], 
@@ -21,7 +22,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={outfit.variable}>
-        {children}
+        <DynamicBackground />
+        <main>{children}</main>
       </body>
     </html>
   );
