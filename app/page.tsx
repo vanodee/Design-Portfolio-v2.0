@@ -1,12 +1,11 @@
 import Image from "next/image";
 import styles from "./home.module.scss";
 import { client } from "../lib/sanity.client";
-import { categoriesQuery } from "@/lib/queries";
+import { categoriesWithToolsQuery } from "@/lib/queries";
 
 
 export default async function Home() {
-  const categories = await client.fetch(categoriesQuery);
-  console.log(categories)
+  const categories = await client.fetch(categoriesWithToolsQuery);
 
   return (
     <>
@@ -38,6 +37,30 @@ export default async function Home() {
 
             <div className={styles.categoryDetails}>
               <h2>{cat.title}</h2>
+
+              <div className={styles.categoryTools}>
+                {cat.tools?.length > 0 ? (
+                  cat.tools.map((tool: any) => (
+                    <div
+                      key={tool._id}
+                      className={styles.toolItem}
+                      style={{ backgroundColor: tool.color }}
+                    >
+                      {tool.iconUrl && (
+                        <Image
+                          src={tool.iconUrl}
+                          alt={tool.title}
+                          width={35}
+                          height={35}
+                        />
+                      )}
+                    </div>
+                  ))
+                ) : (
+                  <p>---</p>
+                )}
+              </div>
+              
             </div>
             
 
