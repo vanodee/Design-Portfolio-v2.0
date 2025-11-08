@@ -1,0 +1,62 @@
+@use '../../styles/abstracts/index' as *;
+
+.header {
+    @include flex(row, center, space-between);
+    @include transition();
+    width: 90%;
+    max-width: 1400px;
+    padding: 0.6rem 0;
+
+    &--light {
+        border-bottom: 2px solid $primary-90;
+
+        .navLink{
+            color: $primary-90;
+        }
+
+        .navLinkActive{
+            background-color: $primary-90;
+            color: $primary-30;
+        }
+    }
+
+    &--dark {
+        border-bottom: 2px solid $primary-10;
+    }
+}
+
+.demoLogo {
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+    background-color: $primary-90;
+}
+
+.nav {
+    @include flex(row, center, space-between);
+    width: 40%;
+    max-width: 50%;
+}
+
+.navLink{
+    @include flex(row);
+    @include transition();
+    text-decoration: none;
+    color: $primary-30;
+    width: 5rem;
+    height: 30px;
+
+    &:hover {
+        background-color: $primary-70;
+        color: $primary-90;
+    }
+    
+}
+
+.navLinkActive{
+    @extend .navLink;
+    background-color: $primary-10;
+    color: $primary-90;
+    font-weight: $fw-semibold;
+    pointer-events: none;
+}

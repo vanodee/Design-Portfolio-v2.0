@@ -1,8 +1,15 @@
-// FLEX-BOX ================================================================
+// FLEX-BOX ===============================================================
 @mixin flex($direction: column, $align: center, $justify: center) {
   display: flex;
   flex-direction: $direction;
   align-items: $align;
   justify-content: $justify;
+}
+//=========================================================================
+
+
+// TRANSITIONS ============================================================
+@mixin transition($prop: all, $time: 0.3s, $ease: ease-in-out) {
+  transition: $prop $time $ease;
 }
 //=========================================================================
