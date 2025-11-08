@@ -10,6 +10,10 @@
     &--light {
         border-bottom: 2px solid $primary-90;
 
+        button {
+            @include button-variant(light, outline);
+        }
+
         .navLink{
             color: $primary-90;
         }
@@ -22,6 +26,10 @@
 
     &--dark {
         border-bottom: 2px solid $primary-10;
+
+        button {
+            @include button-variant(dark, outline);
+        }
     }
 }
 

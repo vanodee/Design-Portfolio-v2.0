@@ -59,3 +59,11 @@ h1, h2, h3, h4, h5, h6 {
 #root, #__next {
   isolation: isolate;
 }
+
+button {
+  @include font($fs-base, $fw-semibold);
+  @include transition();
+  cursor: pointer;
+  padding: 0.45rem 0.7rem;
+  border-radius: 0.5rem;
+}

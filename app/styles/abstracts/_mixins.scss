@@ -1,3 +1,5 @@
+@use './colors' as *;
+
 // FLEX-BOX ===============================================================
 @mixin flex($direction: column, $align: center, $justify: center) {
   display: flex;
@@ -11,5 +13,57 @@
 // TRANSITIONS ============================================================
 @mixin transition($prop: all, $time: 0.3s, $ease: ease-in-out) {
   transition: $prop $time $ease;
+}
+//=========================================================================
+
+
+// BUTTON VARIANTS ============================================================
+@mixin button-variant($theme: 'light', $type: 'filled') {
+  @if $theme == 'light' {
+
+    @if $type == 'filled' {
+      background-color: $primary-90;
+      color: $primary-30;
+      border: none;
+
+      &:hover {
+        background-color: $primary-70;
+        color: $primary-90;
+      }
+
+    } @else if $type == 'outline' {
+      background-color: transparent;
+      color: $primary-90;
+      border: 2px solid $primary-90;
+
+      &:hover {
+        color: $primary-70;
+        border: 2px solid $primary-70;
+      }
+    }
+
+  } @else if $theme == 'dark' {
+    
+    @if $type == 'filled' {
+      background-color: $primary-10;
+      color: $primary-90;
+      border: none;
+
+      &:hover {
+        background-color: $primary-70;
+        color: $primary-90;
+      }
+
+    } @else if $type == 'outline' {
+      background-color: transparent;
+      color: $primary-10;
+      border: 2px solid $primary-10;
+
+      &:hover {
+        color: $primary-70;
+        border: 2px solid $primary-70;
+      }
+    }
+  }
 }
 //=========================================================================
