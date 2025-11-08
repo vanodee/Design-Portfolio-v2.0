@@ -31,8 +31,8 @@ main {
   @include flex(column, center, start);
   height: 100%;
   width: 100%;
-  max-width: 1400px;
-  padding-top: 2rem;
+  max-width: 1200px;
+  padding: 2rem 2rem 0 2rem;
 }
 
 img, picture, video, canvas, svg {

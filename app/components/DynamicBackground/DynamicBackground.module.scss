@@ -1,7 +1,7 @@
 @use '../../styles//abstracts/index' as *;
 
 .background {
-    @include transition(all, 0.8s);
+    @include transition(background-color, 0.8s);
     position: fixed;
     inset: 0;
     z-index: -1;

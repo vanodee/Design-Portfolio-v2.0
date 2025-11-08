@@ -1,7 +1,13 @@
 import Image from "next/image";
 import styles from "./home.module.scss";
+import { client } from "../lib/sanity.client";
+import { categoriesQuery } from "@/lib/queries";
 
-export default function Home() {
+
+export default async function Home() {
+  const categories = await client.fetch(categoriesQuery);
+  console.log(categories)
+
   return (
     <>
       <h1 className={styles.heroHeading}>
@@ -18,7 +24,26 @@ export default function Home() {
       </div>
 
       <div className={styles.categoryCards}>
-        Project Category Cards
+
+        {categories.map((cat: any) => (
+          <div key={cat._id} className={styles.categoryCard}>
+
+            <Image 
+              className={styles.categoryImage}
+              src={cat.imageUrl}
+              alt={cat.title}
+              width={500}
+              height={500}
+            />
+
+            <div className={styles.categoryDetails}>
+              <h2>{cat.title}</h2>
+            </div>
+            
+
+          </div>
+        ))}
+
       </div>
     </>
   );
