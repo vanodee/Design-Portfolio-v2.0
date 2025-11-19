@@ -1,0 +1,29 @@
+@use '../styles/abstracts/index' as *;
+
+
+.aboutPageContainer{
+    height: 100%;
+    width: 100%;
+
+    h1{
+        @include font($fs-xl, $fw-semibold);
+        color: $primary-30;
+        text-align: right;
+        padding-bottom: 2rem;
+    }
+}
+
+.detailsContainer{
+    @include flex(row);
+    width: 100%;
+}
+
+.myPhoto{
+    width: 50%;
+    object-fit: cover;
+    border-radius: 2rem;
+}
+
+.myAboutText{
+    padding-left: 3rem;
+}
