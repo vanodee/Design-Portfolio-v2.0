@@ -13,7 +13,7 @@ export default function DynamicBackground() {
     if (pathname === "/") {
       setBgStyle({ backgroundImage: "url('/new_folio_bg_lg.png')" });
     } else if (pathname.startsWith("/projects")) {
-      setBgStyle({ backgroundColor: "#455BA1" }); // fallback; replace with fetched color
+      setBgStyle({ backgroundColor: "#EBEEFA" }); // fallback; replace with fetched color
     } else {
       setBgStyle({ backgroundColor: "#EBEEFA" });
     }

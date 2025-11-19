@@ -1,0 +1,63 @@
+@use '../../styles/abstracts/index' as *;
+
+.projectsContainer{
+    height: 100%;
+
+    h1 {
+        @include font($fs-xl, $fw-semibold);
+        color: $primary-10;
+        text-align: right;
+    }
+}
+
+.projectCardsContainer{
+    height: 62dvh;
+    margin-top: 2rem;
+    padding: 0.5rem;
+}
+
+.projectCard{
+    @include transition();
+    height: 100%;
+    width: 33%;
+    border-radius: 1rem;
+    color: $primary-30;
+    overflow: hidden;
+    background-color: $primary-90;
+    box-shadow: 0px 1px 5px 0px;
+
+    img{
+        height: 35%;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    &:hover{
+        box-shadow: 0px 4px 15px 0px;
+        background-color: var(--hoverColor);
+    }
+}
+
+.projectDetails{
+    @include flex(column, start, space-between);
+    height: 65%;
+    padding: 1.25rem;
+
+    h3{
+        @include font($fs-lg, $fw-semibold);
+        margin-bottom: 0.75rem;
+    }
+
+    p{
+        @include font($fs-sm);
+    }
+}
+
+.projectLink{
+    width: 100%;
+
+    button {
+        @include button-variant(dark, outline);
+        width: 100%;
+    }
+}

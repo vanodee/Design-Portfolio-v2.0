@@ -6,7 +6,7 @@ export const sanityConfig = {
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "production",
   apiVersion: "2025-01-01", // use current date or a stable date string
-  useCdn: true,
+  useCdn: false,
 };
 
 export const client = createClient(sanityConfig);

@@ -31,8 +31,6 @@
 }
 
 .categoryCards {
-  color: $primary-30;
-  
   height: 100%;
   width: 100%;
   margin: 4rem 0;
@@ -44,6 +42,8 @@
 
 .categoryCard {
   @include flex(column, center, start);
+  text-decoration: none;
+  color: $primary-30;
   background-color: $primary-90;
   column-span: 1;
   cursor: pointer;

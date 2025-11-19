@@ -11,7 +11,7 @@ export const categoriesQuery = groq`
 
 
 export const categoriesWithToolsQuery = groq`
- *[_type == "category"]{
+ *[_type == "category"] | order(_createdAt desc){
   _id,
   title,
   "slug": slug.current,

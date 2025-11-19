@@ -2,6 +2,7 @@ import Image from "next/image";
 import styles from "./home.module.scss";
 import { client } from "../lib/sanity.client";
 import { categoriesWithToolsQuery } from "@/lib/queries";
+import Link from "next/link";
 
 
 export default async function Home() {
@@ -18,6 +19,7 @@ export default async function Home() {
       </p>
 
       <div className={styles.buttonGroup}>
+        {/* <Link href={`/projects/${categories[0].slug}`}></Link> */}
         <button>Explore My Work</button>
         <button>View My Resume</button>
       </div>
@@ -25,7 +27,11 @@ export default async function Home() {
       <div className={styles.categoryCards}>
 
         {categories.map((cat: any) => (
-          <div key={cat._id} className={styles.categoryCard}>
+          <Link 
+            key={cat._id} 
+            className={styles.categoryCard}
+            href={`/projects/${cat.slug}`}
+          >
 
             <Image 
               className={styles.categoryImage}
@@ -64,7 +70,7 @@ export default async function Home() {
             </div>
             
 
-          </div>
+          </Link>
         ))}
 
       </div>
