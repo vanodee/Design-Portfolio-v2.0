@@ -3,6 +3,7 @@ import { Outfit } from "next/font/google";
 import "./styles/globals.scss";
 import DynamicBackground from "./components/DynamicBackground/DynamicBackground";
 import NavBar from "./components/NavBar/NavBar";
+import PageInfoOverlay from "./components/PageInfoOverlay/PageInfoOverlay";
 
 const outfit = Outfit({ 
   subsets: ['latin'], 
@@ -24,6 +25,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={outfit.variable}>
         <DynamicBackground />
+        <PageInfoOverlay />
         <NavBar />
         <main>{children}</main>
       </body>

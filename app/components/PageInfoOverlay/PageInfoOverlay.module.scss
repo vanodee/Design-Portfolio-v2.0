@@ -1,0 +1,66 @@
+@use '../../styles//abstracts/index' as *;
+
+.overlayContainer {
+  position: fixed;
+  width: 100dvw;
+  height: 100dvh;
+  max-width: 1400px;
+  justify-self: center;
+  align-self: center;
+  padding-top: 9rem;
+  inset: 0;
+  z-index: 1;
+  // pointer-events: none;
+}
+
+.overlayImage {
+  @include transition();
+  object-fit: contain;
+  height: 100%;
+}
+
+.overlayControls{
+  @include flex(column, center, space-between);
+  margin-left: 2rem;
+  // background-color: red;
+  height: 85%;
+  max-height: 660px;
+  width: 50px;
+  pointer-events: all;
+}
+
+.overlayIcon{
+  cursor: pointer;
+  
+  img{
+    @include transition();
+    padding: 0.2rem;
+  }
+
+  &:hover{
+    img{
+      padding: 0rem;
+    }
+  }
+}
+
+.overlayLinks{
+  @include flex(row, center, space-between);
+  @include font($fs-base);
+  color: $grey-60;
+  transform: rotate(-90deg);
+  width: 500px;
+
+  a{
+    @include transition();
+    text-decoration: none;
+    color: $primary-30;
+    border-radius: 0.3rem;
+    padding: 0.25rem 0.5rem;
+
+    &:hover{
+      background-color: $primary-70;
+      color: $primary-90;
+    }
+  }
+}
