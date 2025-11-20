@@ -1,0 +1,55 @@
+@use '../styles/abstracts/index' as *;
+
+
+.contactPageContainer{
+    @include flex(row);
+    height: 100%;
+    width: 100%;
+    padding-bottom: 2rem;
+    margin-top: 5rem;
+}
+
+.contactFormContainer{
+    @include flex();
+    height: 100%;
+    width: 45%;
+    background-color: $primary-70;
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+.contactInfoContainer{
+    @include flex(column);
+    height: 100%;
+    width: 55%;
+    padding-left: 3rem;
+
+    h1{
+        @include font(6rem, $fw-semibold, 1.2);
+        @include flex();
+        color: $primary-30;
+        text-align: center;
+        height: 80%;
+    }
+}
+
+.contactItems{
+    @include flex(row, center, space-between);
+    height: 20%;
+    width: 100%;
+}
+
+.contactIconContainer{
+    @include flex();
+    @include transition();
+    height: 100%;
+    width: 30%;
+    background-color: $primary-70;
+    cursor: pointer;
+    border-radius: 1rem;
+
+    &:hover{
+        background-color: $primary-30;
+    }
+}
+
