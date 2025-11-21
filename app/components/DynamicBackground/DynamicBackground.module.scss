@@ -1,13 +1,45 @@
 @use '../../styles//abstracts/index' as *;
 
-.background {
-    @include transition(background-color, 0.8s);
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-    background-size: cover;
-    background-position: bottom;
-    background-repeat: no-repeat;
-    background-position-x: right;
-    width: 100dvw;
+
+.wrapper {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  width: 100dvw;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+.layer {
+  position: absolute;
+  inset: 0;
+  transition: opacity 0.4s ease;
+  opacity: 1;
+}
+
+/* IMAGE BACKGROUNDS */
+.imgLayer {
+  background-size: cover;
+  background-position: bottom right;
+  background-repeat: no-repeat;
+}
+
+
+
+/* Fade sequence */
+.current {
+  opacity: 1;
+}
+
+.next {
+  animation: fadeIn 0.4s forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

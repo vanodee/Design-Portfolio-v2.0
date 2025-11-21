@@ -17,6 +17,7 @@
   @include transition();
   object-fit: contain;
   height: 100%;
+  width: auto;
 }
 
 .overlayControls{
