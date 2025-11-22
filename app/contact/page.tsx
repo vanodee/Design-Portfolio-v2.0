@@ -1,13 +1,7 @@
 import Image from "next/image"
 import TallyContactForm from "../components/ContactForm/TallyContactForm"
 import styles from "./contactPage.module.scss"
-
-
-const contactIcons = [
-  {name: "Email", src: "/email_2.svg", href: "mailto:stevano.peters@gmail.com"},
-  {name: "Linkedin", src: "/linkedin_2.svg", href: "https://www.linkedin.com/in/stevano-peters/"},
-  {name: "Twitter", src: "/twitter_2.svg", href: "https://x.com/Vano_dee"}
-]
+import { contactIcons } from "../components/Footer/Footer"
 
 
 export default function ContactPage() {

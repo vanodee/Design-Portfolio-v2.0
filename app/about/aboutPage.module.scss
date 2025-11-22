@@ -4,6 +4,7 @@
 .aboutPageContainer{
     height: 100%;
     width: 100%;
+    padding-top: 2rem;
 
     h1{
         @include font($fs-xl, $fw-semibold);

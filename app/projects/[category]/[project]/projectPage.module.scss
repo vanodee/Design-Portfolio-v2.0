@@ -5,6 +5,7 @@
     @include flex(column, center, start);
     height: 100%;
     width: 100%;
+    padding-top: 2rem;
     overflow: hidden;
     overflow-y: scroll;
     scrollbar-width: none;

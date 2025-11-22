@@ -1,5 +1,11 @@
 @use './styles/abstracts/index' as *;
 
+.homePageContainer{
+  @include flex(column);
+  height: 100%;
+  padding-top: 2rem;
+}
+
 .heroHeading{
   @include font($fs-3xl, $fw-semibold);
   color: $primary-90;

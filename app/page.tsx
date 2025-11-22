@@ -9,7 +9,8 @@ export default async function Home() {
   const categories = await client.fetch(categoriesWithToolsQuery);
 
   return (
-    <>
+    <div className={styles.homePageContainer}>
+
       <h1 className={styles.heroHeading}>
         Designer. Developer. Brand Builder.
       </h1>
@@ -74,6 +75,7 @@ export default async function Home() {
         ))}
 
       </div>
-    </>
+      
+    </div>
   );
 }

@@ -2,6 +2,7 @@ import { groq } from "next-sanity";
 import { client } from "../../../../lib/sanity.client";
 import styles from "./projectPage.module.scss"
 import Image from "next/image";
+import Footer from "@/app/components/Footer/Footer";
 
 
 export async function generateStaticParams() {
@@ -90,7 +91,9 @@ export default async function ProjectPage({params}: {params: { category: string;
 
       </section>
 
+      {/* FOOTER -------------------------------------------------------------- */}
+      <Footer />
+
     </div>
   );
 }
-

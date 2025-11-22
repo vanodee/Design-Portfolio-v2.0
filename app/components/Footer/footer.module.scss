@@ -1,0 +1,67 @@
+@use '../../styles/abstracts/index' as *;
+
+
+.footer{
+    @include flex(row, center, start);
+    border-top: 2px solid $primary-10;
+    width: 100%;
+    margin-top: 4rem;
+    padding: 1.5rem 0;
+}
+
+.footerHomeLink{
+    @include flex();
+    @include transition(padding);
+    background-color: $primary-10;
+    border-radius: 0.75rem;
+    padding: 1.5rem 0;
+    height: 8rem;
+    width: 30%;
+
+    &:hover{
+        padding: 1.25rem 0;
+    }
+}
+
+.footerLogo{
+    object-fit: contain;
+    height: 100%;
+    width: auto;
+}
+
+.footerContactInfo{
+    @include flex(row);
+    height: 8rem;
+    width: 70%;
+    border-radius: 0.75rem;
+    border: 1px solid $primary-70;
+    margin-left: 1rem;
+    padding: 0.5rem 0.75rem;
+
+    span{
+        @include font($fs-2xl, $fw-semibold, 1.2);
+        color: $primary-70;
+        margin: 0 1.5rem;
+    }
+}
+
+.contactItems{
+    @include flex(row, center, space-between);
+    height: 90%;
+    width: 100%;
+    margin-left: 1rem;
+}
+
+.contactIconContainer{
+    @include flex();
+    @include transition(background-color);
+    height: 100%;
+    width: 30%;
+    background-color: $primary-70;
+    cursor: pointer;
+    border-radius: 0.5rem;
+
+    &:hover{
+        background-color: $primary-30;
+    }
+}
