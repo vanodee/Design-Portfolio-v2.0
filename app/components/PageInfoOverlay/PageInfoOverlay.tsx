@@ -40,7 +40,10 @@ export default function PageInfoOverlay() {
     const project = segments[2] || ""; 
 
     return (
-      <div className={styles.overlayContainer}>
+      <div 
+        className={styles.overlayContainer} 
+        style={{ "--topGap": "6rem" } as React.CSSProperties}
+      >
         <div className={styles.overlayControls}>
           
           <Link href={`/projects/${category}`} className={styles.overlayIcon}>
@@ -107,7 +110,10 @@ export default function PageInfoOverlay() {
 
   // ----- RENDER OVERLAY IMAGE -----
   return (
-    <div className={styles.overlayContainer}>
+    <div 
+      className={styles.overlayContainer} 
+      style={{ "--topGap": "9rem" } as React.CSSProperties}
+    >
       <Image
         src={overlaySrc}
         alt="Page Title Overlay"

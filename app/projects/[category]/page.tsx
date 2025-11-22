@@ -24,9 +24,10 @@ export default async function CategoryPage({ params }: { params: { category: str
   const categoryQuery = groq`
     *[_type == "category" && slug.current == $category][0]{
     title,
+    "slug": slug.current,
     description,
     "imageUrl": image.asset->url,
-
+    
     // Fetch all projects belonging to this category
     "projects": *[_type == "project" && category->slug.current == $category]{
       title,

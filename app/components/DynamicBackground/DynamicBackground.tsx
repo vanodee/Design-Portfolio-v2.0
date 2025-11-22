@@ -40,22 +40,22 @@ export default function DynamicBackground() {
       }
 
       // /projects/[category]/[project] — Sanity color
-      else if (isProjectDetail) {
-        const projectSlug = segments[2];
+      // else if (isProjectDetail) {
+      //   const projectSlug = segments[2];
 
-        const query = groq`
-          *[_type == "project" && slug.current == $slug][0]{
-            previewColor
-          }
-        `;
+      //   const query = groq`
+      //     *[_type == "project" && slug.current == $slug][0]{
+      //       previewColor
+      //     }
+      //   `;
 
-        const data = await client.fetch(query, { slug: projectSlug });
+      //   const data = await client.fetch(query, { slug: projectSlug });
 
-        result = {
-          type: "color",
-          value: data?.previewColor || "#EBEEFA",
-        };
-      }
+      //   result = {
+      //     type: "color",
+      //     value: data?.previewColor || "#EBEEFA",
+      //   };
+      // }
 
       // /projects/* — category pages
       else if (pathname.startsWith("/projects")) {

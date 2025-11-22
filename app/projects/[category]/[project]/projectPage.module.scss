@@ -1,0 +1,49 @@
+@use '../../../styles/abstracts/index' as *;
+
+
+.projectPageContainer{
+    @include flex(column, center, start);
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
+.heroSection{
+    @include flex(column, start, start);
+    width: 100%;
+
+    h2{
+        @include font($fs-2xl, $fw-semibold, 1.2);
+        width: 50%;
+    }
+
+    p{
+        margin: 1.25rem 0;
+    }
+}
+
+.heroImage{
+    object-fit: cover;
+    width: 100%;
+    height: 500px;
+    border-radius: 1rem;
+}
+
+.toolsRow{
+    @include flex(row, center, center);
+}
+
+.toolItem{
+    @include flex(row, center, center);
+    background-color: var(--toolColor);
+    border-radius: 0.35rem;
+    padding: 0.25rem 0.5rem 0.25rem 0.35rem;
+    margin: 0.5rem 0.5rem 0 0;
+
+    img{
+        height: 1.35rem;
+        margin-right: 0.25rem;
+    }
+}
