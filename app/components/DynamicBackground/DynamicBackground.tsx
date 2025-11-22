@@ -3,8 +3,7 @@
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import styles from "./DynamicBackground.module.scss";
-import { client } from "@/lib/sanity.client";
-import { groq } from "next-sanity";
+
 
 
 interface BgLayer {
@@ -16,6 +15,7 @@ interface BgLayer {
 
 export default function DynamicBackground() {
   const pathname = usePathname();
+
   const [currentBg, setCurrentBg] = useState<BgLayer>({
     type: "color",
     value: "#EBEEFA",
@@ -23,47 +23,37 @@ export default function DynamicBackground() {
 
   const [nextBg, setNextBg] = useState<BgLayer | null>(null);
 
-  const segments = pathname.split("/").filter(Boolean);
-  const isProjectDetail =
-    segments.length === 3 && segments[0] === "projects";
+
+  // Get Project Background Color stored in the DOM
+  function getForcedBackground() {
+    if (typeof window === "undefined") return null;
+
+    const el = document.querySelector("[data-bgcolor]");
+    const color = el?.getAttribute("data-bgcolor");
+    
+    return color || null;
+  }
+
 
   useEffect(() => {
     async function computeBackground() {
+      const forcedColor = getForcedBackground();
+
       let result: BgLayer;
 
+      // If project page gave us a color → override everything
+      if (forcedColor) {
+        result = { type: "color", value: forcedColor };
+      }
+
       // Homepage — IMAGE
-      if (pathname === "/") {
+      else if (pathname === "/") {
         result = {
           type: "image",
           value: "url('/new_folio_bg_lg.png')",
         };
       }
 
-      // /projects/[category]/[project] — Sanity color
-      // else if (isProjectDetail) {
-      //   const projectSlug = segments[2];
-
-      //   const query = groq`
-      //     *[_type == "project" && slug.current == $slug][0]{
-      //       previewColor
-      //     }
-      //   `;
-
-      //   const data = await client.fetch(query, { slug: projectSlug });
-
-      //   result = {
-      //     type: "color",
-      //     value: data?.previewColor || "#EBEEFA",
-      //   };
-      // }
-
-      // /projects/* — category pages
-      else if (pathname.startsWith("/projects")) {
-        result = {
-          type: "color",
-          value: "#EBEEFA",
-        };
-      }
 
       // Other pages — default
       else {
@@ -72,6 +62,8 @@ export default function DynamicBackground() {
           value: "#EBEEFA",
         };
       }
+
+      console.log(`BG COLOR: ${result.value}`);
 
       // Only fade if background changed
       if (result.value !== currentBg.value || result.type !== currentBg.type) {

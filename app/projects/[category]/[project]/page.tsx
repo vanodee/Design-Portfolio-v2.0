@@ -26,7 +26,9 @@ export default async function ProjectPage({params}: {params: { category: string;
 
   const projectQuery = groq`
     *[_type == "project" && slug.current == $project && category->slug.current == $category][0]{
-      //heroHeading,
+      title,
+      previewColor,
+      heroHeading,
       //heroSubheading,
       //heroDescription,
       //"heroImage": heroImage.asset->url,
@@ -51,12 +53,15 @@ export default async function ProjectPage({params}: {params: { category: string;
   }
 
   return (
-    <div className={styles.projectPageContainer}>
+    <div 
+      className={styles.projectPageContainer} 
+      data-bgcolor={projectData.previewColor} // Store Project Background Color in the DOM
+    >
       
       {/* HERO SECTION -------------------------------------------------------------- */}
       <section className={styles.heroSection}>
 
-        <h1>{projectData.title || "How Do You Singleton ?"}</h1>
+        <h1>{`[${projectData.category.title}] - ${projectData.title}` || "How Do You Singleton ?"}</h1>
         <h2>{projectData.subTitle || "Explore, Book & Enjoy: An Interactive Guide To The Singleton Experience"}</h2>
         <p>{projectData.description || "Lorem ipsum dolor sit amet consectetur. In varius arcu leo nunc eget aliquam leo. Nisi tincidunt semper sagittis arcu sed tempor ut. Arcu morbi risus nulla magna enim dictum auctor blandit fermentum. Mauris consectetur consequat massa imperdiet lobortis quis tincidunt vel."}</p>
 
