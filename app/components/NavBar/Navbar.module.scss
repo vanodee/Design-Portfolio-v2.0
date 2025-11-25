@@ -1,12 +1,26 @@
 @use '../../styles/abstracts/index' as *;
 
+
+.headerContainer{
+    @include flex(column, end);
+    position: fixed;
+    width: 100dvw;
+    max-width: 1464px;
+    padding: 0 2rem;
+    z-index: 999;
+
+    // @include respond(large){
+    //     padding: 0 2rem;
+    // }
+}
+
 .header {
     @include flex(row, center, space-between);
     @include transition();
-    width: 95%;
-    max-width: 1400px;
+    height: 4rem;
+    width: 100%;
     padding: 0.6rem 0;
-    z-index: 999;
+
 
     &--light {
         border-bottom: 2px solid $primary-90;
@@ -43,8 +57,11 @@
 
 .nav {
     @include flex(row, center, space-between);
-    width: 40%;
-    max-width: 50%;
+    width: 500px;
+
+    @include respond(tablet){
+        display: none;
+    }
 }
 
 .navLink{
@@ -68,4 +85,54 @@
     color: $primary-90;
     font-weight: $fw-semibold;
     pointer-events: none;
+}
+
+.mobileMenuToggle {
+    display: none;
+
+    @include respond(tablet){
+        display: block
+    }
+}
+
+.mobileNav{
+    @include flex(column, center, space-between);
+    @include transition();
+    position: absolute;
+    top: 4.5rem; // Height of your header
+    background-color: $primary-90;
+    height: 400px;
+    width: 250px;
+    margin-top: 1rem;
+    padding: 1.5rem 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0px 1px 10px 0px;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(50px);
+
+    &.open {
+        visibility: visible;
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateX(0);
+    }
+
+    .navLink {
+        width: 90%;
+        padding: 1.25rem;
+        justify-content: left;
+    }
+}
+
+.mobileNavCta{
+    width: 100%;
+    border-top: 2px solid $primary-10;
+    padding-top: 1.5rem;
+
+    button {
+        @include button-variant(dark, outline);
+        width: 100%;
+    }
 }

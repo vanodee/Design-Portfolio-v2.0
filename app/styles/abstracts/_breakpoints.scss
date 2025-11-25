@@ -1,0 +1,37 @@
+// ------------------------------
+// BREAKPOINTS
+// ------------------------------
+$breakpoints: (
+  mobile: 480px,
+  tablet: 768px,
+  laptop: 1024px,
+  desktop: 1280px,
+  large: 1400px,
+);
+
+
+// ------------------------------
+// RESPONSIVE MIXIN
+// Usage:
+// @include respond(tablet) { ... }
+// @include respond(mobile, portrait) { ... }
+// ------------------------------
+@mixin respond($bp, $orientation: null) {
+  $size: map-get($breakpoints, $bp);
+
+  @if $size == null {
+    @error "Breakpoint `#{$bp}` not found in \$breakpoints map.";
+  }
+
+  @if $orientation == null {
+    @media (max-width: #{$size}) {
+      @content;
+    }
+  } @else if $orientation == portrait or $orientation == landscape {
+    @media (max-width: #{$size}) and (orientation: #{$orientation}) {
+      @content;
+    }
+  } @else {
+    @error "Orientation must be portrait or landscape.";
+  }
+}

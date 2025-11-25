@@ -63,7 +63,6 @@ export default function DynamicBackground() {
         };
       }
 
-      console.log(`BG COLOR: ${result.value}`);
 
       // Only fade if background changed
       if (result.value !== currentBg.value || result.type !== currentBg.type) {
