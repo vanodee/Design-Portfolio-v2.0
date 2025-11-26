@@ -8,10 +8,6 @@
     max-width: 1464px;
     padding: 0 2rem;
     z-index: 999;
-
-    // @include respond(large){
-    //     padding: 0 2rem;
-    // }
 }
 
 .header {
@@ -76,6 +72,13 @@
         background-color: $primary-70;
         color: $primary-90;
     }
+
+    @media(hover: none){
+        &:hover {
+            background-color: none;
+            color: $primary-30;
+        }
+    }
     
 }
 
@@ -91,7 +94,7 @@
     display: none;
 
     @include respond(tablet){
-        display: block
+        display: block;
     }
 }
 
@@ -99,7 +102,7 @@
     @include flex(column, center, space-between);
     @include transition();
     position: absolute;
-    top: 4.5rem; // Height of your header
+    top: 4rem; // Height of the header
     background-color: $primary-90;
     height: 400px;
     width: 250px;

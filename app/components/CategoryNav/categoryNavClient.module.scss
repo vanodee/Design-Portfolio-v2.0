@@ -4,7 +4,12 @@
     @include flex(row, center, space-between);
     @include transition();
     width: 100%;
+    height: 3.5rem;
     margin: 2rem 0;
+
+    @include respond(tablet){
+        display: none;
+    }
 }
 
 .categoryLink{
@@ -12,9 +17,9 @@
     @include transition();
     text-decoration: none;
     width: 100%;
-    color: $primary-50;
+    height: 100%;
     border-bottom: 1px solid $primary-50;
-    padding: 0.5rem 0;
+    color: $primary-50;
 
     h2{
         @include font($fs-md);
@@ -24,6 +29,14 @@
         background-color: $primary-70;
         border-bottom: 1px solid $primary-70;
         color: $primary-90;
+    }
+
+    @media(hover: none){
+        &:hover {
+            background-color: none;
+            border-bottom: 1px solid $primary-50;
+            color: $primary-50;
+        }
     }
 }
 
@@ -36,5 +49,77 @@
 
     h2{
         font-weight: $fw-semibold;
+    }
+}
+
+.mobileCategoryNav{
+    display: none;
+    @include transition();
+    width: 100%;
+    height: 3.5rem;
+    margin: 2rem 0;
+    background-color: $primary-10;
+    border-radius: 0.75rem;
+    color: $primary-90;
+    padding: 0 1.25rem;
+    cursor: pointer;
+    position: relative;
+
+    img{
+        @include transition();
+        transform: rotate(0);
+    }
+
+    &.open{
+        padding: 0.75rem 3rem;
+        background-color: $primary-50;
+
+        img{
+            transform: rotate(-180deg)
+        }
+    }
+
+    @include respond(tablet){
+        @include flex(row, center, space-between);
+    }
+}
+
+.activeCategoryTitle{
+    @include font($fs-md, $fw-semibold);
+}
+
+.mobileCategoryDropdown{
+    @include transition();
+    position: absolute;
+    top: 4.25rem;
+    left:0;
+    background-color: $primary-90;
+    height: 0;
+    width: 100%;
+    padding: 2rem 2rem 0 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0px 1px 10px 0px $primary-10;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+
+    .categoryLink{
+        @include transition(opacity 0.35s);
+        align-items: start;
+        padding: 0.5rem 2rem;
+        margin-bottom: 2rem;
+        border: none;
+        opacity: 0;
+    }
+
+    &.open {
+        height: fit-content;
+        visibility: visible;
+        opacity: 1;
+        pointer-events: auto;
+
+        .categoryLink{
+            opacity: 1;
+        }
     }
 }
