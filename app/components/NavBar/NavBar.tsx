@@ -7,13 +7,14 @@ import { useEffect, useRef, useState } from 'react';
 import styles from './Navbar.module.scss';
 
 
-
 const navItems = [
   { name: 'Home', path: '/' },
   { name: 'Projects', path: '/projects' },
   { name: 'About', path: '/about' },
   { name: 'Contact', path: '/contact' },
 ]
+
+export const myResume = "https://drive.google.com/file/d/1BWGzFkHhIhSlI-BYySXd3o1inPUDCeAS/view?usp=sharing";
 
 
 export default function NavBar() {
@@ -83,12 +84,19 @@ export default function NavBar() {
             )
           })}
 
-          <button>My Resume</button>
+          <a
+            href={myResume}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.resumeButton}
+          >
+            <button>My Resume</button>
+          </a>
         </nav>
 
         <button
           ref={toggleBtnRef}
-          className={styles.mobileMenuToggle}
+          className={`${styles.mobileMenuToggle} ${isHome ? styles["mobileMenuToggle--light"] : styles["mobileMenuToggle--dark"]}`}
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
         >
@@ -125,9 +133,14 @@ export default function NavBar() {
           )
         })}
 
-        <div className={styles.mobileNavCta}>
+        <a
+          href={myResume}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.mobileNavCta}
+        >
           <button>My Resume</button>
-        </div>
+        </a>
           
       </nav>
     </header>

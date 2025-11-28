@@ -1,49 +1,106 @@
 @use './styles/abstracts/index' as *;
 
 .homePageContainer{
-  @include flex(column);
+  @include flex(column, center, start);
   height: 100%;
+  width: 100%;
   padding-top: 2rem;
+  overflow: hidden;
+  overflow-y: scroll;
+  scrollbar-width: none;
 }
 
 .heroHeading{
-  @include font($fs-3xl, $fw-semibold);
+  @include font($fs-3xl, $fw-semibold, 1.2);
   color: $primary-90;
   text-align: center;
+  margin-bottom: 1.5rem;
+
+  @include respond(laptop){
+    font-size: $fs-2xl;
+  }
+
+  @include respond(tablet){
+    @include font($fs-xl, $fw-semibold, 1.2);
+  }
 }
 
 .heroBody{
   color: $primary-90;
   text-align: center;
   max-width: 700px;
-  margin: 1.5rem 0;
+  margin-bottom: 1.5rem;
+
+  @include respond(tablet){
+    font-size: $fs-sm;
+  }
 }
 
 .buttonGroup {
   @include flex(row, center, space-between);
-  width: 320px;
+  width: 100%;
+  max-width: 320px;
 
-  button {
+  @include respond(mobile){
+    @include flex(row);
+  }
+}
+
+.projectsButton{
+  button{
+    @include button-variant(light, filled);
     width: 150px;
 
-    &:first-child {
-      @include button-variant(light, filled);
-    }
-
-    &:last-child {
-      @include button-variant(light, outline);
+    @include respond(mobile){
+      width: 145px;
+      font-size: $fs-sm;
+      margin-right: 0.5rem;
     }
   }
 }
 
-.categoryCards {
-  height: 100%;
-  width: 100%;
-  margin: 4rem 0;
+.resumeButton{
+  button{
+    @include button-variant(light, outline);
+    width: 150px;
 
+    @include respond(mobile){
+      width: 145px;
+      font-size: $fs-sm;
+      margin-left: 0.5rem;
+    }
+  }
+}
+
+.categoryCardContainer {
+  flex: 1;
+  width: 100%;
+  margin: 4rem 0 2rem 0;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
+
+  @media(min-height:1200){
+    grid-template-columns: repeat(2, 1fr);
+    width: 70%;
+  }
+
+  @include respond(laptop, portrait){
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    width: 80%;
+  }
+
+  @include respond(tablet){
+    grid-template-columns: repeat(2, 1fr);
+    margin: 2rem 0;
+    gap: 1rem;
+    width: 80%;
+  }
+
+  @include respond(mobile){
+    width: 100%;
+  }
 }
 
 .categoryCard {
@@ -52,8 +109,9 @@
   color: $primary-30;
   background-color: $primary-90;
   column-span: 1;
+  height: 100%;
   cursor: pointer;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   overflow: hidden;
 
   &:hover {
@@ -71,22 +129,53 @@
       @include flex(row);
     }
   }
+
+  @media(hover: none){
+    &:hover {
+      .categoryImage {
+        height: 80%;
+      }
+
+      .categoryDetails {
+        @include flex(column);
+        height: 20%;
+        padding: 0;
+      }
+
+      .categoryTools {
+        display: none;
+      }
+    }
+  }
 }
 
 .categoryImage {
   @include transition(all, 0.6s);
   object-fit: cover;
-  height: 85%;
+  height: 80%;
+  width: 100%;
+
+  @include respond(tablet){
+    height: 75%;
+  }
 }
 
 .categoryDetails {
   @include transition();
   @include flex(column);
   width: 100%;
-  height: 15%;
+  height: 20%;
+
+  @include respond(tablet){
+    height: 25%;
+  }
 
   h2 {
     @include font($fs-lg, $fw-semibold);
+
+    @include respond(tablet){
+      font-size: $fs-md;
+    }
   }
 }
 

@@ -24,7 +24,6 @@ export default function ContactPage() {
               target="_blank"
               rel="noopener noreferrer"
               className={styles.contactIconContainer}
-
             >
               <Image
                 src={src}
