@@ -34,14 +34,7 @@ export default async function CategoryPage({ params }: { params: { category: str
       "slug": slug.current,
       description,
       previewColor,
-      "previewImage": previewImage.asset->url,
-
-      // Tools data
-      tools[]->{
-        title,
-        color,
-        "iconUrl": icon.asset->url
-      }
+      "previewImage": previewImage.asset->url
     }
   }
   `;
@@ -59,55 +52,140 @@ export default async function CategoryPage({ params }: { params: { category: str
       
       <CategoryNav />
 
-      {/* <h2>{categoryData.title}</h2> */}
-
-      <p>{categoryData.description || "Lorem ipsum dolor sit amet consectetur. In varius arcu leo nunc eget aliquam leo. Nisi tincidunt semper sagittis arcu sed tempor ut. Arcu morbi risus nulla magna enim dictum auctor blandit fermentum. Mauris consectetur consequat massa imperdiet lobortis quis tincidunt vel."}</p>
-
-
       <div className={styles.projectCardsContainer}>
-        {categoryData.projects?.map((project: any) => (
 
-          <div 
-            key={project.slug} 
-            className={styles.projectCard}
-            style={{ "--hoverColor": project.previewColor } as React.CSSProperties}
-          >
+        <p className={styles.categoryDescription}>
+          {categoryData.description || "Lorem ipsum dolor sit amet consectetur. In varius arcu leo nunc eget aliquam leo. Nisi tincidunt semper sagittis arcu sed tempor ut. Arcu morbi risus nulla magna enim dictum auctor blandit fermentum. Mauris consectetur consequat massa imperdiet lobortis quis tincidunt vel."}
+        </p>
 
-            <img 
-              src={project.previewImage} 
-              alt={project.title} 
-            />
+        <div className={styles.projectCardGrid}>
 
-            <div className={styles.projectDetails}>
-              <div>
-                <h3>{project.title}</h3>
-                <p>{project.description}</p>
+          {categoryData.projects?.map((project: any) => (
+            <div 
+              key={project.slug} 
+              className={styles.projectCard}
+              style={{ "--hoverColor": project.previewColor } as React.CSSProperties}
+            >
+
+              <img 
+                src={project.previewImage} 
+                alt={project.title} 
+              />
+
+              <div className={styles.projectDetails}>
+
+                <div>
+                  <h3>{project.title}</h3>
+                  <p>{project.description}</p>
+                </div>
+
+                <Link 
+                  href={`/projects/${categoryData.slug}/${project.slug}`}
+                  className={styles.projectLink}
+                >
+                  <button>View Full Project</button>
+                </Link>
+
               </div>
-
-              {/* <div className={styles.toolsRow}>
-                {project.tools?.map((tool: any) => (
-                  <img
-                    key={tool.title}
-                    src={tool.iconUrl}
-                    alt={tool.title}
-                    title={tool.title}
-                  />
-                ))}
-              </div> */}
-
-              <Link 
-                href={`/projects/${categoryData.slug}/${project.slug}`}
-                className={styles.projectLink}
-              >
-                <button>View Full Project</button>
-              </Link>
-
+              
             </div>
-            
+          ))}
+{/* ========================= DELETE THIS ===================================== */}
+          {categoryData.projects?.map((project: any) => (
+            <div 
+              key={project.slug} 
+              className={styles.projectCard}
+              style={{ "--hoverColor": project.previewColor } as React.CSSProperties}
+            >
 
-          </div>
-        ))}
+              <img 
+                src={project.previewImage} 
+                alt={project.title} 
+              />
 
+              <div className={styles.projectDetails}>
+
+                <div>
+                  <h3>{project.title}</h3>
+                  <p>{project.description}</p>
+                </div>
+
+                <Link 
+                  href={`/projects/${categoryData.slug}/${project.slug}`}
+                  className={styles.projectLink}
+                >
+                  <button>View Full Project</button>
+                </Link>
+
+              </div>
+              
+            </div>
+          ))}
+
+          {categoryData.projects?.map((project: any) => (
+            <div 
+              key={project.slug} 
+              className={styles.projectCard}
+              style={{ "--hoverColor": project.previewColor } as React.CSSProperties}
+            >
+
+              <img 
+                src={project.previewImage} 
+                alt={project.title} 
+              />
+
+              <div className={styles.projectDetails}>
+
+                <div>
+                  <h3>{project.title}</h3>
+                  <p>{project.description}</p>
+                </div>
+
+                <Link 
+                  href={`/projects/${categoryData.slug}/${project.slug}`}
+                  className={styles.projectLink}
+                >
+                  <button>View Full Project</button>
+                </Link>
+
+              </div>
+              
+            </div>
+          ))}
+
+          {categoryData.projects?.map((project: any) => (
+            <div 
+              key={project.slug} 
+              className={styles.projectCard}
+              style={{ "--hoverColor": project.previewColor } as React.CSSProperties}
+            >
+
+              <img 
+                src={project.previewImage} 
+                alt={project.title} 
+              />
+
+              <div className={styles.projectDetails}>
+
+                <div>
+                  <h3>{project.title}</h3>
+                  <p>{project.description}</p>
+                </div>
+
+                <Link 
+                  href={`/projects/${categoryData.slug}/${project.slug}`}
+                  className={styles.projectLink}
+                >
+                  <button>View Full Project</button>
+                </Link>
+
+              </div>
+              
+            </div>
+          ))}
+{/* ============================================================== */}
+        </div>
+        
       </div>
 
     </div>

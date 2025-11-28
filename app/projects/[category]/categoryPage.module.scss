@@ -1,26 +1,73 @@
 @use '../../styles/abstracts/index' as *;
 
+
 .projectsContainer{
+    @include flex(column, center, start);
     height: 100%;
+    width: 100%;
     padding-top: 2rem;
 
     h1 {
-        @include font($fs-xl, $fw-semibold);
+        @include font($fs-xl, $fw-semibold, 1.2);
+        width: 100%;
         color: $primary-30;
         text-align: right;
+        margin-bottom: 2rem;
+
+        @include respond(tablet){
+            font-size: $fs-lg;
+        }
+
+        @include respond(mobile){
+            text-align: center;
+        }
     }
 }
 
 .projectCardsContainer{
-    height: 62dvh;
-    margin-top: 2rem;
-    padding: 0.5rem;
+    @include flex(column, center, start);
+    flex: 1;
+    width: 100%;
+    padding: 2rem 1rem 0 1rem;
+    overflow: hidden;
+    overflow-y: scroll;
+    scrollbar-width: none;
+
+    .categoryDescription{
+        margin-bottom: 2rem;
+
+        @include respond(tablet){
+            display: none;
+        }
+    }
+
+    @include respond(tablet){
+        padding: 2rem 0.5rem 0 0.5rem;
+
+    }
+}
+
+.projectCardGrid{
+    flex: 1;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding-bottom: 2rem;
+
+    @include respond(laptop){
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include respond(tablet){
+        grid-template-columns: repeat(1, 1fr);
+    }
 }
 
 .projectCard{
     @include transition();
-    height: 100%;
-    width: 33%;
+    column-span: 1;
+    height: fit-content;
     border-radius: 1rem;
     color: $primary-30;
     overflow: hidden;
@@ -28,20 +75,39 @@
     box-shadow: 0px 1px 5px 0px;
 
     img{
-        height: 35%;
+        height: 12rem;
         width: 100%;
         object-fit: cover;
+
+        @include respond(laptop){
+            height: 15rem;
+        }
+
+        @include respond(tablet){
+            height: 18rem;
+        }
+
+        @include respond(mobile){
+            height: 12rem;
+        }
     }
 
     &:hover{
         box-shadow: 0px 4px 15px 0px;
         background-color: var(--hoverColor);
     }
+
+    @media(hover: none){
+        &:hover{
+            box-shadow: 0px 1px 5px 0px;
+            background-color: $primary-90;
+        }
+    }
 }
 
 .projectDetails{
-    @include flex(column, start, space-between);
-    height: 65%;
+    @include flex(column, start);
+    height: fit-content;
     padding: 1.25rem;
 
     h3{
@@ -51,11 +117,18 @@
 
     p{
         @include font($fs-sm);
+        height: 10rem;
+        overflow: hidden;
+
+        @include respond(tablet){
+            display: none;
+        }
     }
 }
 
 .projectLink{
     width: 100%;
+    margin-top: 2rem;
 
     button {
         @include button-variant(dark, outline);
