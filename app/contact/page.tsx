@@ -7,10 +7,6 @@ import { contactIcons } from "../components/Footer/Footer"
 export default function ContactPage() {
   return (
     <div className={styles.contactPageContainer}>
-      
-      <div className={styles.contactFormContainer}>
-        <TallyContactForm />
-      </div>
 
       <div className={styles.contactInfoContainer}>
         <h1>Get In <br /> Touch</h1>
@@ -36,6 +32,10 @@ export default function ContactPage() {
 
           ))}
         </div>
+      </div>
+
+      <div className={styles.contactFormContainer}>
+        <TallyContactForm />
       </div>
 
     </div>

@@ -8,6 +8,21 @@
   overflow: hidden;
   overflow-y: scroll;
   scrollbar-width: none;
+
+  @include respond(laptop, portrait){
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
+  @include respond(tablet){
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
+  @include respond(mobile){
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 .heroHeading{
@@ -23,6 +38,10 @@
   @include respond(tablet){
     @include font($fs-xl, $fw-semibold, 1.2);
   }
+
+  @media(max-width: 365px){
+    font-size: 1.55rem;
+  }
 }
 
 .heroBody{
@@ -31,8 +50,13 @@
   max-width: 700px;
   margin-bottom: 1.5rem;
 
+  @include respond(laptop, portrait){
+    margin-bottom: 0;
+  }
+
   @include respond(tablet){
     font-size: $fs-sm;
+    margin-bottom: 0;
   }
 }
 
@@ -41,8 +65,12 @@
   width: 100%;
   max-width: 320px;
 
-  @include respond(mobile){
-    @include flex(row);
+  @include respond(laptop, portrait){
+    display: none;
+  }
+
+  @include respond(tablet){
+    display: none;
   }
 }
 
@@ -50,12 +78,6 @@
   button{
     @include button-variant(light, filled);
     width: 150px;
-
-    @include respond(mobile){
-      width: 145px;
-      font-size: $fs-sm;
-      margin-right: 0.5rem;
-    }
   }
 }
 
@@ -63,19 +85,13 @@
   button{
     @include button-variant(light, outline);
     width: 150px;
-
-    @include respond(mobile){
-      width: 145px;
-      font-size: $fs-sm;
-      margin-left: 0.5rem;
-    }
   }
 }
 
 .categoryCardContainer {
   flex: 1;
   width: 100%;
-  margin: 4rem 0 2rem 0;
+  margin: 3.5rem 0 2rem 0;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
@@ -87,6 +103,7 @@
 
   @include respond(laptop, portrait){
     grid-template-columns: repeat(2, 1fr);
+    margin: 2rem 0;
     gap: 1rem;
     width: 80%;
   }
@@ -95,7 +112,7 @@
     grid-template-columns: repeat(2, 1fr);
     margin: 2rem 0;
     gap: 1rem;
-    width: 80%;
+    width: 100%;
   }
 
   @include respond(mobile){
@@ -110,6 +127,7 @@
   background-color: $primary-90;
   column-span: 1;
   height: 100%;
+  min-height: 300px;
   cursor: pointer;
   border-radius: 0.5rem;
   overflow: hidden;
@@ -147,6 +165,10 @@
       }
     }
   }
+
+  @include respond(mobile){
+    min-height: 0;
+  }
 }
 
 .categoryImage {
@@ -175,6 +197,10 @@
 
     @include respond(tablet){
       font-size: $fs-md;
+    }
+
+    @media(max-width: 375px){
+      font-size: $fs-sm;
     }
   }
 }

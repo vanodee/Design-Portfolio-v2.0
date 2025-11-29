@@ -2,25 +2,58 @@
 
 
 .contactPageContainer{
-    @include flex(row);
+    @include flex(row-reverse, start, center);
     height: 100%;
+    max-height: 1200px;
     width: 100%;
     padding: 2rem 0;
-    margin-top: 5rem;
+    overflow: hidden;
+    overflow-y: scroll;
+    scrollbar-width: none;
+
+    @include respond(laptop, portrait){
+        @include flex(column, center, start);
+        padding-left: 3rem;
+        padding-right: 3rem;
+        max-height: 1600px;
+    }
+
+    @include respond(tablet){
+        @include flex(column, center, start);
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+
+    @include respond(mobile){
+        padding-left: 0;
+        padding-right: 0;
+    }
 }
 
 .contactFormContainer{
     @include flex();
     height: 100%;
+    min-height: 600px;
     width: 45%;
     background-color: $primary-70;
-    border-radius: 1rem;
-    padding: 1rem;
+    border-radius: 0.5rem;
+    padding: 1rem 0;
+
+    @include respond(laptop, portrait){
+        height: fit-content;
+        width: 100%;
+    }
+
+    @include respond(tablet){
+        height: fit-content;
+        width: 100%;
+    }
 }
 
 .contactInfoContainer{
     @include flex(column);
     height: 100%;
+    min-height: 600px;
     width: 55%;
     padding-left: 3rem;
 
@@ -29,7 +62,33 @@
         @include flex();
         color: $primary-30;
         text-align: center;
-        height: 80%;
+        flex: 1;
+
+        @include respond(tablet){
+            font-size: 5rem;
+        }
+
+         @include respond(mobile){
+            font-size: 4rem;
+        }
+    }
+
+    @include respond(laptop, portrait){
+        flex: 1;
+        width: 100%;
+        padding-left: 0;
+        padding-bottom: 2rem;
+    }
+
+    @include respond(tablet){
+        flex: 1;
+        width: 100%;
+        padding-left: 0;
+        padding-bottom: 2rem;
+    }
+
+    @include respond(mobile){
+        min-height: 400px;
     }
 }
 
@@ -37,6 +96,20 @@
     @include flex(row, center, space-between);
     height: 20%;
     width: 100%;
+
+     @include respond(laptop, portrait){
+        height: 8rem;
+        margin-top: 2rem;
+    }
+
+    @include respond(tablet){
+        height: 8rem;
+        margin-top: 2rem;
+    }
+
+    @include respond(mobile){
+        height: 6rem;
+    }
 }
 
 .contactIconContainer{
@@ -46,10 +119,22 @@
     width: 30%;
     background-color: $primary-70;
     cursor: pointer;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
 
     &:hover{
         background-color: $primary-30;
+    }
+
+    @media(hover: none){
+        &:hover{
+            background-color: $primary-70;
+        }
+    }
+
+    @include respond(mobile){
+        img{
+            height: 55px;
+        }
     }
 }
 

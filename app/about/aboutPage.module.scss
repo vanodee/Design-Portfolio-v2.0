@@ -2,29 +2,118 @@
 
 
 .aboutPageContainer{
+    @include flex(column, center, start);
     height: 100%;
     width: 100%;
     padding-top: 2rem;
+    overflow: hidden;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    // background-color: green;
 
     h1{
-        @include font($fs-xl, $fw-semibold);
+        @include font($fs-xl, $fw-semibold, 1.2);
+        width: 100%;
         color: $primary-30;
         text-align: right;
         padding-bottom: 2rem;
+        // background-color: pink;
+
+        @include respond(tablet){
+            font-size: $fs-lg;
+        }
+
+        @include respond(mobile){
+            text-align: center;
+        }
+    }
+
+    @include respond(laptop, portrait){
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+
+    @include respond(tablet){
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+
+    @include respond(mobile){
+        padding-left: 0;
+        padding-right: 0;
     }
 }
 
 .detailsContainer{
-    @include flex(row);
+    @include flex(row, start, space-between);
+    flex: 1;
+    min-height: 600px;
+    margin-bottom: 2rem;
     width: 100%;
+    overflow: hidden;
+    
+    @include respond(laptop, portrait){
+        @include flex(column, center, start);
+        overflow-y: scroll;
+        scrollbar-width: none;
+        margin-bottom: 0;
+        padding-bottom: 2rem;
+    }
+
+    @include respond(tablet){
+        @include flex(column, center, start);
+        overflow-y: scroll;
+        scrollbar-width: none;
+        margin-bottom: 0;
+        padding-bottom: 2rem;
+        min-height: 0;
+    }
 }
 
 .myPhoto{
+    height: 100%;
+    max-height: 1000px;
     width: 50%;
     object-fit: cover;
-    border-radius: 1rem;
+    object-position: top;
+    border-radius: 0.5rem;
+
+    @include respond(laptop, portrait){
+        height: 40rem;
+        width: 100%;
+    }
+
+    @include respond(tablet){
+        height: 40rem;
+        width: 100%;
+    }
 }
 
 .myAboutText{
-    padding-left: 3rem;
+    padding-top: 1rem;
+    height: 100%;
+    width: 45%;
+    overflow-y: scroll;
+    scrollbar-width: none;
+
+    @include respond(laptop, portrait){
+        height: fit-content;
+        width: 100%;
+        overflow-y: visible;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    @include respond(tablet){
+        height: fit-content;
+        width: 100%;
+        overflow-y: visible;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    @include respond(mobile){
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
 }

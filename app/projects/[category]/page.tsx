@@ -50,8 +50,10 @@ export default async function CategoryPage({ params }: { params: { category: str
       
       <h1>Projects I've Worked On</h1>
       
-      <CategoryNav />
-
+      <div className={styles.categoryNav}>
+        <CategoryNav />
+      </div>
+      
       <div className={styles.projectCardsContainer}>
 
         <p className={styles.categoryDescription}>
