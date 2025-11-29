@@ -56,21 +56,24 @@ export default function PageInfoOverlay() {
             />
           </Link>
 
-          <div className={styles.overlayLinks}>
-            <Link href="/projects">
-              Projects
-            </Link>
+          <div className={styles.overlayLinksWrapper}>
+            <div className={styles.overlayLinks}>
+              <Link href="/projects">
+                Projects
+              </Link>
 
-            <p>{`>>`}</p>
+              <p>{`>>`}</p>
 
-            <Link href={`/projects/${category}`}>
-              {category}
-            </Link>
+              <Link href={`/projects/${category}`}>
+                {category}
+              </Link>
 
-            <p>{`>>`}</p>
-            
-            <p>{project}</p>
+              <p>{`>>`}</p>
+              
+              <p>{project}</p>
+            </div>
           </div>
+          
           
 
           <Link href="/" className={styles.overlayIcon}>

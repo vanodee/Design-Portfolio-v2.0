@@ -38,8 +38,8 @@ export default function Footer() {
               >
                 <Image
                   src={src}
-                  height={75}
-                  width={75}
+                  height={65}
+                  width={65}
                   alt={name}
                   className={styles.contactIcon}
                 />

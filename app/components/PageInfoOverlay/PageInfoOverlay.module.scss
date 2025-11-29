@@ -25,10 +25,17 @@
   @include flex(column, center, space-between);
   margin-left: 2rem;
   // background-color: red;
-  height: 85%;
-  max-height: 660px;
+  height: 600px;
   width: 50px;
   pointer-events: all;
+
+  @include respond(large){
+    display: none;
+  }
+
+  @media(max-height: 700px){
+    display: none;
+  }
 }
 
 .overlayIcon{
@@ -46,12 +53,20 @@
   }
 }
 
+.overlayLinksWrapper{
+  @include flex();
+  width: 40px;
+  height: 470px;
+  // background-color: red;
+}
+
 .overlayLinks{
   @include flex(row, center, space-between);
   @include font($fs-base);
   color: $grey-60;
   transform: rotate(-90deg);
-  width: 500px;
+  height: 40px;
+  width: 470px;
 
   a{
     @include transition();
