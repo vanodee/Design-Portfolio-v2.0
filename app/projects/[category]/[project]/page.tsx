@@ -2,6 +2,7 @@ import { groq } from "next-sanity";
 import { client } from "../../../../lib/sanity.client";
 import styles from "./projectPage.module.scss"
 import Image from "next/image";
+import { notFound } from "next/navigation";
 import Footer from "@/app/components/Footer/Footer";
 
 
@@ -49,9 +50,7 @@ export default async function ProjectPage({params}: {params: { category: string;
 
   const projectData = await client.fetch(projectQuery, { category, project });
 
-  if (!projectData) {
-    return <div>Project not found</div>;
-  }
+  if (!projectData) return notFound();
 
   return (
     <div 

@@ -1,0 +1,33 @@
+@use './styles/abstracts/index' as *;
+
+
+.pageContainer{
+    @include flex(column, center, start);
+    gap: 1rem;
+    padding: 4rem 0;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+    overflow-y: scroll;
+    scrollbar-width: none;
+
+    h1{
+        font-size: $fs-xl;
+    }
+}
+
+.notFoundImage{
+    object-fit: contain;
+    height: auto;
+    width: 90%;
+    max-width: 700px;
+    margin-bottom: 4rem;
+}
+
+.homeButton{
+    button{
+        @include button-variant(dark, outline);
+        margin-top: 1rem;
+    }
+}

@@ -3,6 +3,7 @@ import { client } from "../../../lib/sanity.client";
 import styles from "./categoryPage.module.scss";
 import CategoryNav from "@/app/components/CategoryNav/CategoryNav";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
 
 // Static Params for Dynamic Routing
@@ -41,9 +42,7 @@ export default async function CategoryPage({ params }: { params: { category: str
 
   const categoryData = await client.fetch(categoryQuery, { category });
 
-  if (!categoryData) {
-    return <div>Category not found</div>;
-  }
+  if (!categoryData) return notFound();
 
   return (
     <div className={styles.projectsContainer}>
