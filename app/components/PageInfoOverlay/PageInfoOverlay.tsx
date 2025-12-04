@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import Image from "next/image";
 import styles from "./PageInfoOverlay.module.scss";
 import Link from "next/link";
+import { motion } from "motion/react";
 
 
 export default function PageInfoOverlay() {
@@ -58,8 +59,8 @@ export default function PageInfoOverlay() {
 
           <div className={styles.overlayLinksWrapper}>
             <div className={styles.overlayLinks}>
-              <Link href="/projects">
-                Projects
+              <Link href="/">
+                Home
               </Link>
 
               <p>{`>>`}</p>
@@ -113,7 +114,24 @@ export default function PageInfoOverlay() {
 
   // ----- RENDER OVERLAY IMAGE -----
   return (
-    <div 
+    <motion.div
+      key={segments[0]}
+      initial={{ 
+        opacity: 0,
+        x: 30,
+        filter: "blur(10px)"
+      }}
+      animate={{ 
+        opacity: 1,
+        x: 0,
+        filter: "blur(0px)"
+      }}
+      transition={{ 
+        delay: 0.3,
+        duration: 0.6,
+        ease: [0.16, 1, 0.3, 1],
+      }}
+
       className={styles.overlayContainer} 
       style={{ "--topGap": "9rem" } as React.CSSProperties}
     >
@@ -125,6 +143,6 @@ export default function PageInfoOverlay() {
         priority
         className={styles.overlayImage}
       />
-    </div>
+    </motion.div>
   );
 }

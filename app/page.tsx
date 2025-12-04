@@ -22,7 +22,7 @@ export default async function Home() {
 
       <div className={styles.buttonGroup}>
         <Link 
-          href={"/projects"}
+          href={`/projects/${categories[0].slug}`}
           className={styles.projectsButton}
         >
           <button>Explore My Work</button>

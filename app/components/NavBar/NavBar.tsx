@@ -7,9 +7,9 @@ import { useEffect, useRef, useState } from 'react';
 import styles from './Navbar.module.scss';
 
 
-const navItems = [
+export const navItems = [
   { name: 'Home', path: '/' },
-  { name: 'Projects', path: '/projects' },
+  { name: 'Projects', path: '/projects', defaultCategory: 'logo-designs' },
   { name: 'About', path: '/about' },
   { name: 'Contact', path: '/contact' },
 ]
@@ -70,13 +70,13 @@ export default function NavBar() {
         
 
         <nav className={styles.nav}>
-          {navItems.map(({ name, path }) => {
+          {navItems.map(({ name, path, defaultCategory }) => {
             const isActive = path === '/' ? pathname === '/' : pathname.startsWith(path) 
 
             return (
               <Link
                 key={path}
-                href={path}
+                href={path === "/projects" ? `${path}/${defaultCategory}` : path}
                 className={isActive ? styles.navLinkActive: styles.navLink}
               >
                 {name}
@@ -118,13 +118,13 @@ export default function NavBar() {
         ref={mobileNavRef}
         className={`${styles.mobileNav} ${mobileOpen ? styles.open : ""}`}
       >
-        {navItems.map(({ name, path }) => {
+        {navItems.map(({ name, path, defaultCategory }) => {
           const isActive = path === '/' ? pathname === '/' : pathname.startsWith(path) 
 
           return (
             <Link
               key={path}
-              href={path}
+              href={path === "/projects" ? `${path}/${defaultCategory}` : path}
               className={isActive ? styles.navLinkActive: styles.navLink}
               onClick={() => setMobileOpen(false)} // close when link clicked
             >
