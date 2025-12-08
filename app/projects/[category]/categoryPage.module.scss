@@ -54,6 +54,7 @@
     position: sticky;
     top: -1px;
     padding-top: 0;
+    z-index: 3;
 
     @include respond(laptop, portrait){
         padding-top: 1rem;

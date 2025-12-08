@@ -2,8 +2,8 @@ import { groq } from "next-sanity";
 import { client } from "../../../lib/sanity.client";
 import styles from "./categoryPage.module.scss";
 import CategoryNav from "@/app/components/CategoryNav/CategoryNav";
-import Link from "next/link";
 import { notFound } from "next/navigation";
+import ProjectCards from "@/app/components/ProjectCards/ProjectCards";
 
 
 // Static Params for Dynamic Routing
@@ -52,142 +52,8 @@ export default async function CategoryPage({ params }: { params: { category: str
       <div className={styles.categoryNav}>
         <CategoryNav />
       </div>
-      
-      <div className={styles.projectCardsContainer}>
 
-        <p className={styles.categoryDescription}>
-          {categoryData.description || "Lorem ipsum dolor sit amet consectetur. In varius arcu leo nunc eget aliquam leo. Nisi tincidunt semper sagittis arcu sed tempor ut. Arcu morbi risus nulla magna enim dictum auctor blandit fermentum. Mauris consectetur consequat massa imperdiet lobortis quis tincidunt vel."}
-        </p>
-
-        <div className={styles.projectCardGrid}>
-
-          {categoryData.projects?.map((project: any) => (
-            <div 
-              key={project.slug} 
-              className={styles.projectCard}
-              style={{ "--hoverColor": project.previewColor } as React.CSSProperties}
-            >
-
-              <img 
-                src={project.previewImage} 
-                alt={project.title} 
-              />
-
-              <div className={styles.projectDetails}>
-
-                <div>
-                  <h3>{project.title}</h3>
-                  <p>{project.description}</p>
-                </div>
-
-                <Link 
-                  href={`/projects/${categoryData.slug}/${project.slug}`}
-                  className={styles.projectLink}
-                >
-                  <button>View Full Project</button>
-                </Link>
-
-              </div>
-              
-            </div>
-          ))}
-{/* ========================= DELETE THIS ===================================== */}
-          {categoryData.projects?.map((project: any) => (
-            <div 
-              key={project.slug} 
-              className={styles.projectCard}
-              style={{ "--hoverColor": project.previewColor } as React.CSSProperties}
-            >
-
-              <img 
-                src={project.previewImage} 
-                alt={project.title} 
-              />
-
-              <div className={styles.projectDetails}>
-
-                <div>
-                  <h3>{project.title}</h3>
-                  <p>{project.description}</p>
-                </div>
-
-                <Link 
-                  href={`/projects/${categoryData.slug}/${project.slug}`}
-                  className={styles.projectLink}
-                >
-                  <button>View Full Project</button>
-                </Link>
-
-              </div>
-              
-            </div>
-          ))}
-
-          {categoryData.projects?.map((project: any) => (
-            <div 
-              key={project.slug} 
-              className={styles.projectCard}
-              style={{ "--hoverColor": project.previewColor } as React.CSSProperties}
-            >
-
-              <img 
-                src={project.previewImage} 
-                alt={project.title} 
-              />
-
-              <div className={styles.projectDetails}>
-
-                <div>
-                  <h3>{project.title}</h3>
-                  <p>{project.description}</p>
-                </div>
-
-                <Link 
-                  href={`/projects/${categoryData.slug}/${project.slug}`}
-                  className={styles.projectLink}
-                >
-                  <button>View Full Project</button>
-                </Link>
-
-              </div>
-              
-            </div>
-          ))}
-
-          {categoryData.projects?.map((project: any) => (
-            <div 
-              key={project.slug} 
-              className={styles.projectCard}
-              style={{ "--hoverColor": project.previewColor } as React.CSSProperties}
-            >
-
-              <img 
-                src={project.previewImage} 
-                alt={project.title} 
-              />
-
-              <div className={styles.projectDetails}>
-
-                <div>
-                  <h3>{project.title}</h3>
-                  <p>{project.description}</p>
-                </div>
-
-                <Link 
-                  href={`/projects/${categoryData.slug}/${project.slug}`}
-                  className={styles.projectLink}
-                >
-                  <button>View Full Project</button>
-                </Link>
-
-              </div>
-              
-            </div>
-          ))}
-{/* ============================================================== */}
-        </div>
-        
-      </div>
+      <ProjectCards categoryData={categoryData}/>
 
     </div>
   );

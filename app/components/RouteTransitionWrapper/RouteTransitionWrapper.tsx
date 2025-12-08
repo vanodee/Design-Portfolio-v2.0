@@ -4,42 +4,65 @@ import { usePathname } from "next/navigation";
 import { motion } from "motion/react";
 import { useRef } from "react";
 
-export default function RouteTransitionWrapper({children}: {children: React.ReactNode}) {
+export default function RouteTransitionWrapper({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  
-  // Extract top-level route
-  const getTopLevelRoute = (path: string) => {
-    return path.split("/")[1] || "home";
+
+  // Extract top-level and depth
+  const getSegments = (path: string) => {
+    const parts = path.split("/").filter(Boolean);
+    return {
+      top: parts[0] || "home",
+      depth: parts.length,
+    };
   };
 
-  const currentTopLevel = getTopLevelRoute(pathname);
-  
-  // Store the top level in a ref that only updates when it changes
-  const topLevelRef = useRef(currentTopLevel);
+  const { top: currentTop, depth: currentDepth } = getSegments(pathname);
+
+  // Refs to store last route details
+  const lastTop = useRef(currentTop);
+  const lastDepth = useRef(currentDepth);
   const keyRef = useRef(0);
-  
-  // If top level changed, increment key
-  if (currentTopLevel !== topLevelRef.current) {
+
+  // Determine if animation should run
+  const topChanged = currentTop !== lastTop.current;
+  const depthChanged = currentDepth !== lastDepth.current;
+
+  const shouldAnimate = (() => {
+    // case 1: top-level changed → animate
+    if (topChanged) return true;
+
+    // case 2: inside projects, depth change = animate
+    if (currentTop === "projects" && depthChanged) return true;
+
+    // case 3: same top, same depth → no animation
+    return false;
+  })();
+
+  // Only increment key when animation should run
+  if (shouldAnimate) {
     keyRef.current += 1;
-    topLevelRef.current = currentTopLevel;
   }
+
+  // Update refs
+  lastTop.current = currentTop;
+  lastDepth.current = currentDepth;
 
   return (
     <motion.div
       key={keyRef.current}
-      initial={{ 
+      initial={{
         opacity: 0,
         scale: 0.95,
         y: 20,
-        filter: "blur(10px)"
+        filter: "blur(10px)",
       }}
-      animate={{ 
+      animate={{
         opacity: 1,
         scale: 1,
         y: 0,
-        filter: "blur(0px)"
+        filter: "blur(0px)",
       }}
-      transition={{ 
+      transition={{
         duration: 0.65,
         ease: [0.16, 1, 0.3, 1],
       }}

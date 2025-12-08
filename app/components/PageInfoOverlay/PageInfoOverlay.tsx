@@ -41,7 +41,24 @@ export default function PageInfoOverlay() {
     const project = segments[2] || ""; 
 
     return (
-      <div 
+      <motion.div
+        key={pathname}
+        initial={{ 
+          opacity: 0,
+          y: 30,
+          filter: "blur(10px)"
+        }}
+        animate={{ 
+          opacity: 1,
+          y: 0,
+          filter: "blur(0px)"
+        }}
+        transition={{ 
+          delay: 0.3,
+          duration: 0.9,
+          ease: [0.16, 1, 0.3, 1],
+        }}
+
         className={styles.overlayContainer} 
         style={{ "--topGap": "6rem" } as React.CSSProperties}
       >
@@ -75,8 +92,6 @@ export default function PageInfoOverlay() {
             </div>
           </div>
           
-          
-
           <Link href="/" className={styles.overlayIcon}>
             <Image
               src="/homeIcon.svg"
@@ -88,7 +103,7 @@ export default function PageInfoOverlay() {
           </Link>
 
         </div>
-      </div>
+      </motion.div>
     );
   }
 
