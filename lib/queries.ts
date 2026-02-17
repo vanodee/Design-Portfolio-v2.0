@@ -9,7 +9,7 @@ export const categoriesQuery = groq`
   }
 `;
 
-
+// HOME PAGE ====================================================================
 export const categoriesWithToolsQuery = groq`
  *[_type == "category"] | order(_createdAt desc){
   _id,
@@ -26,7 +26,7 @@ export const categoriesWithToolsQuery = groq`
 }
 `;
 
-// ABOUT PAGE PAGE ====================================================================
+// ABOUT PAGE ====================================================================
 export const featuredToolsQuery = groq`
   *[_type == "tools" && isFeatured == true] | order(_createdAt asc){
     _id,

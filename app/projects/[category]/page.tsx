@@ -28,7 +28,6 @@ export default async function CategoryPage({ params }: { params: { category: str
     title,
     "slug": slug.current,
     description,
-    "imageUrl": image.asset->url,
     
     // Fetch all projects belonging to this category
     "projects": *[_type == "project" && category->slug.current == $category] | order(_createdAt desc){
