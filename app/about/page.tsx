@@ -1,4 +1,5 @@
 import Image from "next/image";
+import type { Metadata } from "next";
 import styles from "./aboutPage.module.scss";
 import { client } from "@/lib/sanity.client";
 import { featuredToolsQuery } from "@/lib/queries";
@@ -50,6 +51,21 @@ const brands = [
   {name: "Fottify Software Solutions", logo: "/brandLogos/fottify_logo.png"},
   {name: "Peanut Technologies", logo: "/brandLogos/peanut_logo.png"},
 ];
+
+export const metadata: Metadata = {
+  title: "About Stevano Peters - Senior Digital Designer",
+  description:
+    "Learn more about Senior Digital Designer Stevano Peters, his 6+ years of experience, selected clients, and the tools he uses to design and build digital experiences.",
+  alternates: {
+    canonical: "/about",
+  },
+  openGraph: {
+    title: "About Stevano Peters - Senior Digital Designer",
+    description:
+      "Discover the background, experience, and selected brands of Senior Digital Designer Stevano Peters.",
+    url: "/about",
+  },
+};
 
 
 export default async function AboutPage() {

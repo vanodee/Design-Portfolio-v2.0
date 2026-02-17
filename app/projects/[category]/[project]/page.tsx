@@ -1,6 +1,7 @@
 import { groq } from "next-sanity";
+import type { Metadata } from "next";
 import { client } from "../../../../lib/sanity.client";
-import styles from "./projectPage.module.scss"
+import styles from "./projectPage.module.scss";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { allProjectsQuery } from "@/lib/queries";
@@ -26,13 +27,84 @@ export async function generateStaticParams() {
   }));
 }
 
-
-export default async function ProjectPage({params}: {params: { category: string; project: string }}) {
+export async function generateMetadata(
+  { params }: { params: { category: string; project: string } }
+): Promise<Metadata> {
   const { category, project } = await params;
-  
+
+  const projectData = await client.fetch(allProjectsQuery, { category, project });
+
+  if (!projectData) {
+    return {
+      title: "Project Case Study - Stevano Peters",
+      description:
+        "A design and development case study from the portfolio of Senior Digital Designer Stevano Peters.",
+      alternates: {
+        canonical: `/projects/${category}/${project}`,
+      },
+    };
+  }
+
+  const projectTitle = projectData.title;
+  const categoryTitle = projectData.category?.title || projectData.categoryName || "Case Study";
+
+  const title = `${projectTitle} - ${categoryTitle} | Stevano Peters Portfolio`;
+  const description =
+    projectData.heroDescription ||
+    projectData.heroSubheading ||
+    `A detailed ${categoryTitle.toLowerCase()} case study by Senior Digital Designer Stevano Peters.`;
+  const url = `/projects/${category}/${project}`;
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: url,
+    },
+    openGraph: {
+      title,
+      description,
+      url,
+      type: "article",
+      images: projectData.heroImage
+        ? [
+            {
+              url: projectData.heroImage,
+              alt: projectTitle,
+            },
+          ]
+        : undefined,
+    },
+  };
+}
+
+
+export default async function ProjectPage({
+  params,
+}: {
+  params: { category: string; project: string };
+}) {
+  const { category, project } = await params;
+
   const projectData = await client.fetch(allProjectsQuery, { category, project });
 
   if (!projectData) return notFound();
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    name: projectData.title,
+    description: projectData.heroDescription || projectData.heroSubheading,
+    image: projectData.heroImage,
+    url: `https://stevano.dev/projects/${category}/${project}`,
+    author: {
+      "@type": "Person",
+      name: "Stevano Peters",
+      jobTitle: "Senior Digital Designer",
+      url: "https://stevano.dev",
+    },
+    keywords: projectData.projectTags,
+  };
 
   return (
     <div 
@@ -46,6 +118,10 @@ export default async function ProjectPage({params}: {params: { category: string;
     >
       
       {/* HERO SECTION ========================================================================= */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <div className={styles.heroText}>
           <h1>
             <span className={styles.categoryTitle}>

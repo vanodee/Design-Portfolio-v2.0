@@ -1,9 +1,65 @@
 import { groq } from "next-sanity";
+import type { Metadata } from "next";
 import { client } from "../../../lib/sanity.client";
 import styles from "./categoryPage.module.scss";
 import CategoryNav from "@/app/components/CategoryNav/CategoryNav";
 import { notFound } from "next/navigation";
 import ProjectCards from "@/app/components/ProjectCards/ProjectCards";
+
+const categoryQuery = groq`
+  *[_type == "category" && slug.current == $category][0]{
+    title,
+    "slug": slug.current,
+    description,
+    
+    // Fetch all projects belonging to this category
+    "projects": *[_type == "project" && category->slug.current == $category] | order(_createdAt desc){
+      title,
+      "slug": slug.current,
+      description,
+      previewColor,
+      "previewImage": previewImage.asset->url
+    }
+  }
+`;
+
+export async function generateMetadata(
+  { params }: { params: { category: string } }
+): Promise<Metadata> {
+  const { category } = await params;
+
+  const categoryData = await client.fetch(categoryQuery, { category });
+
+  if (!categoryData) {
+    return {
+      title: "Projects - Portfolio of Stevano Peters",
+      description:
+        "Explore design and development projects by Senior Digital Designer Stevano Peters, including web apps, websites, UX case studies, and branding work.",
+      alternates: {
+        canonical: `/projects/${category}`,
+      },
+    };
+  }
+
+  const title = `${categoryData.title} - Stevano Peters Portfolio Projects`;
+  const description =
+    categoryData.description ||
+    `View ${categoryData.title} projects from the portfolio of Senior Digital Designer Stevano Peters.`;
+  const url = `/projects/${category}`;
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: url,
+    },
+    openGraph: {
+      title,
+      description,
+      url,
+    },
+  };
+}
 
 
 // Static Params for Dynamic Routing
@@ -18,27 +74,12 @@ export async function generateStaticParams() {
 
 
 
-export default async function CategoryPage({ params }: { params: { category: string } }) {
+export default async function CategoryPage({
+  params,
+}: {
+  params: { category: string };
+}) {
   const { category } = await params;
-
-
-  // Fetch category data
-  const categoryQuery = groq`
-    *[_type == "category" && slug.current == $category][0]{
-    title,
-    "slug": slug.current,
-    description,
-    
-    // Fetch all projects belonging to this category
-    "projects": *[_type == "project" && category->slug.current == $category] | order(_createdAt desc){
-      title,
-      "slug": slug.current,
-      description,
-      previewColor,
-      "previewImage": previewImage.asset->url
-    }
-  }
-  `;
 
   const categoryData = await client.fetch(categoryQuery, { category });
 

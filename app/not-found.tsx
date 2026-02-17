@@ -1,7 +1,17 @@
 import Image from "next/image";
+import type { Metadata } from "next";
 import styles from './notFound.module.scss';
 import Link from "next/link";
 
+
+export const metadata: Metadata = {
+  title: "Page Not Found - Stevano Peters",
+  description:
+    "The page you are looking for does not exist on stevano.dev. Explore the portfolio of Senior Digital Designer Stevano Peters instead.",
+  alternates: {
+    canonical: "/404",
+  },
+};
 
 export default function NotFound() {
   return (

@@ -1,16 +1,31 @@
 import Image from "next/image";
+import type { Metadata } from "next";
 import styles from "./home.module.scss";
 import { client } from "../lib/sanity.client";
 import { categoriesWithToolsQuery } from "@/lib/queries";
 import Link from "next/link";
 import { myResume } from "./components/NavBar/NavBar";
 
+export const metadata: Metadata = {
+  title: "Stevano Peters - Senior Digital Designer Portfolio",
+  description:
+    "Discover the portfolio of Senior Digital Designer and front-end developer Stevano Peters, showcasing web apps, marketing websites, UX case studies, and logos & branding projects.",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Stevano Peters - Senior Digital Designer Portfolio",
+    description:
+      "Explore featured web apps, websites, UX case studies, and branding work from Senior Digital Designer, Stevano Peters.",
+    url: "/",
+  },
+};
 
 export default async function Home() {
   const categories = await client.fetch(categoriesWithToolsQuery);
 
   return (
-    <div className={styles.homePageContainer}>
+      <div className={styles.homePageContainer}>
 
       <div className={styles.heroSection}>
         <h1 className={styles.heroHeading}>
