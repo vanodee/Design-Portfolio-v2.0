@@ -8,9 +8,7 @@
     height: 100%;
     width: 100%;
     text-align: center;
-    overflow: hidden;
-    overflow-y: scroll;
-    scrollbar-width: none;
+    color: $primary-90;
 
     h1{
         font-size: $fs-xl;
@@ -27,7 +25,7 @@
 
 .homeButton{
     button{
-        @include button-variant(dark, outline);
+        @include button-variant(light, outline);
         margin-top: 1rem;
     }
 }

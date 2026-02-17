@@ -9,7 +9,7 @@ export default function NotFound() {
 
       <Image 
         className={styles.notFoundImage}
-        src='/404_img.svg'
+        src='/404_img2.svg'
         alt="404 Image"
         height={623}
         width={1191}
