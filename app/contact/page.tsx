@@ -32,7 +32,7 @@ export default function ContactPage() {
         </h1>
 
         <p>
-          Lorem ipsum dolor sit amet consectetur. In varius arcu leo nunc eget aliquam leo. Nisi tincidunt semper sagittis arcu sed tempor ut. Arcu morbi risus nulla magna enim dictum auctor blandit fermentum. Mauris consectetur consequat massa imperdiet lobortis quis tincidunt vel.
+          Whether you're Hiring or Collaborating <i>or maybe Plotting world domination with a clean UI</i>, my inbox is always open. If you need a designer who understands dev constraints, or a developer who respects design intent, we should definitely talk. 
         </p>
       </div>
 

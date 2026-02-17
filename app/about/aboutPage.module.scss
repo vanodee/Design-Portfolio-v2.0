@@ -110,6 +110,7 @@
     border-radius: 1rem;
     overflow: hidden;
     //-----------------------
+    @include flex(column, center, center);
     overflow-y: scroll;
     scrollbar-width: none;
     color: $primary-90;
@@ -122,6 +123,10 @@
     );
 
     @include glass();
+
+    p{
+        max-width: 450px;
+    }
 }
   
 .sixthCard{

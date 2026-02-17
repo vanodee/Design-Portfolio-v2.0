@@ -17,14 +17,14 @@ const experiences = [
     company: 'T3CK Innovations'
   },
   {
-    yearRange: '2022 - 2025',
+    yearRange: '2023 - 2025',
     title: 'UI/UX Designer',
     company: 'ONDEKA Corporation'
   },
   {
-    yearRange: '2025 - Present',
-    title: 'Sr. Digital Designer',
-    company: 'Pretsl (via Peanut Technologies)'
+    yearRange: '2022 - 2023',
+    title: 'UX/UI Designer',
+    company: 'Fottify Software Solutions'
   }
 ];
 
@@ -80,7 +80,7 @@ export default async function AboutPage() {
         </h1>
 
         <p>
-          Lorem ipsum dolor sit amet consectetur. In varius arcu leo nunc eget aliquam leo. Nisi tincidunt semper sagittis arcu sed tempor ut. Arcu morbi risus nulla magna enim dictum auctor blandit fermentum. Mauris consectetur consequat massa imperdiet lobortis quis tincidunt vel.
+          I'm someone whose work sits between branding, UX, and frontend engineering <i>(In simpler terms: "A Designer who Codes")</i>. I care about hierarchy, accessibility, performance ... and naming layers properly. I create functional, user-friendly designs.
         </p>
       </div>
 
@@ -106,7 +106,7 @@ export default async function AboutPage() {
           </div>
 
           <div className={styles.statContainer}>
-            <p>50+</p>
+            <p>150+</p>
             <p>Projects Completed</p>
           </div>
         </div>
@@ -158,13 +158,16 @@ export default async function AboutPage() {
         {/* BIO TEXT ------------------------------------------- */}
         <div className={styles.fifthCard}>
           <p>
-            Lorem ipsum dolor sit amet consectetur. Viverra sagittis malesuada porttitor integer nec a egestas. Nunc leo montes nullam blandit eu lectus. Rutrum urna feugiat leo faucibus sem a. Adipiscing platea morbi tempus quis fringilla mauris. Urna nunc adipiscing nibh potenti amet libero eget convallis fermentum. Erat pulvinar ac elementum sed urna a etiam cras. 
+            I believe I've spent enough years toggling between Figma, code editors, and brand decks, to know that good design doesn't survive without structure. What began in branding evolved into UX systems and frontend builds. Today, I design with constraints in mind and build with intent.
             <br />
             <br />
-            Eget pellentesque fringilla id posuere quis sed elit nec sed. Aliquam mauris massa sed tristique. Pellentesque eu odio egestas euismod magna. Odio nec amet vitae et viverra mauris justo tincidunt fames. Blandit potenti vitae sed laoreet quis pharetra porta at. Feugiat massa gravida lacus massa. In eget eget non ultricies. Non non ut eget bibendum rhoncus tortor nunc odio. Euismod nulla id integer suspendisse sed. Nec est mi arcu amet. Ut sit accumsan porta ultricies vestibulum massa risus mattis. Tempor auctor ac malesuada elit morbi molestie faucibus fringilla. Ipsum integer scelerisque felis id. 
+            My work focuses on design systems, scalable interfaces, and digital experiences built for longevity, not just launch day screenshots. I care about component logic, naming things properly, accessible interfaces, and pixels that actually earn their place.
             <br />
             <br />
-            Quam diam enim vitae elementum imperdiet ut eleifend. Nulla tristique nunc sed mauris turpis. Ac placerat platea aliquam in condimentum consectetur leo tincidunt vestibulum. Sagittis cursus suscipit enim risus. Ligula sodales venenatis vulputate quis id tellus porttitor nisl. Amet aenean at a duis diam. Suscipit phasellus tristique dui quam arcu integer integer. Bibendum iaculis ante sed in sed leo a eget placerat. Cras pulvinar nulla in egestas id egestas magna id. Id pellentesque pharetra arcu tristique.
+            In my opinion, the best products feel effortless because the hard thinking already happened. As such, my goal isn't just to make things look good. It's to make them make sense.
+            <br />
+            <br />
+            Still refining. Still building. Always zoomed in on the canvas, but never losing sight of the bigger picture.
           </p>
         </div>
 

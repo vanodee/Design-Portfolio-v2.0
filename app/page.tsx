@@ -33,7 +33,9 @@ export default async function Home() {
         </h1>
 
         <p className={styles.heroBody}>
-          Lorem ipsum dolor sit amet consectetur. In varius arcu leo nunc eget aliquam leo. Nisi tincidunt semper sagittis arcu sed tempor ut. Arcu morbi risus nulla magna enim dictum auctor blandit fermentum. Mauris consectetur consequat massa imperdiet lobortis quis tincidunt vel.
+          As someone with decent experience in translating ideas to design <i>(while also being able to centre a div)</i>, It's safe to say that I design like a strategist and build like I'll maintain it. No mystery layers, no <i>“final_v7_revised_FINAL.fig”</i>. 
+          <br/>
+          Just thoughtful UX, scalable frontend, and brands that don't crumble under real traffic.
         </p>
 
         <div className={styles.buttonGroup}>

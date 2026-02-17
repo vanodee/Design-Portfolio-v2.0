@@ -1,7 +1,7 @@
 .aurora {
   position: absolute;
   inset: auto 0 0 0;
-  height: 85vh;
+  height: 85dvh;
   overflow: hidden;
   pointer-events: none;
   z-index: -1;
@@ -15,8 +15,9 @@
 
 .blob {
   position: absolute;
-  width: 65rem;
-  height: 85rem;
+  // width: 65rem;
+  // height: 85rem;
+  height: 125dvh;
   filter: blur(200px);
   opacity: 0.8;
   mix-blend-mode: screen;
