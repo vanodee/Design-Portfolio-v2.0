@@ -3,7 +3,11 @@ import { client } from "../../../../lib/sanity.client";
 import styles from "./projectPage.module.scss"
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import Footer from "@/app/components/Footer/Footer";
+import { allProjectsQuery } from "@/lib/queries";
+import { WebAppsBody } from "@/app/components/ProjectCategoryBodies/WebAppsBody";
+import { WebsitesBody } from "@/app/components/ProjectCategoryBodies/WebsitesBody";
+import { UxCaseStudiesBody } from "@/app/components/ProjectCategoryBodies/UxCaseStudiesBody";
+import { LogosBrandingBody } from "@/app/components/ProjectCategoryBodies/LogosBrandingBody";
 
 
 export async function generateStaticParams() {
@@ -25,30 +29,8 @@ export async function generateStaticParams() {
 
 export default async function ProjectPage({params}: {params: { category: string; project: string }}) {
   const { category, project } = await params;
-
-  const projectQuery = groq`
-    *[_type == "project" && slug.current == $project && category->slug.current == $category][0]{
-      title,
-      previewColor,
-      heroHeading,
-      //heroSubheading,
-      //heroDescription,
-      //"heroImage": heroImage.asset->url,
-
-      category->{
-        title,
-        "slug": slug.current
-      },
-
-      tools[]->{
-        title,
-        color,
-        "iconUrl": icon.asset->url
-      }
-    }
-  `;
-
-  const projectData = await client.fetch(projectQuery, { category, project });
+  
+  const projectData = await client.fetch(allProjectsQuery, { category, project });
 
   if (!projectData) return notFound();
 
@@ -56,42 +38,111 @@ export default async function ProjectPage({params}: {params: { category: string;
     <div 
       className={styles.projectPageContainer} 
       data-bgcolor={projectData.previewColor} // Store Project Background Color in the DOM
+      style={{ 
+        "--projectBgColor": projectData.previewColor, 
+        "--projectColor": projectData.projectColor,
+        "--projectColorDark": projectData.projectColorDark,
+      } as React.CSSProperties}
     >
       
-      {/* HERO SECTION -------------------------------------------------------------- */}
-      <section className={styles.heroSection}>
+      {/* HERO SECTION ========================================================================= */}
+      <div className={styles.heroText}>
+          <h1>
+            <span className={styles.categoryTitle}>
+              {projectData.category.title}
+            </span>
 
-        <h1>{`[${projectData.category.title}] - ${projectData.title}` || "How Do You Singleton ?"}</h1>
-        <h2>{projectData.subTitle || "Explore, Book & Enjoy: An Interactive Guide To The Singleton Experience"}</h2>
-        <p>{projectData.description || "Lorem ipsum dolor sit amet consectetur. In varius arcu leo nunc eget aliquam leo. Nisi tincidunt semper sagittis arcu sed tempor ut. Arcu morbi risus nulla magna enim dictum auctor blandit fermentum. Mauris consectetur consequat massa imperdiet lobortis quis tincidunt vel."}</p>
+            {` - ${projectData.title}`}
+          </h1>
 
+          <h2>{projectData.heroSubheading}</h2>
+          <p>{projectData.heroDescription}</p>
+      </div>
+
+      <div className={styles.heroImageContainer}>
         <Image
           className={styles.heroImage}
-          src={"/1_hero.webp"}
+          src={projectData.heroImage}
           height={1080}
           width={1920}
-          alt="demo image"
+          alt="Hero Image"
         />
+      </div>
 
-        <div className={styles.toolsRow}>
+      {/* PROJECT OVERVIEW ========================================================================= */}
+      <section className={styles.customSection}>
 
-          {projectData.tools?.map((tool: any) => (
-            <div 
-              key={tool.title} 
-              className={styles.toolItem} 
-              style={{ "--toolColor": tool.color } as React.CSSProperties}
-            >
-              <img src={tool.iconUrl} alt={tool.title} />
-              <span>{tool.title}</span>
+        {/* Project Tags ------------------------------------------------- */}
+        {projectData.projectTags && (
+          <div className={styles.tagsRow}>
+            {projectData.projectTags?.map((tag: any) => (
+              <div 
+                key={tag} 
+                className={styles.tagItem} 
+              >
+                {tag}
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* Quick Stats ------------------------------------------- */}
+        <div className={styles.quickStats}>
+          {projectData.quickStats?.map((stat: any) => (
+            <div key={stat.title} className={styles.quickStatItem}>
+              <span>{stat.title}</span>
+              <span>{stat.value}</span>
             </div>
           ))}
-
         </div>
 
+        {/* Tools ---------------------------------------------------- */}
+        <div className={styles.toolsRow}>
+          <span>Tools</span>
+
+          <div className={styles.toolSet}>
+            {projectData.tools?.map((tool: any) => (
+              <div 
+                key={tool.title} 
+                className={styles.toolItem} 
+                style={{ "--toolColor": tool.color } as React.CSSProperties}
+              >
+                <img src={tool.iconUrl} alt={tool.title} />
+                <span>{tool.title}</span>
+              </div>
+            ))}
+          </div>
+
+        </div>
       </section>
 
-      {/* FOOTER -------------------------------------------------------------- */}
-      <Footer />
+      
+      {projectData.categoryName === "Web Apps" && (
+        <WebAppsBody projectData={projectData} styles={styles} />
+      )}
+
+      {projectData.categoryName === "Websites" && (
+        <WebsitesBody projectData={projectData} styles={styles} />
+      )}
+
+      {projectData.categoryName === "UX Case Studies" && (
+        <UxCaseStudiesBody projectData={projectData} styles={styles} />
+      )}
+
+      {projectData.categoryName === "Logos & Branding" && (
+        <LogosBrandingBody projectData={projectData} styles={styles} />
+      )}
+
+
+      <div className={styles.heroImageContainer}>
+        <Image
+          className={styles.heroImage}
+          src={projectData.closingImage}
+          height={1080}
+          width={1920}
+          alt="Closing Image"
+        />
+      </div>
 
     </div>
   );

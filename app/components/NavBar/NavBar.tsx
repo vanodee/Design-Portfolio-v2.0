@@ -9,7 +9,7 @@ import styles from './Navbar.module.scss';
 
 export const navItems = [
   { name: 'Home', path: '/' },
-  { name: 'Projects', path: '/projects', defaultCategory: 'logo-designs' },
+  { name: 'Projects', path: '/projects', defaultCategory: 'web-apps' },
   { name: 'About', path: '/about' },
   { name: 'Contact', path: '/contact' },
 ]
@@ -19,7 +19,8 @@ export const myResume = "https://drive.google.com/file/d/1BWGzFkHhIhSlI-BYySXd3o
 
 export default function NavBar() {
   const pathname = usePathname();
-  const isHome = pathname === "/"; // Home uses light theme
+  const path = pathname.replace(/\/$/, "");
+  const segments = path.split("/").filter(Boolean); 
 
 
   // Mobile menu state
@@ -55,13 +56,13 @@ export default function NavBar() {
 
 
   return (
-    <header className={styles.headerContainer}>
+    <header className={`${styles.headerContainer} ${segments.length==3 && styles["headerContainer--projectPage"]}`}>
       <div
-        className={`${styles.header} ${isHome ? styles["header--light"] : styles["header--dark"]}`}
+        className={styles.header}
       >
         <Link href="/">
           <Image
-            src={isHome ? '/sp_logo_light.svg' : '/sp_logo_dark.svg'}
+            src='/sp_logo_light.svg'
             width={115}
             height={45}
             alt="Stevano Peters Logo"
@@ -83,29 +84,25 @@ export default function NavBar() {
               </Link>
             )
           })}
-
-          <a
-            href={myResume}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.resumeButton}
-          >
-            <button>My Resume</button>
-          </a>
         </nav>
+
+        <a
+          href={myResume}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.resumeButton}
+        >
+          <button>My Resume</button>
+        </a>
 
         <button
           ref={toggleBtnRef}
-          className={`${styles.mobileMenuToggle} ${isHome ? styles["mobileMenuToggle--light"] : styles["mobileMenuToggle--dark"]}`}
+          className={styles.mobileMenuToggle}
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
         >
           <Image
-            src={isHome ? 
-              (mobileOpen ? '/close_light.svg' :'/hamburger_light.svg') 
-              : 
-              (mobileOpen ? '/close_dark.svg' :'/hamburger_dark.svg')
-            }
+            src={mobileOpen ? '/close_light.svg' :'/hamburger_light.svg'}
             width={24}
             height={24}
             alt="Toggle Menu"

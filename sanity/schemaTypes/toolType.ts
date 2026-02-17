@@ -24,5 +24,12 @@ export const toolType = defineType({
       type: 'string',
       description: 'Hex or color name used for UI display',
     }),
+    defineField({
+      name: 'isFeatured',
+      title: 'Featured Tool',
+      type: 'boolean',
+      description: 'Mark this tool as featured to highlight it',
+      initialValue: false,
+    }),
   ],
 })

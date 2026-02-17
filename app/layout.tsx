@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import "./styles/globals.scss";
-import DynamicBackground from "./components/DynamicBackground/DynamicBackground";
 import NavBar from "./components/NavBar/NavBar";
-import PageInfoOverlay from "./components/PageInfoOverlay/PageInfoOverlay";
 import RouteTransitionWrapper from "./components/RouteTransitionWrapper/RouteTransitionWrapper";
+import Footer from "./components/Footer/Footer";
+import FadeBackground from "./components/FadeBackground/FadeBackground";
+import Aurora from "./components/AnimatedGradientBackdrop/Aurora";
+
 
 const outfit = Outfit({ 
   subsets: ['latin'], 
@@ -25,10 +27,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={outfit.variable}>
-        
-        <DynamicBackground />
 
-        <PageInfoOverlay />
+        {/* <FadeBackground /> */}
+
+        <Aurora />
 
         <NavBar />
 
@@ -37,6 +39,8 @@ export default function RootLayout({
             {children}
           </RouteTransitionWrapper>
         </main>
+
+        <Footer />
 
       </body>
     </html>

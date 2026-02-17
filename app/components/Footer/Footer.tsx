@@ -4,9 +4,9 @@ import Image from "next/image"
 
 
 export const contactIcons = [
-  {name: "Email", src: "/email_2.svg", href: "mailto:stevano.peters@gmail.com"},
-  {name: "Linkedin", src: "/linkedin_2.svg", href: "https://www.linkedin.com/in/stevano-peters/"},
-  {name: "Twitter", src: "/twitter_2.svg", href: "https://x.com/Vano_dee"}
+  {name: "Email", src: "/email_2.svg", glassSrc: "/email_glass.svg", href: "mailto:stevano.peters@gmail.com"},
+  {name: "Linkedin", src: "/linkedin_2.svg", glassSrc: "/linkedin_glass.svg", href: "https://www.linkedin.com/in/stevano-peters/"},
+  {name: "Twitter", src: "/twitter_2.svg", glassSrc: "/twitter_glass.svg", href: "https://x.com/Vano_dee"}
 ]
 
 
@@ -24,7 +24,6 @@ export default function Footer() {
         </Link>
 
         <div className={styles.footerContactInfo}>
-          <span>GET IN <br/> TOUCH</span>
 
           <div className={styles.contactItems}>
             {contactIcons.map(({name, src, href}) => (
@@ -46,6 +45,10 @@ export default function Footer() {
               </a>
 
             ))}
+          </div>
+
+          <div className={styles.copyright}>
+            © 2026 Stevano Peters. All rights reserved.
           </div>
           
         </div>

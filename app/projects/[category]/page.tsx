@@ -21,6 +21,7 @@ export async function generateStaticParams() {
 export default async function CategoryPage({ params }: { params: { category: string } }) {
   const { category } = await params;
 
+
   // Fetch category data
   const categoryQuery = groq`
     *[_type == "category" && slug.current == $category][0]{
@@ -30,7 +31,7 @@ export default async function CategoryPage({ params }: { params: { category: str
     "imageUrl": image.asset->url,
     
     // Fetch all projects belonging to this category
-    "projects": *[_type == "project" && category->slug.current == $category]{
+    "projects": *[_type == "project" && category->slug.current == $category] | order(_createdAt desc){
       title,
       "slug": slug.current,
       description,
@@ -47,11 +48,15 @@ export default async function CategoryPage({ params }: { params: { category: str
   return (
     <div className={styles.projectsContainer}>
       
-      <h1>Projects I've Worked On</h1>
-      
-      <div className={styles.categoryNav}>
+      <div className={styles.heroSection}>
+        <h1 className={styles.heroHeading}>
+          Projects I've Worked On
+        </h1>
+
         <CategoryNav />
+
       </div>
+      
 
       <ProjectCards categoryData={categoryData}/>
 

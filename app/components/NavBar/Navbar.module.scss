@@ -3,14 +3,19 @@
 
 .headerContainer{
     @include flex(column, end);
+    @include transition(max-width, 0.45s);
     position: fixed;
-    width: 100dvw;
-    max-width: 1464px;
-    padding: 0 2rem;
+    margin-top: 1rem;
+    width: 99%;
+    max-width: 1300px;
     z-index: 999;
 
     @include respond(mobile){
         padding: 0 1rem;
+    }
+
+    &--projectPage {
+        max-width: 1000px;
     }
 }
 
@@ -19,43 +24,58 @@
     @include transition();
     height: 4rem;
     width: 100%;
-    padding: 0.6rem 0;
+    padding: 0.6rem 1rem;
+    border-radius: 1rem;
+    background: rgba(20, 20, 20, 0.5); /* dark translucent tint */
+    backdrop-filter: blur(25px);
+    // -webkit-backdrop-filter: blur(40px);
 
+    /* Required for border overlay */
+    overflow: hidden;
 
-    &--light {
-        border-bottom: 2px solid $primary-90;
+    // background-color: red;
 
-        .resumeButton{
-            button {
-                @include button-variant(light, outline);
-            }
+    .resumeButton{
+        button {
+            @include button-variant(light, filled);
         }
 
-        .navLink{
-            color: $primary-90;
-        }
-
-        .navLinkActive{
-            background-color: $primary-90;
-            color: $primary-30;
-        }
-    }
-
-    &--dark {
-        border-bottom: 2px solid $primary-10;
-
-        .resumeButton{
-            button {
-                @include button-variant(dark, outline);
-            }
+        @include respond(tablet){
+            display: none;
         }
     }
 }
 
+.header::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 1px; /* border thickness */
+    border-radius: 1rem;
+  
+    background: linear-gradient(
+      to top,
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0.25)
+    );
+  
+    /* Mask trick to show only border */
+    // -webkit-mask:
+    mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+  
+    pointer-events: none;
+}
 
 .nav {
-    @include flex(row, center, space-between);
-    width: 500px;
+    @include flex(row, end, space-between);
+    width: 400px;
+    padding-bottom: 0.25rem;
+    border-bottom: 1px solid $primary-90;
+    // background-color: red;
 
     @include respond(tablet){
         display: none;
@@ -66,13 +86,10 @@
     @include flex(row);
     @include transition();
     text-decoration: none;
-    color: $primary-30;
-    width: 5rem;
-    height: 30px;
+    color: $grey-80;
 
     &:hover {
-        background-color: $primary-70;
-        color: $primary-90;
+        transform: translateY(-5px) scale(1.25);
     }
 
     @media(hover: none){
@@ -86,22 +103,15 @@
 
 .navLinkActive{
     @extend .navLink;
-    background-color: $primary-10;
-    color: $primary-90;
     font-weight: $fw-semibold;
+    transform: translateY(-5px) scale(1.25);
+    color: $primary-90;
     pointer-events: none;
 }
 
 .mobileMenuToggle {
     display: none;
-    
-    &--light {
-        @include button-variant(light, outline);
-    }
-
-    &--dark {
-        @include button-variant(dark, outline);
-    }
+    @include button-variant(light, outline);
 
     @include respond(tablet){
         display: block;

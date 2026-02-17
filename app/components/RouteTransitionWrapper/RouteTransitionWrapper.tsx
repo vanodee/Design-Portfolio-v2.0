@@ -54,13 +54,13 @@ export default function RouteTransitionWrapper({ children }: { children: React.R
         opacity: 0,
         scale: 0.95,
         y: 20,
-        filter: "blur(10px)",
+        // filter: "blur(10px)", // This Broke The Glassmorphism - DO NOT USE
       }}
       animate={{
         opacity: 1,
         scale: 1,
         y: 0,
-        filter: "blur(0px)",
+        // filter: "blur(0px)", // This Broke The Glassmorphism - DO NOT USE
       }}
       transition={{
         duration: 0.65,

@@ -1,0 +1,384 @@
+// schemas/webAppFields.ts
+import { defineField } from 'sanity'
+
+export const webAppFields = [
+  // ===== Teaser Image Section =========================================================
+  defineField({
+    name: 'webApp_teaserImages',
+    title: 'Teaser Images',
+    type: 'array',
+    group: 'project-specific',
+    of: [{ type: 'image', options: { hotspot: true } }],
+    description: 'Images showing early teasers of the final designs',
+    hidden: ({ parent }) => parent?.categoryName !== 'Web Apps',
+  }),
+
+  // ===== Product Context ===============================================================
+  defineField({
+    name: 'webApp_productContextHeading',
+    title: 'Product Context Heading',
+    type: 'string',
+    group: 'project-specific',
+    description: 'Heading for Product Context',
+    hidden: ({ parent }) => parent?.categoryName !== 'Web Apps',
+  }),
+  defineField({
+    name: 'webApp_productContext',
+    title: 'Product Context',
+    type: 'text',
+    group: 'project-specific',
+    rows: 3,
+    description: 'Text for Product Context',
+    hidden: ({ parent }) => parent?.categoryName !== 'Web Apps',
+  }),
+  defineField({
+    name: 'webApp_productContextImage',
+    title: 'Product Context Image',
+    type: 'image',
+    group: 'project-specific',
+    options: { hotspot: true },
+    description: 'Image supporting Product Context',
+    hidden: ({ parent }) => parent?.categoryName !== 'Web Apps',
+  }),
+
+  // ===== Problems & Goals ===============================================================
+  defineField({
+    name: 'webApp_probGoals',
+    title: 'Problems & Goals',
+    type: 'array',
+    group: 'project-specific',
+    of: [
+      {
+        type: 'object',
+        fields: [
+          { name: 'probGoalName', title: 'Problem/Goal Name', type: 'string' },
+          { name: 'probGoalList', title: 'Problem/Goal List', type: 'array', of: [{ type: 'string' }], description: 'List of problms/goals' },
+        ],
+      },
+    ],
+    description: 'List of problems/Goals',
+    hidden: ({ parent }) => parent?.categoryName !== 'Web Apps',
+  }),
+
+  // ===== Discovery Strategy ===============================================================
+  defineField({
+    name: 'webApp_productStratHeading',
+    title: 'Product Strategy Heading',
+    type: 'string',
+    group: 'project-specific',
+    description: 'Heading for Product Strategy section',
+    hidden: ({ parent }) => parent?.categoryName !== 'Web Apps',
+  }),
+  defineField({
+    name: 'webApp_productStratContent',
+    title: 'Product Strategy Content',
+    type: 'text',
+    group: 'project-specific',
+    rows: 3,
+    description: 'Text content explaining Product Strategy findings',
+    hidden: ({ parent }) => parent?.categoryName !== 'Web Apps',
+  }),
+
+  // ===== UX Hypothesis ===============================================================
+  defineField({
+    name: 'webApp_uxHypothesisHeading',
+    title: 'UX Hypothesis Heading',
+    type: 'string',
+    group: 'project-specific',
+    description: 'Heading for Brand UX Hypothesis',
+    hidden: ({ parent }) => parent?.categoryName !== 'Web Apps',
+  }),
+  defineField({
+    name: 'webApp_uxHypothesis',
+    title: 'UX Hypothesis',
+    type: 'array',
+    group: 'project-specific',
+    of: [{ type: 'string' }],
+    description: 'List of Brand UX Hypothesis',
+    hidden: ({ parent }) => parent?.categoryName !== 'Web Apps',
+  }),
+  defineField({
+    name: 'webApp_uxHypothesisImage',
+    title: 'UX Hypothesis Image',
+    type: 'image',
+    group: 'project-specific',
+    options: { hotspot: true },
+    description: 'Image supporting UX Hypothesis',
+    hidden: ({ parent }) => parent?.categoryName !== 'Web Apps',
+  }),
+  defineField({
+    name: 'webApp_initialDesignImages',
+    title: 'Initial Design Images',
+    type: 'array',
+    group: 'project-specific',
+    of: [{ type: 'image', options: { hotspot: true } }],
+    description: 'Images for the products initial design',
+    hidden: ({ parent }) => parent?.categoryName !== 'Web Apps',
+  }),
+
+  // ===== Project Scope Section =========================================================
+  defineField({
+    name: 'webApp_prodScopeHeading',
+    title: 'Product Scope Heading',
+    type: 'string',
+    group: 'project-specific',
+    description: 'Heading for Product Scope section',
+    hidden: ({ parent }) => parent?.categoryName !== 'Web Apps',
+  }),
+  defineField({
+    name: 'webApp_prodScope',
+    title: 'Product Scope Text',
+    type: 'text',
+    group: 'project-specific',
+    rows: 3,
+    description: 'Text explaining the project Product Scope',
+    hidden: ({ parent }) => parent?.categoryName !== 'Web Apps',
+  }),
+ 
+  defineField({
+    name: 'webApp_prodScopeItems',
+    title: 'Product Scope Items',
+    type: 'array',
+    group: 'project-specific',
+    of: [
+      {
+        type: 'object',
+        fields: [
+          { name: 'itemTitle', title: 'Product Scope Item Title', type: 'string', description: 'e.g., "Orientation", "Navigation"' },
+          { name: 'itemRationale', title: 'Product Scope Item Rationale', type: 'text', rows: 2, description: 'Description of scope rationale' },
+        ],
+      },
+    ],
+    description: 'List Product Scope Items',
+    hidden: ({ parent }) => parent?.categoryName !== 'Web Apps',
+  }),
+
+  // ===== Design Section ===============================================================
+  defineField({
+    name: 'webApp_designSectionHeading',
+    title: 'Design Section Heading',
+    type: 'string',
+    group: 'project-specific',
+    description: 'Heading for Design Section section',
+    hidden: ({ parent }) => parent?.categoryName !== 'Web Apps',
+  }),
+  defineField({
+    name: 'webApp_designSectionText',
+    title: 'Design Section Text',
+    type: 'text',
+    group: 'project-specific',
+    rows: 3,
+    description: 'Text content explaining Design Section',
+    hidden: ({ parent }) => parent?.categoryName !== 'Web Apps',
+  }),
+  defineField({
+    name: 'webApp_designSectionImages',
+    title: 'Design Section Images',
+    type: 'array',
+    group: 'project-specific',
+    of: [{ type: 'image', options: { hotspot: true } }],
+    description: 'Images for the Design Section',
+    hidden: ({ parent }) => parent?.categoryName !== 'Web Apps',
+  }),
+  defineField({
+    name: 'webApp_designSectionItems',
+    title: 'Design Section Breakdown',
+    type: 'array',
+    group: 'project-specific',
+    of: [
+      {
+        type: 'object',
+        fields: [
+          { name: 'itemName', title: 'Design Item Name', type: 'string' },
+          { name: 'itemPoints', title: 'Design Item Points', type: 'array', of: [{ type: 'string' }], description: 'breakdown bullet points' },
+          { name: 'itemImage', title: 'Design Item Image', type: 'image', options: { hotspot: true }, description: 'Screenshot or visual supporting design item' },
+        ],
+      },
+    ],
+    description: 'List of Design considerations with details',
+    hidden: ({ parent }) => parent?.categoryName !== 'Web Apps',
+  }),
+
+  // ===== Developer Section ===============================================================
+  defineField({
+    name: 'webApp_devSectionHeading',
+    title: 'Developer Section Heading',
+    type: 'string',
+    group: 'project-specific',
+    description: 'Heading for Developer Section section',
+    hidden: ({ parent }) => parent?.categoryName !== 'Web Apps',
+  }),
+  defineField({
+    name: 'webApp_devSectionText',
+    title: 'Developer Section Text',
+    type: 'text',
+    group: 'project-specific',
+    rows: 3,
+    description: 'Text content explaining Developer Section',
+    hidden: ({ parent }) => parent?.categoryName !== 'Web Apps',
+  }),
+  defineField({
+    name: 'webApp_devSectionItems',
+    title: 'Developer Section Breakdown',
+    type: 'array',
+    group: 'project-specific',
+    of: [
+      {
+        type: 'object',
+        fields: [
+          { name: 'itemName', title: 'Developer Item Name', type: 'string' },
+          { name: 'itemPoints', title: 'Developer Item Points', type: 'text', rows: 3, description: 'suporting text' },
+          { name: 'itemImage', title: 'Developer Item Image', type: 'image', options: { hotspot: true }, description: 'Screenshot or visual supporting Developer item' },
+        ],
+      },
+    ],
+    description: 'List of Developer considerations with details',
+    hidden: ({ parent }) => parent?.categoryName !== 'Web Apps',
+  }),
+
+  // ===== Finished Product Section =========================================================
+  defineField({
+    name: 'webApp_finishedProdHeading',
+    title: 'Finished Product Heading',
+    type: 'string',
+    group: 'project-specific',
+    description: 'Heading for the Finished Product section',
+    hidden: ({ parent }) => parent?.categoryName !== 'Web Apps',
+  }),
+  defineField({
+    name: 'webApp_finishedProdText',
+    title: 'Finished Product Section Text',
+    type: 'text',
+    group: 'project-specific',
+    rows: 3,
+    description: 'Text for the Finished Product section',
+    hidden: ({ parent }) => parent?.categoryName !== 'Web Apps',
+  }),
+  defineField({
+    name: 'webApp_finishedProdImages',
+    title: 'Finished Product Section Images',
+    type: 'array',
+    group: 'project-specific',
+    of: [{ type: 'image', options: { hotspot: true } }],
+    description: 'Images for the Finished Product section',
+    hidden: ({ parent }) => parent?.categoryName !== 'Web Apps',
+  }),
+
+  // ===== Outcomes Section =========================================================
+  defineField({
+    name: 'webApp_outcomesSectionHeading',
+    title: 'Outcomes Section Heading',
+    type: 'string',
+    group: 'project-specific',
+    description: 'Heading for outcomes section',
+    hidden: ({ parent }) => parent?.categoryName !== 'Web Apps',
+  }),
+  defineField({
+    name: 'webApp_mainOutcomeHeading',
+    title: 'Main Outcome Heading',
+    type: 'string',
+    group: 'project-specific',
+    description: 'Heading for Main Outcome',
+    hidden: ({ parent }) => parent?.categoryName !== 'Web Apps',
+  }),
+  defineField({
+    name: 'webApp_mainOutcomeText',
+    title: 'Main Outcome Text',
+    type: 'text',
+    group: 'project-specific',
+    rows: 3,
+    description: 'Text explaining the main outcome',
+    hidden: ({ parent }) => parent?.categoryName !== 'Web Apps',
+  }),
+  defineField({
+    name: 'webApp_otherOutcomes',
+    title: 'Other Outcomes',
+    type: 'array',
+    group: 'project-specific',
+    of: [
+      {
+        type: 'object',
+        fields: [
+          { name: 'outcomeTitle', title: 'Outcome Title', type: 'string', description: 'e.g., "Strategic Impact", "Visual Impact"' },
+          { name: 'outcomeDescription', title: 'Outcome Description', type: 'text', rows: 2, description: 'Description of what the outcome' },
+        ],
+      },
+    ],
+    description: 'List of Design approach methods and their details',
+    hidden: ({ parent }) => parent?.categoryName !== 'Web Apps',
+  }),
+
+  // ===== Key Learnings Section ===============================================================
+  defineField({
+    name: 'webApp_keyLearnHeading',
+    title: 'Key learnings Heading',
+    type: 'string',
+    group: 'project-specific',
+    description: 'Heading for Key Learnings',
+    hidden: ({ parent }) => parent?.categoryName !== 'Web Apps',
+  }),
+  defineField({
+    name: 'webApp_keyLearnText',
+    title: 'Key Learnings Text',
+    type: 'text',
+    group: 'project-specific',
+    rows: 3,
+    description: 'Text for key learnings',
+    hidden: ({ parent }) => parent?.categoryName !== 'Web Apps',
+  }),
+  defineField({
+    name: 'webApp_keyLearnList',
+    title: 'Key Learnings List',
+    type: 'array',
+    group: 'project-specific',
+    of: [{ type: 'string' }],
+    description: 'List of key learnings',
+    hidden: ({ parent }) => parent?.categoryName !== 'Web Apps',
+  }),
+  defineField({
+    name: 'webApp_keyLearnImage',
+    title: 'Key Learnings Image',
+    type: 'image',
+    group: 'project-specific',
+    options: { hotspot: true },
+    description: 'Image supporting Key Learnings',
+    hidden: ({ parent }) => parent?.categoryName !== 'Web Apps',
+  }),
+
+  // ===== What Worked Section ===============================================================
+  defineField({
+    name: 'webApp_whatWorkedHeading',
+    title: 'What Worked Heading',
+    type: 'string',
+    group: 'project-specific',
+    description: 'Heading for What Worked',
+    hidden: ({ parent }) => parent?.categoryName !== 'Web Apps',
+  }),
+  defineField({
+    name: 'webApp_whatWorkedText',
+    title: 'What Worked Text',
+    type: 'text',
+    group: 'project-specific',
+    rows: 3,
+    description: 'Text for What Worked',
+    hidden: ({ parent }) => parent?.categoryName !== 'Web Apps',
+  }),
+  defineField({
+    name: 'webApp_whatWorkedList',
+    title: 'What Worked List',
+    type: 'array',
+    group: 'project-specific',
+    of: [{ type: 'string' }],
+    description: 'List of What Worked',
+    hidden: ({ parent }) => parent?.categoryName !== 'Web Apps',
+  }),
+  defineField({
+    name: 'webApp_whatWorkedImage',
+    title: 'What Worked Image',
+    type: 'image',
+    group: 'project-specific',
+    options: { hotspot: true },
+    description: 'Image supporting What Worked',
+    hidden: ({ parent }) => parent?.categoryName !== 'Web Apps',
+  }),
+]

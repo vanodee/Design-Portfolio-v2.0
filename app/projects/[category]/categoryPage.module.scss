@@ -3,101 +3,45 @@
 
 .projectsContainer{
     @include flex(column, center, start);
-    height: 100%;
-    width: 100%;
-    overflow: hidden;     
-    overflow-y: scroll;   
-    scrollbar-width: none;
-    position: relative;   
-
-    h1 {
-        @include font($fs-xl, $fw-semibold, 1.2);
-        width: 100%;
-        color: $primary-30;
-        text-align: right;
-        padding-top: 2rem;
-        margin-bottom: 2rem;
-
-        @include respond(laptop, portrait){
-            font-size: $fs-lg;
-            margin-bottom: 1rem;
-        }
-
-        @include respond(tablet){
-            font-size: $fs-lg;
-            margin-bottom: 1rem;
-        }
-
-        @include respond(mobile){
-            text-align: center;
-        }
-    }
-
-    @include respond(laptop, portrait){
-        padding-left: 3rem;
-        padding-right: 3rem;
-    }
-
-    @include respond(tablet){
-        padding-left: 3rem;
-        padding-right: 3rem;
-    }
-
-    @include respond(mobile){
-        padding-left: 0;
-        padding-right: 0;
-    }
+    width: 100%; 
+    // background-color: red;
 }
 
-.categoryNav{
+.heroSection{
+    @include flex(column, center, start);
+    gap: 3rem;
     width: 100%;
-    position: sticky;
-    top: -1px;
-    padding-top: 0;
-    z-index: 3;
-
-    @include respond(laptop, portrait){
-        padding-top: 1rem;
-    }
-
-    @include respond(tablet){
-        padding-top: 1rem;
-    }
+    // background-color: red;
+    padding-top: 4rem;
 }
+
+.heroHeading{
+    @include font(3rem, $fw-semibold, 1.2);
+    color: $primary-90;
+    text-align: center;  
+}
+
 
 .projectCardsContainer{
     @include flex(column, center, start);
-    flex: 1;
-    min-height: 500px;
     width: 100%;
-    padding: 2rem 1rem 0 1rem;
-    // overflow: hidden;
-    // overflow-y: scroll;
-    scrollbar-width: none;
 
     .categoryDescription{
-        margin-bottom: 2rem;
+        color: $primary-90;
+        margin-top: 3rem;
+        margin-bottom: 4rem;
 
         @include respond(tablet){
             display: none;
         }
     }
-
-    @include respond(tablet){
-        padding: 2rem 0.5rem 0 0.5rem;
-
-    }
 }
 
 .projectCardGrid{
-    flex: 1;
-    max-height: fit-content;
     width: 100%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
-    padding-bottom: 2rem;
-    align-items: start;
 
     @include respond(laptop){
         grid-template-columns: repeat(2, 1fr);
@@ -110,35 +54,32 @@
 
 .projectCard{
     @include transition();
-    column-span: 1;
-    height: fit-content;
-    border-radius: 0.5rem;
-    color: $primary-30;
+    grid-column: span 1;
+    height: 500px;
+    border-radius: 1rem;
+    color: $primary-90;
     overflow: hidden;
-    background-color: $primary-90;
-    box-shadow: 0px 1px 5px 0px;
-
-    img{
-        height: 12rem;
-        width: 100%;
-        object-fit: cover;
-
-        @include respond(laptop){
-            height: 15rem;
-        }
-
-        @include respond(tablet){
-            height: 18rem;
-        }
-
-        @include respond(mobile){
-            height: 12rem;
-        }
-    }
+    background: rgba(20, 20, 20, 0.5);
+    backdrop-filter: blur(45px);
+    box-shadow: 0px 1px 2px 0px;
 
     &:hover{
+        transform: scale(1.2);
+        color: $grey-20;
         box-shadow: 0px 4px 15px 0px;
         background-color: var(--hoverColor);
+
+        .imageContainer{
+            img{
+                transform: scale(1.2);
+            }
+        }
+
+        .projectLink{
+            button{
+                @include button-variant(dark, outline);
+            }
+        }
     }
 
     @media(hover: none){
@@ -149,10 +90,25 @@
     }
 }
 
+.imageContainer{
+    height: 40%;
+    width: 100%;
+    overflow: hidden;
+
+    img{
+        @include transition();
+        // height: 100%;
+        min-height: 100%;
+        // width: 100%;
+        object-fit: cover;
+    }
+}
+
 .projectDetails{
-    @include flex(column, start);
-    height: fit-content;
+    @include flex(column, start, space-between);
+    height: 60%;
     padding: 1.25rem;
+    // background-color: red;
 
     h3{
         @include font($fs-lg, $fw-semibold);
@@ -164,9 +120,9 @@
     }
 
     p{
-        @include font($fs-sm);
-        height: 10rem;
+        // @include font($fs-sm);
         overflow: hidden;
+        // background-color: green;
 
         @include respond(tablet){
             display: none;
@@ -179,7 +135,7 @@
     margin-top: 2rem;
 
     button {
-        @include button-variant(dark, outline);
+        @include button-variant(light, outline);
         width: 100%;
     }
 }

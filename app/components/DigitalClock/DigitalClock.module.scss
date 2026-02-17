@@ -1,0 +1,17 @@
+@use '../../styles/abstracts/index' as *;
+
+.digitalClock{
+    @include flex(row, center center);
+    @include font($fs-2xl, $fw-semibold);
+    gap: 0.25rem;
+    color: $grey-80;
+
+    span{
+        line-height: normal;
+    }
+}
+
+.timeZone{
+    @include flex();
+    font-size: $fs-md;
+}

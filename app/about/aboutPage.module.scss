@@ -3,117 +3,236 @@
 
 .aboutPageContainer{
     @include flex(column, center, start);
-    height: 100%;
     width: 100%;
-    padding-top: 2rem;
+    // background-color: green;
+}
+
+.heroSection{
+    @include flex(column, center, start);
+    gap: 3rem;
+    width: 100%;
+    padding: 4rem 0;
+    color: $primary-90;
+
+    p{
+        text-align: center
+    }
+}
+
+.heroHeading{
+    @include font(3rem, $fw-semibold, 1.2);
+    color: $primary-90;
+    text-align: center;  
+}
+
+// BENTO GRID ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.aboutBentoGrid{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(8, 172px);
+    gap: 2rem;
+    width: 100%;
+}
+
+.firstCard{
+    grid-column: span 3; 
+    grid-row: span 3; 
+    border-radius: 1rem;
     overflow: hidden;
+    //-----------------------
+}
+  
+.secondCard{
+    grid-column: span 3; 
+    grid-row: span 1; 
+    padding: 1.5rem;
+    border-radius: 1rem;
+    overflow: hidden;
+    //----------------------
+    color: $primary-90;
+    @include flex(row);
+    gap: 5rem;
+
+    background: linear-gradient(
+        to top,
+        rgba(255, 255, 255, 0),
+        rgba(255, 255, 255, 0),
+        rgba(255, 255, 255, 0.25)
+    );
+
+    @include glass();
+}
+  
+.thirdCard{
+    grid-column: span 3; 
+    grid-row: span 2; 
+    padding: 1.5rem;
+    border-radius: 1rem;
+    overflow: hidden;
+    //----------------------
+    @include flex();
+
+    background: linear-gradient(
+        to top,
+        rgba(235, 238, 255, 0.5),
+        rgba(235, 238, 255, 0.5),
+        rgba(235, 238, 255, 0.7)
+    );
+
+    @include glass();
+}
+  
+.fourthCard{
+    grid-column: span 2; 
+    grid-row: span 3; 
+    padding: 1.5rem;
+    border-radius: 1rem;
+    overflow: hidden;
+    //----------------------
+    color: $primary-90;
+    @include flex(column, start, space-between);
+    position: relative;
+
+    background: linear-gradient(
+        to top,
+        rgba(255, 255, 255, 0),
+        rgba(255, 255, 255, 0),
+        rgba(255, 255, 255, 0.25)
+    );
+
+    @include glass();
+}
+  
+.fifthCard{
+    grid-column: span 4; 
+    grid-row: span 3; 
+    padding: 1.5rem;
+    border-radius: 1rem;
+    overflow: hidden;
+    //-----------------------
     overflow-y: scroll;
     scrollbar-width: none;
-    // background-color: green;
+    color: $primary-90;
 
-    h1{
-        @include font($fs-xl, $fw-semibold, 1.2);
-        width: 100%;
-        color: $primary-30;
-        text-align: right;
-        padding-bottom: 2rem;
-        // background-color: pink;
+    background: linear-gradient(
+        to top,
+        rgba(130, 147, 201, 0.3),
+        rgba(130, 147, 201, 0.3),
+        rgba(130, 147, 201, 0.5)
+    );
 
-        @include respond(tablet){
-            font-size: $fs-lg;
-        }
-
-        @include respond(mobile){
-            text-align: center;
-        }
-    }
-
-    @include respond(laptop, portrait){
-        padding-left: 3rem;
-        padding-right: 3rem;
-    }
-
-    @include respond(tablet){
-        padding-left: 3rem;
-        padding-right: 3rem;
-    }
-
-    @include respond(mobile){
-        padding-left: 0;
-        padding-right: 0;
-    }
+    @include glass();
 }
-
-.detailsContainer{
-    @include flex(row, start, space-between);
-    flex: 1;
-    min-height: 600px;
-    margin-bottom: 2rem;
-    width: 100%;
+  
+.sixthCard{
+    grid-column: span 6; 
+    grid-row: span 2; 
+    padding: 1.5rem;
+    border-radius: 1rem;
     overflow: hidden;
-    
-    @include respond(laptop, portrait){
-        @include flex(column, center, start);
-        overflow-y: scroll;
-        scrollbar-width: none;
-        margin-bottom: 0;
-        padding-bottom: 2rem;
-    }
+    //----------------------
+    position: relative;
+    @include flex(row);
+    flex-wrap: wrap;
+    column-gap: 2rem;
 
-    @include respond(tablet){
-        @include flex(column, center, start);
-        overflow-y: scroll;
-        scrollbar-width: none;
-        margin-bottom: 0;
-        padding-bottom: 2rem;
-        min-height: 0;
-    }
+    background: linear-gradient(
+        to top,
+        rgba(235, 238, 255, 0.5),
+        rgba(235, 238, 255, 0.5),
+        rgba(235, 238, 255, 0.7)
+    );
+
+    @include glass();
 }
+// END OF BENTO GRID ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 
 .myPhoto{
     height: 100%;
-    max-height: 1000px;
-    width: 50%;
     object-fit: cover;
-    object-position: top;
-    border-radius: 0.5rem;
+    // object-position: top;
+}
 
-    @include respond(laptop, portrait){
-        height: 40rem;
-        width: 100%;
-    }
+.logosContainer{
+    @include flex(row);
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+.toolLogo{
+    height: 40px;
+    width: auto;
+    object-fit: cover;
+    z-index: 2;
+}
+.brandLogo{
+    height: 50px;
+    width: auto;
+    object-fit: cover;
+    z-index: 2;
+}
+.textBg{
+    position: absolute;
+    bottom: 0%;
+    left: 0%;
+    z-index: 1;
+}
 
-    @include respond(tablet){
-        height: 40rem;
-        width: 100%;
+.statContainer{
+    @include flex();
+
+    p{
+        &:first-child{
+            @include font(4.7rem, $fw-semibold, 1.1);
+            color: rgba(255, 255, 255, 0.3);
+            text-shadow: 0 10px 20px rgba(0, 0, 0, 0.75);
+        }
+
+        &:last-child{
+            max-width: 100px;
+        }
     }
 }
 
-.myAboutText{
-    padding-top: 1rem;
+.roleLine{
+    position: absolute;
     height: 100%;
-    width: 45%;
-    overflow-y: scroll;
-    scrollbar-width: none;
+    left: 2rem;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    z-index: -1;
 
-    @include respond(laptop, portrait){
-        height: fit-content;
-        width: 100%;
-        overflow-y: visible;
-        padding-left: 1rem;
-        padding-right: 1rem;
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.4) 0%,
+      rgba(255, 255, 255, 0.2) 50%,
+      rgba(255, 255, 255, 0.1) 100%
+    );
+}
+.roleContainer{
+    @include flex(row);
+    width: 100%;
+    // background-color: red;
+}
+.roleDot{
+    height: 20px;
+    width: 20px;
+    border-radius: 4rem;
+    // margin-right: 2rem;
+    background-color: $primary-90;
+}
+
+.roleContent{
+    @include flex(column, start, center);
+    // background-color: blue;
+    width: 100%;
+    padding-left: 1rem;
+
+    h4{
+        font-size: $fs-md;
     }
-
-    @include respond(tablet){
-        height: fit-content;
-        width: 100%;
-        overflow-y: visible;
-        padding-left: 1rem;
-        padding-right: 1rem;
-    }
-
-    @include respond(mobile){
-        padding-left: 0.5rem;
-        padding-right: 0.5rem;
+    p{
+        color: $grey-80;
     }
 }

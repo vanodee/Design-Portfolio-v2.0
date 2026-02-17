@@ -2,139 +2,143 @@
 
 
 .contactPageContainer{
-    @include flex(row-reverse, start, center);
-    height: 100%;
-    max-height: 1200px;
+    @include flex(column, center, start);
     width: 100%;
-    padding: 2rem 0;
+}
+
+.heroSection{
+    @include flex(column, center, start);
+    gap: 3rem;
+    width: 100%;
+    padding: 4rem 0;
+    color: $primary-90;
+
+    p{
+        text-align: center
+    }
+}
+
+.heroHeading{
+    @include font(3rem, $fw-semibold, 1.2);
+    color: $primary-90;
+    text-align: center;  
+}
+
+
+// BENTO GRID ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+.contactBentoGrid{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(5, 120px);
+    gap: 2rem;
+    width: 100%;
+}
+
+.firstCard{
+    grid-column: span 2; 
+    grid-row: span 1; 
+    padding: 1rem;
+    border-radius: 1rem;
     overflow: hidden;
-    overflow-y: scroll;
-    scrollbar-width: none;
-
-    @include respond(laptop, portrait){
-        @include flex(column, center, start);
-        padding-left: 3rem;
-        padding-right: 3rem;
-        max-height: 1600px;
-    }
-
-    @include respond(tablet){
-        @include flex(column, center, start);
-        padding-left: 3rem;
-        padding-right: 3rem;
-    }
-
-    @include respond(mobile){
-        padding-left: 0;
-        padding-right: 0;
-    }
-}
-
-.contactFormContainer{
+    //-----------------------
     @include flex();
-    height: 100%;
-    min-height: 600px;
-    width: 45%;
-    background-color: $primary-70;
-    border-radius: 0.5rem;
-    padding: 1rem 0;
 
-    @include respond(laptop, portrait){
-        height: fit-content;
-        width: 100%;
-    }
+    background: linear-gradient(
+        to top,
+        rgba(255, 255, 255, 0),
+        rgba(255, 255, 255, 0),
+        rgba(255, 255, 255, 0.25)
+    );
 
-    @include respond(tablet){
-        height: fit-content;
-        width: 100%;
+    @include glass();
+}
+  
+.secondCard{
+    grid-column: span 4; 
+    grid-row: span 5; 
+    border-radius: 1rem;
+    overflow: hidden;
+    //-----------------------
+    @include flex();
+
+    background: linear-gradient(
+        to top,
+        rgba(130, 147, 201, 0.3),
+        rgba(130, 147, 201, 0.3),
+        rgba(130, 147, 201, 0.8)
+    );
+
+    @include glass();
+}
+  
+.thirdCard{
+    grid-column: span 2; 
+    grid-row: span 2; 
+    padding: 1rem;
+    border-radius: 1rem;
+    overflow: hidden;
+    //-----------------------
+
+    background: linear-gradient(
+        to top,
+        rgba(255, 255, 255, 0),
+        rgba(255, 255, 255, 0),
+        rgba(255, 255, 255, 0.25)
+    );
+
+    @include glass();
+
+    @include transition();
+    cursor: pointer;
+    &:hover{
+        transform: scale(1.05);
+        filter: brightness(1.3);
     }
 }
+  
+.fourthCard{
+    background-color: grey;
+    grid-column: span 2; 
+    padding: 1rem;
+    grid-row: span 2; 
+    border-radius: 1rem;
+    overflow: hidden;
+    //-----------------------
+    @include flex(row, center, center);
+    flex-wrap: wrap;
+    gap: 1.5rem;
 
-.contactInfoContainer{
-    @include flex(column);
-    height: 100%;
-    min-height: 600px;
-    width: 55%;
-    padding-left: 3rem;
+    background: linear-gradient(
+        to top,
+        rgba(255, 255, 255, 0),
+        rgba(255, 255, 255, 0),
+        rgba(255, 255, 255, 0.25)
+    );
 
-    h1{
-        @include font(6rem, $fw-semibold, 1.2);
-        @include flex();
-        color: $primary-30;
-        text-align: center;
-        flex: 1;
-
-        @include respond(tablet){
-            font-size: 5rem;
-        }
-
-         @include respond(mobile){
-            font-size: 4rem;
-        }
-    }
-
-    @include respond(laptop, portrait){
-        flex: 1;
-        width: 100%;
-        padding-left: 0;
-        padding-bottom: 2rem;
-    }
-
-    @include respond(tablet){
-        flex: 1;
-        width: 100%;
-        padding-left: 0;
-        padding-bottom: 2rem;
-    }
-
-    @include respond(mobile){
-        min-height: 400px;
-    }
+    @include glass();
 }
+// END OF BENTO GRID ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.contactItems{
-    @include flex(row, center, space-between);
-    height: 20%;
-    width: 100%;
 
-     @include respond(laptop, portrait){
-        height: 8rem;
-        margin-top: 2rem;
-    }
-
-    @include respond(tablet){
-        height: 8rem;
-        margin-top: 2rem;
-    }
-
-    @include respond(mobile){
-        height: 6rem;
-    }
+.iconContainer{
+  @include flex(row, center, end);
+  width: 100%;
+}
+.emailText{
+  width: 100%;
+  text-align: center;
+  color: $primary-90;
+  background-color: $grey-20;
+  padding: 1rem 0;
+  border-radius: 0.5rem;
+  font-size: $fs-md;
+  z-index: 1;
 }
 
 .contactIconContainer{
-    @include flex();
     @include transition();
-    height: 100%;
-    width: 30%;
-    background-color: $primary-70;
-    cursor: pointer;
-    border-radius: 0.5rem;
-
     &:hover{
-        background-color: $primary-30;
-    }
-
-    @media(hover: none){
-        &:hover{
-            background-color: $primary-70;
-        }
-    }
-
-    @include respond(mobile){
-        img{
-            height: 55px;
-        }
+        transform: scale(1.1);
+        filter: brightness(1.3);
     }
 }
-

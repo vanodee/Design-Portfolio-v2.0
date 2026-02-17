@@ -1,6 +1,11 @@
 // schemas/projectType.ts
 import { defineType, defineField } from 'sanity'
 import CategoryWithSyncInput from '../components/categoryWithSyncInput'
+import { webAppFields } from './webAppFields'
+import { websiteFields } from './websiteFields'
+import { uxCaseStudyFields } from './uxCaseStudyFields'
+import { logoBrandingFields } from './logoBrandingFields'
+
 
 export const projectType = defineType({
   name: 'project',
@@ -83,6 +88,18 @@ export const projectType = defineType({
       group: 'general',
     }),
     defineField({
+      name: 'projectColor',
+      title: 'Project Color',
+      type: 'string',
+      group: 'general',
+    }),
+    defineField({
+      name: 'projectColorDark',
+      title: 'Project Color [Dark]',
+      type: 'string',
+      group: 'general',
+    }),
+    defineField({
       name: 'heroHeading',
       title: 'Hero Heading',
       type: 'string',
@@ -109,78 +126,55 @@ export const projectType = defineType({
       group: 'general',
       options: { hotspot: true },
     }),
-
-    // ===== Logo & Brand Design Fields =========================================================
     defineField({
-      name: 'clientSummary',
-      title: 'Client Summary',
-      type: 'text',
-      group: 'project-specific',
-      rows: 2,
-      hidden: ({ parent }) => !['Logo Designs', 'Brand Designs'].includes(parent?.categoryName),
+      name: 'projectTags',
+      title: 'Project Tags',
+      type: 'array',
+      group: 'general',
+      of: [{ type: 'string' }],
+      description: 'List of methodology/deliverable tags (e.g., "Market Research", "Competitive Analysis", etc.)',
     }),
     defineField({
-      name: 'clientContacts',
-      title: 'Client Contact Info',
+      name: 'quickStats',
+      title: 'Project Quick Stats',
       type: 'array',
-      group: 'project-specific',
+      group: 'general',
       of: [
         {
           type: 'object',
           fields: [
-            { name: 'method', title: 'Contact Method', type: 'string' },
-            { name: 'info', title: 'Contact Info', type: 'string' },
+            { name: 'title', title: 'Stat Title', type: 'string', description: 'e.g., "Project Type", "Timeline"' },
+            { name: 'value', title: 'Stat Value', type: 'string', description: 'Value of this Stat' },
           ],
         },
       ],
-      hidden: ({ parent }) => !['Logo Designs', 'Brand Designs'].includes(parent?.categoryName),
+      description: 'List of quick stats for this project',
     }),
+
+    // ===== Web App Fields =================================================================
+    ...webAppFields,
+  
+
+    // ===== Wbsite Fields =================================================================
+    ...websiteFields,
+
+
+    // ===== UX Case Study Fields =========================================================
+    ...uxCaseStudyFields,
+
+
+    // ===== Logo & Brand Design Fields =================================================================
+    ...logoBrandingFields,
+
+
+    // ===== Closing Fields =============================================================================
     defineField({
-      name: 'jobSummary',
-      title: 'Job Summary',
-      type: 'text',
-      group: 'project-specific',
-      rows: 3,
-      hidden: ({ parent }) => !['Logo Designs', 'Brand Designs'].includes(parent?.categoryName),
-    }),
-    defineField({
-      name: 'liveMedia',
-      title: 'Live Media (Optional Video or Link)',
-      type: 'url',
-      group: 'project-specific',
-      hidden: ({ parent }) => !['Logo Designs', 'Brand Designs'].includes(parent?.categoryName),
-    }),
-    defineField({
-      name: 'landscapeImages',
-      title: 'Project Images - Landscape',
-      type: 'array',
-      group: 'project-specific',
-      of: [{ type: 'image', options: { hotspot: true } }],
-      hidden: ({ parent }) => !['Logo Designs', 'Brand Designs'].includes(parent?.categoryName),
-    }),
-    defineField({
-      name: 'portraitImages',
-      title: 'Project Images - Portrait',
-      type: 'array',
-      group: 'project-specific',
-      of: [{ type: 'image', options: { hotspot: true } }],
-      hidden: ({ parent }) => !['Logo Designs', 'Brand Designs'].includes(parent?.categoryName),
-    }),
-    defineField({
-      name: 'designRationale',
-      title: 'Design Rationale',
-      type: 'text',
-      group: 'project-specific',
-      rows: 3,
-      hidden: ({ parent }) => !['Logo Designs', 'Brand Designs'].includes(parent?.categoryName),
-    }),
-    defineField({
-      name: 'projectConclusion',
-      title: 'Project Conclusion',
-      type: 'text',
-      group: 'project-specific',
-      rows: 3,
-      hidden: ({ parent }) => !['Logo Designs', 'Brand Designs'].includes(parent?.categoryName),
+      name: 'closingImage',
+      title: 'Closing Image',
+      type: 'image',
+      group: 'general',
+      options: { hotspot: true },
+      description: 'Final hero image or mockup to close the case study',
     }),
   ],
 })

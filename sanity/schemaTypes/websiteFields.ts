@@ -1,0 +1,448 @@
+// schemas/websiteFields.ts
+import { defineField } from 'sanity'
+
+export const websiteFields = [
+  // ===== Teaser Image Section =========================================================
+  defineField({
+    name: 'website_teaserImages',
+    title: 'Teaser Images',
+    type: 'array',
+    group: 'project-specific',
+    of: [{ type: 'image', options: { hotspot: true } }],
+    description: 'Images showing early teasers of the final designs',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
+
+  // ===== Business Context ===============================================================
+  defineField({
+    name: 'website_businessContextHeading',
+    title: 'Business Context Heading',
+    type: 'string',
+    group: 'project-specific',
+    description: 'Heading for Business Context section',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
+  defineField({
+    name: 'website_businessContextContent',
+    title: 'Business Context Content',
+    type: 'text',
+    group: 'project-specific',
+    rows: 3,
+    description: 'Text content explaining Business Context findings',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
+
+  // ===== Problems Identified ===============================================================
+  defineField({
+    name: 'website_problemsIdentifiedHeading',
+    title: 'Problems Identified Heading',
+    type: 'string',
+    group: 'project-specific',
+    description: 'Heading for Brand Problems identified',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
+  defineField({
+    name: 'website_problemsIdentified',
+    title: 'Problems Identified',
+    type: 'array',
+    group: 'project-specific',
+    of: [{ type: 'string' }],
+    description: 'List of Brand Problems identified',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
+  defineField({
+    name: 'website_problemsIdentifiedImage',
+    title: 'Problems Identified Image',
+    type: 'image',
+    group: 'project-specific',
+    options: { hotspot: true },
+    description: 'Image supporting Problems Identified',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
+
+  // ===== Design Objectives ===============================================================
+  defineField({
+    name: 'website_designObjectivesHeading',
+    title: 'Design Objectives Heading',
+    type: 'string',
+    group: 'project-specific',
+    description: 'Heading for Brand Design Objectives',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
+  defineField({
+    name: 'website_designObjectives',
+    title: 'Design Objectives',
+    type: 'array',
+    group: 'project-specific',
+    of: [{ type: 'string' }],
+    description: 'List of Brand Design Objectives',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
+  defineField({
+    name: 'website_designObjectivesImage',
+    title: 'Design Objectives Image',
+    type: 'image',
+    group: 'project-specific',
+    options: { hotspot: true },
+    description: 'Image supporting Design Objectives',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
+
+  // ===== Market Context Section =========================================================
+  defineField({
+    name: 'website_marketContextHeading',
+    title: 'Market Context Heading',
+    type: 'string',
+    group: 'project-specific',
+    description: 'Heading for market context section',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
+  defineField({
+    name: 'website_marketContext',
+    title: 'Market Context',
+    type: 'text',
+    group: 'project-specific',
+    rows: 3,
+    description: 'Text explaining the project market context',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
+  defineField({
+    name: 'website_targetAudienceHeading',
+    title: 'Target Audeince Heading',
+    type: 'string',
+    group: 'project-specific',
+    description: 'Heading for Target Audience section',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
+ 
+  defineField({
+    name: 'website_targetAudience',
+    title: 'Target Audience',
+    type: 'array',
+    group: 'project-specific',
+    of: [
+      {
+        type: 'object',
+        fields: [
+          { name: 'member', title: 'Audience Member Title', type: 'string', description: 'e.g., "Athletes", "Investors"' },
+          { name: 'rationale', title: 'Audience Member Rationale', type: 'text', rows: 2, description: 'Description of what this audience member needs' },
+        ],
+      },
+    ],
+    description: 'List of people who classify as tyhe target audience for this website',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
+
+  // ===== Information Architecture Section =========================================================
+  defineField({
+    name: 'website_informationArcHeading',
+    title: 'Information Architecture Heading',
+    type: 'string',
+    group: 'project-specific',
+    description: 'Heading for the Information Architecture section',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
+  defineField({
+    name: 'website_informationArcText',
+    title: 'Information Architecture Section Text',
+    type: 'text',
+    group: 'project-specific',
+    rows: 3,
+    description: 'Text for the Information Architecture section',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
+  defineField({
+    name: 'website_informationArcImages',
+    title: 'Information Architecture Section Images',
+    type: 'array',
+    group: 'project-specific',
+    of: [{ type: 'image', options: { hotspot: true } }],
+    description: 'Images for the information Architecture section',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
+
+  // ===== UX Structure & Planning ===============================================================
+  defineField({
+    name: 'website_uxStructureHeading',
+    title: 'UX Structure Heading',
+    type: 'string',
+    group: 'project-specific',
+    description: 'Heading for UX Structure section',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
+  defineField({
+    name: 'website_uxStructureText',
+    title: 'UX Structure Text',
+    type: 'text',
+    group: 'project-specific',
+    rows: 3,
+    description: 'Text content explaining UX Structure',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
+  defineField({
+    name: 'website_uxStructureItems',
+    title: 'UX Structure Breakdown',
+    type: 'array',
+    group: 'project-specific',
+    of: [
+      {
+        type: 'object',
+        fields: [
+          { name: 'structureName', title: 'Structure Name', type: 'string' },
+          { name: 'structurePoints', title: 'structure Points', type: 'array', of: [{ type: 'string' }], description: 'List of considerations' },
+          { name: 'structureImage', title: 'structure Image', type: 'image', options: { hotspot: true }, description: 'Screenshot or visual supporting considerations' },
+        ],
+      },
+    ],
+    description: 'List of UX structure considerations with details',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
+
+  // ===== Visual Design Section =========================================================
+  defineField({
+    name: 'website_visualDesignHeading',
+    title: 'Visual Design Heading',
+    type: 'string',
+    group: 'project-specific',
+    description: 'Heading for the Visual Design section',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
+  defineField({
+    name: 'website_visualDesignText',
+    title: 'Visual Design Section Text',
+    type: 'text',
+    group: 'project-specific',
+    rows: 3,
+    description: 'Text for the Visual Design section',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
+  defineField({
+    name: 'website_visualDesignImages',
+    title: 'Visual Design Section Images',
+    type: 'array',
+    group: 'project-specific',
+    of: [{ type: 'image', options: { hotspot: true } }],
+    description: 'Images for the Visual design section',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
+
+  // ===== Website Build & Implementation ===============================================================
+  defineField({
+    name: 'website_websiteBuildHeading',
+    title: 'Website Build Heading',
+    type: 'string',
+    group: 'project-specific',
+    description: 'Heading for Website Build section',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
+  defineField({
+    name: 'website_websiteBuildText',
+    title: 'Website Build Text',
+    type: 'text',
+    group: 'project-specific',
+    rows: 3,
+    description: 'Text content explaining Website Build',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
+  defineField({
+    name: 'website_websiteBuildItems',
+    title: 'Website Build Breakdown',
+    type: 'array',
+    group: 'project-specific',
+    of: [
+      {
+        type: 'object',
+        fields: [
+          { name: 'buildItemName', title: 'Build Item Name', type: 'string' },
+          { name: 'buildItemPoints', title: 'Build Item Points', type: 'text', rows: 3, description: 'Build Item Description' },
+          { name: 'buildItemImage', title: 'Build Item Image', type: 'image', options: { hotspot: true }, description: 'Screenshot or visual supporting build item' },
+        ],
+      },
+    ],
+    description: 'List of Website Build considerations with details',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
+  defineField({
+    name: 'website_websiteBuildImages',
+    title: 'Website Build Section Images',
+    type: 'array',
+    group: 'project-specific',
+    of: [{ type: 'image', options: { hotspot: true } }],
+    description: 'Images for the Website Build section',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
+
+  // ===== Accessibility Section =========================================================
+  defineField({
+    name: 'website_accessibilityHeading',
+    title: 'Accessibility Heading',
+    type: 'string',
+    group: 'project-specific',
+    description: 'Heading for the Accessibility section',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
+  defineField({
+    name: 'website_accessibilityText',
+    title: 'Accessibility Section Considerations',
+    type: 'array',
+    group: 'project-specific',
+    of: [{ type: 'string' }],
+    description: 'Text/list for the Accessibility section',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
+  defineField({
+    name: 'website_accessibilityImages',
+    title: 'Accessibility Section Images',
+    type: 'array',
+    group: 'project-specific',
+    of: [{ type: 'image', options: { hotspot: true } }],
+    description: 'Images for the Accessibility section',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
+
+  // ===== Pre-Launch ===============================================================
+  defineField({
+    name: 'website_preLaunchHeading',
+    title: 'Pre-Launch Heading',
+    type: 'string',
+    group: 'project-specific',
+    description: 'Heading for Website Pre-Launch',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
+  defineField({
+    name: 'website_preLaunchChecks',
+    title: 'Pre-Launch Checks',
+    type: 'array',
+    group: 'project-specific',
+    of: [{ type: 'string' }],
+    description: 'Website Pre-Launch Checklist',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
+  defineField({
+    name: 'website_preLaunchImage',
+    title: 'Pre-Launch Image',
+    type: 'image',
+    group: 'project-specific',
+    options: { hotspot: true },
+    description: 'Image supporting Pre-Launch',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
+
+  // ===== Outcomes Section =========================================================
+  defineField({
+    name: 'website_outcomesSectionHeading',
+    title: 'Outcomes Section Heading',
+    type: 'string',
+    group: 'project-specific',
+    description: 'Heading for outcomes section',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
+  defineField({
+    name: 'website_mainOutcomeHeading',
+    title: 'Main Outcome Heading',
+    type: 'string',
+    group: 'project-specific',
+    description: 'Heading for Main Outcome',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
+  defineField({
+    name: 'website_mainOutcomeText',
+    title: 'Main Outcome Text',
+    type: 'text',
+    group: 'project-specific',
+    rows: 3,
+    description: 'Text explaining the main outcome',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
+  defineField({
+    name: 'website_otherOutcomes',
+    title: 'Other Outcomes',
+    type: 'array',
+    group: 'project-specific',
+    of: [
+      {
+        type: 'object',
+        fields: [
+          { name: 'outcomeTitle', title: 'Outcome Title', type: 'string', description: 'e.g., "Strategic Impact", "Visual Impact"' },
+          { name: 'outcomeDescription', title: 'Outcome Description', type: 'text', rows: 2, description: 'Description of what the outcome' },
+        ],
+      },
+    ],
+    description: 'List of Design approach methods and their details',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
+
+  // ===== Key Learnings Section ===============================================================
+  defineField({
+    name: 'website_keyLearnHeading',
+    title: 'Key learnings Heading',
+    type: 'string',
+    group: 'project-specific',
+    description: 'Heading for Key Learnings',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
+  defineField({
+    name: 'website_keyLearnText',
+    title: 'Key Learnings Text',
+    type: 'text',
+    group: 'project-specific',
+    rows: 3,
+    description: 'Text for key learnings',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
+  defineField({
+    name: 'website_keyLearnList',
+    title: 'Key Learnings List',
+    type: 'array',
+    group: 'project-specific',
+    of: [{ type: 'string' }],
+    description: 'List of key learnings',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
+  defineField({
+    name: 'website_keyLearnImage',
+    title: 'Key Learnings Image',
+    type: 'image',
+    group: 'project-specific',
+    options: { hotspot: true },
+    description: 'Image supporting Key Learnings',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
+
+  // ===== What Worked Section ===============================================================
+  defineField({
+    name: 'website_whatWorkedHeading',
+    title: 'What Worked Heading',
+    type: 'string',
+    group: 'project-specific',
+    description: 'Heading for What Worked',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
+  defineField({
+    name: 'website_whatWorkedText',
+    title: 'What Worked Text',
+    type: 'text',
+    group: 'project-specific',
+    rows: 3,
+    description: 'Text for What Worked',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
+  defineField({
+    name: 'website_whatWorkedList',
+    title: 'What Worked List',
+    type: 'array',
+    group: 'project-specific',
+    of: [{ type: 'string' }],
+    description: 'List of What Worked',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
+  defineField({
+    name: 'website_whatWorkedImage',
+    title: 'What Worked Image',
+    type: 'image',
+    group: 'project-specific',
+    options: { hotspot: true },
+    description: 'Image supporting What Worked',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
+]

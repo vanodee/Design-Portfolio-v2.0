@@ -54,7 +54,10 @@ export default function ProjectCards({ categoryData }: { categoryData: any }) {
             className={styles.projectCard}
             style={{ "--hoverColor": project.previewColor } as React.CSSProperties}
           >
-            <img src={project.previewImage} alt={project.title} />
+            <div className={styles.imageContainer}>
+              <img src={project.previewImage} alt={project.title} />
+            </div>
+            
 
             <div className={styles.projectDetails}>
               <div>
@@ -72,83 +75,6 @@ export default function ProjectCards({ categoryData }: { categoryData: any }) {
           </motion.div>
         ))}
         
-        {/* ===================== DELETE THIS ===================================================== */}
-        {categoryData.projects?.map((project: any) => (
-          <motion.div
-            key={project.slug}
-            variants={item}
-            className={styles.projectCard}
-            style={{ "--hoverColor": project.previewColor } as React.CSSProperties}
-          >
-            <img src={project.previewImage} alt={project.title} />
-
-            <div className={styles.projectDetails}>
-              <div>
-                <h3>{project.title}</h3>
-                <p>{project.description}</p>
-              </div>
-
-              <Link
-                href={`/projects/${categoryData.slug}/${project.slug}`}
-                className={styles.projectLink}
-              >
-                <button>View Full Project</button>
-              </Link>
-            </div>
-          </motion.div>
-        ))}
-
-        {categoryData.projects?.map((project: any) => (
-          <motion.div
-            key={project.slug}
-            variants={item}
-            className={styles.projectCard}
-            style={{ "--hoverColor": project.previewColor } as React.CSSProperties}
-          >
-            <img src={project.previewImage} alt={project.title} />
-
-            <div className={styles.projectDetails}>
-              <div>
-                <h3>{project.title}</h3>
-                <p>{project.description}</p>
-              </div>
-
-              <Link
-                href={`/projects/${categoryData.slug}/${project.slug}`}
-                className={styles.projectLink}
-              >
-                <button>View Full Project</button>
-              </Link>
-            </div>
-          </motion.div>
-        ))}
-
-        {categoryData.projects?.map((project: any) => (
-          <motion.div
-            key={project.slug}
-            variants={item}
-            className={styles.projectCard}
-            style={{ "--hoverColor": project.previewColor } as React.CSSProperties}
-          >
-            <img src={project.previewImage} alt={project.title} />
-
-            <div className={styles.projectDetails}>
-              <div>
-                <h3>{project.title}</h3>
-                <p>{project.description}</p>
-              </div>
-
-              <Link
-                href={`/projects/${categoryData.slug}/${project.slug}`}
-                className={styles.projectLink}
-              >
-                <button>View Full Project</button>
-              </Link>
-            </div>
-          </motion.div>
-        ))}
-        {/* ======================================================================================= */}
-
       </motion.div>
     </div>
   );
