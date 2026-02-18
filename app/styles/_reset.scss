@@ -18,7 +18,6 @@
 
 body {
   @include font($fs-base);
-  // @include flex(column, center, start);
   @include flex(column, center, space-between);
   color: $grey-20;
   position: relative; //---------------------
@@ -32,8 +31,6 @@ body {
 
 main {
   @include flex(column, center, start);
-  // background-color: red;
-  // height: 100%;
   width: 100%;
   max-width: 1000px;
   margin-top: 6rem;

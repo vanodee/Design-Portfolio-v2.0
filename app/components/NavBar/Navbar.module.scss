@@ -10,8 +10,8 @@
     max-width: 1300px;
     z-index: 999;
 
-    @include respond(mobile){
-        padding: 0 1rem;
+    @include respond(desktop){
+        padding: 0 0.25rem;
     }
 
     &--projectPage {
@@ -26,14 +26,11 @@
     width: 100%;
     padding: 0.6rem 1rem;
     border-radius: 1rem;
+
     background: rgba(20, 20, 20, 0.5); /* dark translucent tint */
     backdrop-filter: blur(25px);
     // -webkit-backdrop-filter: blur(40px);
-
-    /* Required for border overlay */
-    overflow: hidden;
-
-    // background-color: red;
+    overflow: hidden; /* Required for border overlay */
 
     .resumeButton{
         button {
@@ -94,8 +91,7 @@
 
     @media(hover: none){
         &:hover {
-            background-color: none;
-            color: $primary-30;
+            transform: translateY(0) scale(1);
         }
     }
     
@@ -123,17 +119,20 @@
     @include transition();
     position: absolute;
     top: 4rem; // Height of the header
-    background-color: $primary-90;
+    right: 0.5rem;
     height: 400px;
     width: 250px;
     margin-top: 1rem;
     padding: 1.5rem 1rem;
-    border-radius: 0.5rem;
+    border-radius: 1rem;
     box-shadow: 0px 1px 10px 0px;
     visibility: hidden;
     opacity: 0;
     pointer-events: none;
     transform: translateX(50px);
+
+    background: rgba(20, 20, 20, 0.7);
+    @include glass();
 
     &.open {
         visibility: visible;
@@ -151,11 +150,11 @@
 
 .mobileNavCta{
     width: 100%;
-    border-top: 2px solid $primary-10;
+    border-top: 2px solid $primary-90;
     padding-top: 1.5rem;
 
     button {
-        @include button-variant(dark, outline);
+        @include button-variant(light, outline);
         width: 100%;
     }
 }
