@@ -10,6 +10,15 @@
 .iconContainer{
     @include flex(row, center, end);
     width: 100%;
+
+    img{
+        width: auto;
+        object-fit: cover;
+
+        @include respond(laptop){
+            height: 3rem;
+        }
+    }
 }
 
 .emailText{
@@ -20,8 +29,21 @@
     border-radius: 0.5rem;
     font-size: $fs-md;
     z-index: 1;
+
+    @include respond(laptop){
+        font-size: $fs-base;
+    }
+
+    @include respond(tablet){
+        font-size: $fs-sm;
+    }
+
+    @include respond(mobile){
+        font-size: $fs-base;
+    }
 }
 
 .copiedText{
     height: 42px;
+    text-align: center;
 }

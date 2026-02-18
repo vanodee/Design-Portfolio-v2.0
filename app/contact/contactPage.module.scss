@@ -4,6 +4,14 @@
 .contactPageContainer{
     @include flex(column, center, start);
     width: 100%;
+
+    @include respond(laptop){
+        padding: 0 1rem;
+    }
+
+    @include respond(mobile){
+        padding: 0;
+    }
 }
 
 .heroSection{
@@ -14,7 +22,12 @@
     color: $primary-90;
 
     p{
-        text-align: center
+        text-align: center;
+        max-width: 90%;
+
+        @include respond(mobile){
+            font-size: $fs-sm;
+        }
     }
 }
 
@@ -22,6 +35,10 @@
     @include font(3rem, $fw-semibold, 1.2);
     color: $primary-90;
     text-align: center;  
+
+    @include respond(mobile){
+        font-size: $fs-2xl;
+    }
 }
 
 
@@ -32,6 +49,15 @@
     grid-template-rows: repeat(5, 120px);
     gap: 2rem;
     width: 100%;
+
+    @include respond(tablet){
+        grid-template-rows: repeat(5, 120px);
+        gap: 1rem;
+    }
+
+    @include respond(mobile){
+        grid-template-rows: repeat(10, 100px);
+    }
 }
 
 .firstCard{
@@ -51,6 +77,11 @@
     );
 
     @include glass();
+
+    @include respond(mobile){
+        grid-column: span 6; 
+        grid-row: span 1;
+    }
 }
   
 .secondCard{
@@ -69,6 +100,11 @@
     );
 
     @include glass();
+
+    @include respond(mobile){
+        grid-column: span 6; 
+        grid-row: span 5;
+    }
 }
   
 .thirdCard{
@@ -89,10 +125,22 @@
     @include glass();
 
     @include transition();
+
     cursor: pointer;
     &:hover{
         transform: scale(1.05);
         filter: brightness(1.3);
+    }
+    @media(hover: none){
+        &:hover{
+          transform: scale(1);
+          filter: brightness(1);
+        }
+    }
+
+    @include respond(mobile){
+        grid-column: span 6; 
+        grid-row: span 2;
     }
 }
   
@@ -116,29 +164,35 @@
     );
 
     @include glass();
+
+    @include respond(mobile){
+        grid-column: span 6; 
+        grid-row: span 2;
+    }
 }
 // END OF BENTO GRID ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
-.iconContainer{
-  @include flex(row, center, end);
-  width: 100%;
-}
-.emailText{
-  width: 100%;
-  text-align: center;
-  color: $primary-90;
-  background-color: $grey-20;
-  padding: 1rem 0;
-  border-radius: 0.5rem;
-  font-size: $fs-md;
-  z-index: 1;
-}
-
 .contactIconContainer{
     @include transition();
+
     &:hover{
         transform: scale(1.1);
         filter: brightness(1.3);
+    }
+    @media(hover: none){
+        &:hover{
+          transform: scale(1);
+          filter: brightness(1);
+        }
+    }
+
+    img{
+        width: auto;
+        object-fit: cover;
+    
+        @include respond(laptop){
+          height: 5rem;
+        }
     }
 }

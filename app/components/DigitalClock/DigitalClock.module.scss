@@ -9,9 +9,33 @@
     span{
         line-height: normal;
     }
+
+    @include respond(laptop){
+        font-size: $fs-xl;
+    }
+
+    @include respond(tablet){
+        font-size: $fs-md;
+    }
+
+    @include respond(mobile){
+        font-size: $fs-xl;
+    }
 }
 
 .timeZone{
     @include flex();
     font-size: $fs-md;
+
+    @include respond(laptop){
+        font-size: $fs-base;
+    }
+
+    @include respond(tablet){
+        font-size: $fs-sm;
+    }
+
+    @include respond(mobile){
+        font-size: $fs-base;
+    }
 }
