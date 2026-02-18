@@ -2,7 +2,9 @@
 // BREAKPOINTS
 // ------------------------------
 $breakpoints: (
-  mobile: 480px,
+  mobileSm: 320px,
+  mobileMd: 450px,
+  mobile: 590px,
   tablet: 768px,
   laptop: 1024px,
   desktop: 1280px,

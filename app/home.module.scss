@@ -4,19 +4,12 @@
   @include flex(column, center, start);
   width: 100%;
 
-  @include respond(laptop, portrait){
-    padding-left: 3rem;
-    padding-right: 3rem;
-  }
-
-  @include respond(tablet){
-    padding-left: 3rem;
-    padding-right: 3rem;
+  @include respond(laptop){
+    padding: 0 1rem;
   }
 
   @include respond(mobile){
-    padding-left: 0;
-    padding-right: 0;
+    padding: 0;
   }
 }
 
@@ -25,6 +18,14 @@
   gap: 2.5rem;
   width: 100%;
   padding: 7rem 0;
+
+  @include respond(tablet){
+    padding: 5rem 0;
+  }
+
+  @include respond(mobile){
+    padding: 3rem 0;
+  }
 }
 
 .heroHeading{
@@ -32,16 +33,12 @@
   color: $primary-90;
   text-align: center;
 
-  @include respond(laptop){
-    font-size: $fs-2xl;
-  }
-
   @include respond(tablet){
-    @include font($fs-xl, $fw-semibold, 1.2);
+    font-size: $fs-3xl;
   }
 
-  @media(max-width: 365px){
-    font-size: 1.55rem;
+  @include respond(mobile){
+    font-size: $fs-2xl;
   }
 }
 
@@ -50,13 +47,8 @@
   text-align: center;
   max-width: 90%;
 
-  @include respond(laptop, portrait){
-    margin-bottom: 0;
-  }
-
-  @include respond(tablet){
+  @include respond(mobile){
     font-size: $fs-sm;
-    margin-bottom: 0;
   }
 }
 
@@ -65,11 +57,7 @@
   width: 100%;
   max-width: 320px;
 
-  @include respond(laptop, portrait){
-    display: none;
-  }
-
-  @include respond(tablet){
+  @include respond(laptop){
     display: none;
   }
 }
@@ -95,105 +83,122 @@
   grid-template-rows: repeat(7, 172px);
   gap: 2rem;
   width: 100%;
+
+  @include respond(tablet){
+    grid-template-rows: repeat(7, 120px);
+    gap: 1rem;
+  }
+
+  @include respond(mobile){
+    grid-template-rows: repeat(7, 90px);
+  }
+
+  @include respond(mobileMd){
+    grid-template-rows: repeat(12, 90px);
+  }
+}
+
+.bentoCardStyles{
+  text-decoration: none;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  overflow: hidden;
+  @include transition();
+
+  &:hover{
+    transform: scale(1.05);
+    filter: brightness(1.2);
+  }
+  @media(hover: none){
+    &:hover{
+      transform: scale(1);
+      filter: brightness(1);
+    }
+  }
+
+  @include respond(tablet){
+    padding: 1rem;
+  }
 }
 
 .webAppsCard{
   grid-column: span 4; 
   grid-row: span 2; 
-  padding: 1.5rem;
-  @include flex(column, center, end);
-  text-decoration: none;
-  border-radius: 1rem;
-  overflow: hidden;
+  @extend .bentoCardStyles;
   //-------------------
+  @include flex(column, center, end);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 
   @include darkGradientBG();
 
-  @include transition();
-  &:hover{
-    transform: scale(1.05);
-    filter: brightness(1.2);
+  @include respond(mobileMd){
+    grid-column: span 6; 
+    grid-row: span 2;
   }
 }
 
 .websitesCard{
   grid-column: span 2; 
   grid-row: span 2; 
-  @include flex(column, center, end);
-  text-decoration: none;
-  padding: 1.5rem;
-  border-radius: 1rem;
-  overflow: hidden;
+  @extend .bentoCardStyles;
   //-------------------
+  @include flex(column, center, end);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 
   @include darkGradientBG();
 
-  @include transition();
-  &:hover{
-    transform: scale(1.05);
-    filter: brightness(1.2);
+  @include respond(mobileMd){
+    grid-column: span 6; 
+    grid-row: span 2;
   }
 }
 
 .uxCasesCard{
   grid-column: span 3; 
   grid-row: span 2; 
-  @include flex(column, center, end);
-  text-decoration: none;
-  padding: 1.5rem;
-  border-radius: 1rem;
-  overflow: hidden;
+  @extend .bentoCardStyles;
   //-------------------
+  @include flex(column, center, end);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 
   @include darkGradientBG();
 
-  @include transition();
-  &:hover{
-    transform: scale(1.05);
-    filter: brightness(1.2);
+  @include respond(mobileMd){
+    grid-column: span 6; 
+    grid-row: span 2;
   }
 }
 
 .logosCard{
   grid-column: span 3; 
   grid-row: span 2; 
-  @include flex(column, center, end);
-  text-decoration: none;
-  padding: 1.5rem;
-  border-radius: 1rem;
-  overflow: hidden;
+  @extend .bentoCardStyles;
   //-------------------
+  @include flex(column, center, end);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 
   @include darkGradientBG();
 
-  @include transition();
-  &:hover{
-    transform: scale(1.05);
-    filter: brightness(1.2);
+  @include respond(mobileMd){
+    grid-column: span 6; 
+    grid-row: span 2;
   }
 }
 
 .aboutCard{
   grid-column: span 2; 
   grid-row: span 3; 
-  @include flex(column, center, space-between);
-  text-decoration: none;
-  padding: 1.5rem;
-  border-radius: 1rem;
-  overflow: hidden;
+  @extend .bentoCardStyles;
   //-------------------
+  @include flex(column, center, space-between);
 
   background: linear-gradient(
     to top,
@@ -204,23 +209,18 @@
 
   @include glass();
 
-  @include transition();
-  &:hover{
-    transform: scale(1.05);
-    filter: brightness(1.3);
+  @include respond(mobileMd){
+    grid-column: span 3; 
+    grid-row: span 2;
   }
 }
 
 .allProjectsCard{
   grid-column: span 4; 
   grid-row: span 1; 
-  @include flex(column, center, space-between);
-  text-decoration: none;
-  padding: 1.5rem;
-  text-decoration: none;
-  border-radius: 1rem;
-  overflow: hidden;
+  @extend .bentoCardStyles;
   //-------------------
+  @include flex(column, center, space-between);
 
   background: linear-gradient(
     to top,
@@ -231,22 +231,18 @@
 
   @include glass();
 
-  @include transition();
-  &:hover{
-    transform: scale(1.05);
-    filter: brightness(1.3);
+   @include respond(mobileMd){
+    grid-column: span 3; 
+    grid-row: span 2;
   }
 }
 
 .resumeCard{
   grid-column: span 2; 
   grid-row: span 2; 
-  @include flex(column, center, space-between);
-  text-decoration: none;
-  padding: 1.5rem;
-  border-radius: 1rem;
-  overflow: hidden;
+  @extend .bentoCardStyles;
   //-------------------
+  @include flex(column, center, space-between);
 
   background: linear-gradient(
     to top,
@@ -257,22 +253,18 @@
 
   @include glass();
 
-  @include transition();
-  &:hover{
-    transform: scale(1.05);
-    filter: brightness(1.3);
+   @include respond(mobileMd){
+    grid-column: span 3; 
+    grid-row: span 2;
   }
 }
 
 .contactCard{
   grid-column: span 2; 
   grid-row: span 2; 
-  @include flex(column, center, space-between);
-  text-decoration: none;
-  padding: 1.5rem;
-  border-radius: 1rem;
-  overflow: hidden;
+  @extend .bentoCardStyles;
   //----------------------
+  @include flex(column, center, space-between);
 
   background: linear-gradient(
     to top,
@@ -283,10 +275,9 @@
 
   @include glass();
 
-  @include transition();
-  &:hover{
-    transform: scale(1.05);
-    filter: brightness(1.3);
+   @include respond(mobileMd){
+    grid-column: span 3; 
+    grid-row: span 2;
   }
 }
 // END OF BENTO GRID ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -295,11 +286,36 @@
 .iconContainer{
   @include flex(row, center, end);
   width: 100%;
+
+  img{
+    width: auto;
+    object-fit: cover;
+
+    @include respond(tablet){
+      height: 3.25rem;
+    }
+
+    @include respond(mobile){
+      height: 2rem;
+    }
+
+    @include respond(mobileMd){
+      height: 2.5rem;
+    }
+  }
 }
 
 .cardText{
   width: 100%;
   color: $primary-90;
-  font-size: $fs-xl;
+  @include font($fs-xl, $fw-semibold, 1.2);
   z-index: 1;
+
+  @include respond(tablet){
+    font-size: $fs-lg;
+  }
+
+  @include respond(mobile){
+    font-size: $fs-base;
+  }
 }
