@@ -13,45 +13,45 @@ export const contactIcons = [
 export default function Footer() {
   return (
     <footer className={styles.footer}>
-        <Link href="/" className={styles.footerHomeLink}>
-          <Image
-            src={'/sp_logo_light.svg'}
-            width={115}
-            height={45}
-            alt="Stevano Peters Logo"
-            className={styles.footerLogo}
-          />
-        </Link>
+      <Link href="/" className={styles.footerHomeLink}>
+        <Image
+          src={'/sp_logo_light.svg'}
+          width={115}
+          height={45}
+          alt="Stevano Peters Logo"
+          className={styles.footerLogo}
+        />
+      </Link>
 
-        <div className={styles.footerContactInfo}>
+      <div className={styles.footerContactInfo}>
 
-          <div className={styles.contactItems}>
-            {contactIcons.map(({name, src, href}) => (
-                
-              <a
-                key={src}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.contactIconContainer}
-              >
-                <Image
-                  src={src}
-                  height={65}
-                  width={65}
-                  alt={name}
-                  className={styles.contactIcon}
-                />
-              </a>
+        <div className={styles.contactItems}>
+          {contactIcons.map(({name, src, href}) => (
+              
+            <a
+              key={src}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.contactIconContainer}
+            >
+              <Image
+                src={src}
+                height={65}
+                width={65}
+                alt={name}
+                className={styles.contactIcon}
+              />
+            </a>
 
-            ))}
-          </div>
-
-          <div className={styles.copyright}>
-            © 2026 Stevano Peters. All rights reserved.
-          </div>
-          
+          ))}
         </div>
+
+        <div className={styles.copyright}>
+          © 2026 Stevano Peters. All rights reserved.
+        </div>
+        
+      </div>
     </footer>
   )
 }
