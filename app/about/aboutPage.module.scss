@@ -4,7 +4,14 @@
 .aboutPageContainer{
     @include flex(column, center, start);
     width: 100%;
-    // background-color: green;
+    
+    @include respond(laptop){
+        padding: 0 1rem;
+    }
+
+    @include respond(mobile){
+        padding: 0;
+    }
 }
 
 .heroSection{
@@ -15,7 +22,12 @@
     color: $primary-90;
 
     p{
-        text-align: center
+        text-align: center;
+        max-width: 90%;
+
+        @include respond(mobile){
+            font-size: $fs-sm;
+        }
     }
 }
 
@@ -23,6 +35,10 @@
     @include font(3rem, $fw-semibold, 1.2);
     color: $primary-90;
     text-align: center;  
+
+    @include respond(mobile){
+        font-size: $fs-2xl;
+    }
 }
 
 // BENTO GRID ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -32,6 +48,15 @@
     grid-template-rows: repeat(8, 172px);
     gap: 2rem;
     width: 100%;
+
+    @include respond(tablet){
+        grid-template-rows: repeat(8, 150px);
+        gap: 1rem;
+    }
+
+    @include respond(mobile){
+        grid-template-rows: repeat(14, 150px);
+    }
 }
 
 .firstCard{
@@ -40,6 +65,11 @@
     border-radius: 1rem;
     overflow: hidden;
     //-----------------------
+
+    @include respond(mobile){
+        grid-column: span 6; 
+        grid-row: span 3;
+    }
 }
   
 .secondCard{
@@ -61,6 +91,19 @@
     );
 
     @include glass();
+
+    @include respond(laptop){
+        gap: 3rem;
+    }
+
+    @include respond(tablet){
+        gap: 2rem;
+    }
+
+    @include respond(mobile){
+        grid-column: span 6; 
+        grid-row: span 1;
+    }
 }
   
 .thirdCard{
@@ -80,6 +123,11 @@
     );
 
     @include glass();
+
+    @include respond(mobile){
+        grid-column: span 6; 
+        grid-row: span 2;
+    }
 }
   
 .fourthCard{
@@ -101,6 +149,20 @@
     );
 
     @include glass();
+
+    @include respond(laptop){
+        padding: 3rem 1.5rem;
+    }
+
+    @include respond(tablet){
+        padding: 1.5rem 0.5rem;
+    }
+
+    @include respond(mobile){
+        grid-column: span 6; 
+        grid-row: span 3;
+        padding: 1.5rem;
+    }
 }
   
 .fifthCard{
@@ -111,8 +173,6 @@
     overflow: hidden;
     //-----------------------
     @include flex(column, center, center);
-    overflow-y: scroll;
-    scrollbar-width: none;
     color: $primary-90;
 
     background: linear-gradient(
@@ -126,6 +186,17 @@
 
     p{
         max-width: 450px;
+    }
+
+    @include respond(tablet){
+        p{
+            font-size: $fs-sm;
+        }
+    }
+
+    @include respond(mobile){
+        grid-column: span 6; 
+        grid-row: span 3;
     }
 }
   
@@ -163,24 +234,52 @@
     @include flex(row);
     flex-wrap: wrap;
     gap: 2rem;
+
+    @include respond(tablet){
+        gap: 1.5rem;
+    }
 }
 .toolLogo{
     height: 40px;
     width: auto;
     object-fit: cover;
     z-index: 2;
+
+    @include respond(tablet){
+        height: 35px;
+    }
 }
+
 .brandLogo{
     height: 50px;
     width: auto;
     object-fit: cover;
     z-index: 2;
+
+    @include respond(laptop){
+        height: 45px;
+    }
+
+    @include respond(tablet){
+        height: 35px;
+    }
+
+    @include respond(mobile){
+        height: 25px;
+    }
 }
 .textBg{
     position: absolute;
     bottom: 0%;
     left: 0%;
+    width: auto;
+    object-fit: cover;
     z-index: 1;
+
+    // background-color: red;
+    @include respond(mobile){
+        height: 4.5rem;
+    }
 }
 
 .statContainer{
@@ -191,10 +290,23 @@
             @include font(4.7rem, $fw-semibold, 1.1);
             color: rgba(255, 255, 255, 0.3);
             text-shadow: 0 10px 20px rgba(0, 0, 0, 0.75);
+
+            @include respond(laptop){
+                font-size: 3.7rem;
+            }
+
+            @include respond(tablet){
+                font-size: 2.7rem;
+            }
         }
 
         &:last-child{
             max-width: 100px;
+
+            @include respond(tablet){
+                font-size: $fs-sm;
+                text-align: center;
+            }
         }
     }
 }
@@ -214,6 +326,14 @@
       rgba(255, 255, 255, 0.2) 50%,
       rgba(255, 255, 255, 0.1) 100%
     );
+
+    @include respond(tablet){
+        left: 1rem;
+    }
+
+    @include respond(mobile){
+        left: 2rem;
+    }
 }
 .roleContainer{
     @include flex(row);
@@ -239,5 +359,26 @@
     }
     p{
         color: $grey-80;
+    }
+
+    @include respond(laptop){
+        h4{
+            font-size: $fs-base;
+        }
+        p{
+            font-size: $fs-sm;
+        }
+    }
+
+    @include respond(tablet){
+        h4{
+            font-size: $fs-sm;
+        }
+    }
+
+    @include respond(mobile){
+        h4{
+            font-size: $fs-base;
+        }
     }
 }
