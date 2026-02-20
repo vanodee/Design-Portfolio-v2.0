@@ -72,7 +72,6 @@
     width: 400px;
     padding-bottom: 0.25rem;
     border-bottom: 1px solid $primary-90;
-    // background-color: red;
 
     @include respond(tablet){
         display: none;
@@ -144,6 +143,13 @@
     }
 
     .navLink {
+        width: 90%;
+        padding: 1.25rem;
+        justify-content: left;
+    }
+
+    .navLinkActive {
+        transform: translateY(-5px) scale(1.2);
         width: 90%;
         padding: 1.25rem;
         justify-content: left;

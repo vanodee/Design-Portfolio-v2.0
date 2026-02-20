@@ -78,7 +78,7 @@ export default function NavBar() {
               <Link
                 key={path}
                 href={path === "/projects" ? `${path}/${defaultCategory}` : path}
-                className={isActive ? styles.navLinkActive: styles.navLink}
+                className={isActive ? styles.navLinkActive : styles.navLink}
               >
                 {name}
               </Link>
