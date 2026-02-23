@@ -106,6 +106,7 @@ export default async function ProjectPage({
     keywords: projectData.projectTags,
   };
 
+  
   return (
     <div 
       className={styles.projectPageContainer} 
