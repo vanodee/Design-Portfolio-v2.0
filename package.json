@@ -12,8 +12,8 @@
     "@sanity/client": "^7.12.1",
     "@sanity/image-url": "^1.2.0",
     "motion": "^12.23.25",
-    "next": "16.0.1",
-    "next-sanity": "^11.6.5",
+    "next": "^16.1.6",
+    "next-sanity": "^12.1.0",
     "react": "19.2.0",
     "react-dom": "19.2.0",
     "sass": "^1.93.3"
@@ -23,8 +23,9 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "babel-plugin-react-compiler": "1.0.0",
-    "eslint": "^9",
-    "eslint-config-next": "16.0.1",
+    "baseline-browser-mapping": "^2.10.0",
+    "eslint": "^10.0.1",
+    "eslint-config-next": "^0.2.4",
     "typescript": "^5"
   }
 }
