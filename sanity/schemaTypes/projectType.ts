@@ -150,6 +150,43 @@ export const projectType = defineType({
       ],
       description: 'List of quick stats for this project',
     }),
+    defineField({
+      name: 'ctaColor',
+      title: 'Background Color of Project CTA [Hexcode]',
+      type: 'string',
+      group: 'general',
+      description: 'e.g., "#940F84"',
+    }),
+    defineField({
+      name: 'liveLinks',
+      title: 'Project Live Links',
+      type: 'array',
+      group: 'general',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            { name: 'text', title: 'Primary CTA', type: 'string', description: 'e.g., "View Interactive Prototype"' },
+            { name: 'subText', title: 'Sub-Text in Parenthesis', type: 'string', description: 'e.g., "Desktop", "Mobile", "Responsive"' },
+            { 
+              name: 'ctaIcon', 
+              title: 'CTA Icon', 
+              type: 'string', 
+              options: {
+                list: [
+                  { title: 'Desktop', value: 'desktop' },
+                  { title: 'Mobile', value: 'mobile' },
+                  { title: 'Responsive', value: 'responsive' },
+                ],
+                layout: 'dropdown',
+              },
+            },
+            { name: 'url', title: 'URL to the live project/prototype', type: 'string', description: 'Preferably "https://..."' },
+          ],
+        },
+      ],
+      description: 'Links to Live versions this project',
+    }),
 
     // ===== Web App Fields =================================================================
     ...webAppFields,

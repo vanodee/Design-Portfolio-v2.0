@@ -109,11 +109,24 @@ export function LogosBrandingBody({ projectData, styles }: { projectData: any; s
           </div>
         ))}
 
-        {projectData.firstCorePortraitImages?.map((firstCorePortraitImage: any) => (
-          <div key={firstCorePortraitImage} className={styles.soloImageContainer}>
-            <Image className={styles.dividerImage} src={firstCorePortraitImage} height={1080} width={1920} alt="Persona" />
+        <div className={styles.infoCardContainer}>
+          
+        </div>
+        
+        {projectData.firstCorePortraitImages && (
+          <div className={styles.portraitImageContainer}>
+            {projectData.firstCorePortraitImages?.map((firstCorePortraitImage: any) => (
+              <Image 
+                key={firstCorePortraitImage}
+                className={styles.portraitImage} 
+                src={firstCorePortraitImage} 
+                height={1920} 
+                width={1080} 
+                alt="Portrait Image" 
+              />
+            ))}
           </div>
-        ))}
+        )}
       </section>
 
       {/* Second Core Section ---------------------------------------------------- */}
@@ -138,11 +151,21 @@ export function LogosBrandingBody({ projectData, styles }: { projectData: any; s
           </div>
         ))}
 
-        {projectData.secondCorePortraitImages?.map((secondCorePortraitImage: any) => (
-          <div key={secondCorePortraitImage} className={styles.soloImageContainer}>
-            <Image className={styles.dividerImage} src={secondCorePortraitImage} height={1080} width={1920} alt="Persona" />
+        {projectData.secondCorePortraitImages && (
+          <div className={styles.portraitImageContainer}>
+            {projectData.secondCorePortraitImages?.map((secondCorePortraitImage: any) => (
+              <Image 
+                key={secondCorePortraitImage}
+                className={styles.portraitImage} 
+                src={secondCorePortraitImage} 
+                height={1920} 
+                width={1080} 
+                alt="Portrait Image" 
+              />
+            ))}
           </div>
-        ))}
+        )}
+        
       </section>
 
       {/* Third Core Section ---------------------------------------------------- */}
@@ -167,11 +190,20 @@ export function LogosBrandingBody({ projectData, styles }: { projectData: any; s
           </div>
         ))}
 
-        {projectData.thirdCorePortraitImages?.map((thirdCorePortraitImage: any) => (
-          <div key={thirdCorePortraitImage} className={styles.soloImageContainer}>
-            <Image className={styles.dividerImage} src={thirdCorePortraitImage} height={1080} width={1920} alt="Persona" />
+        {projectData.thirdCorePortraitImages && (
+          <div className={styles.portraitImageContainer}>
+            {projectData.thirdCorePortraitImages?.map((thirdCorePortraitImage: any) => (
+              <Image 
+                key={thirdCorePortraitImage}
+                className={styles.portraitImage} 
+                src={thirdCorePortraitImage} 
+                height={1920} 
+                width={1080} 
+                alt="Portrait Image" 
+              />
+            ))}
           </div>
-        ))}
+        )}
       </section>
 
       {/* Outcomes Section ---------------------------------------------------- */}

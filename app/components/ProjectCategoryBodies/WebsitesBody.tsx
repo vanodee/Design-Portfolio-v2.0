@@ -19,6 +19,36 @@ export function WebsitesBody({ projectData, styles }: { projectData: any; styles
           </div>
         ))}
 
+        {/* Project Live Links ----------------------------------------------------------- */}
+        <div className={styles.liveLinkContainer}>
+          {projectData.liveLinks?.map((liveLink: any, index: number) => (
+            <a
+              key={index}
+              href={liveLink.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.liveLink}
+            >
+              <Image
+                className={styles.liveLinkIcon}
+                src={`/${liveLink.ctaIcon}LinkIcon.svg`}
+                height={50}
+                width={50}
+                alt="Live Link Icon"
+              />
+
+              <div className={styles.liveLinkText}>
+                <p>{liveLink.text}</p>
+
+                {liveLink.subText && (
+                  <p>{`[${liveLink.subText}]`}</p>
+                )}
+                
+              </div>
+            </a>
+          ))}
+        </div>
+
         {/* Business Context ---------------------------------- */}
         <div className={styles.soloTextContainer}>
           <h3>{projectData.website_businessContextHeading}</h3>
@@ -242,6 +272,36 @@ export function WebsitesBody({ projectData, styles }: { projectData: any; styles
               alt="Project Rationale Image"
             />
           </div>
+        </div>
+
+        {/* Project Live Links ----------------------------------------------------------- */}
+        <div className={styles.liveLinkContainer}>
+          {projectData.liveLinks?.map((liveLink: any, index: number) => (
+            <a
+              key={index}
+              href={liveLink.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.liveLink}
+            >
+              <Image
+                className={styles.liveLinkIcon}
+                src={`/${liveLink.ctaIcon}LinkIcon.svg`}
+                height={50}
+                width={50}
+                alt="Live Link Icon"
+              />
+
+              <div className={styles.liveLinkText}>
+                <p>{liveLink.text}</p>
+
+                {liveLink.subText && (
+                  <p>{`[${liveLink.subText}]`}</p>
+                )}
+                
+              </div>
+            </a>
+          ))}
         </div>
       </section>
 

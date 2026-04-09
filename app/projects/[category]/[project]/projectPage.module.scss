@@ -180,7 +180,7 @@
     }
 }
 
-// Platform Gifs -------------------------------
+// Platform Gifs --------------------------------------------
 .platformImageContainer{
     width: 100%;
     display: grid;
@@ -192,6 +192,70 @@
 .platformImage{
     height: 100%;
     object-fit: contain;
+}
+
+// Live Links -------------------------------------------------
+.liveLinkContainer{
+    @include flex(row);
+    width: 100%;
+    gap: 1rem;
+    padding: 2rem 0;
+    border-top: 1px solid $grey-60;
+    border-bottom: 1px solid $grey-60;
+
+    @include respond(laptop){
+        @include flex(column);
+        gap: 1.5rem;
+        padding: 2rem 1rem;
+    }
+
+    @include respond(mobile){
+        padding: 2rem 0.5rem;
+    }
+}
+.liveLink{
+    @include flex(row);
+    @include transition();
+    min-width: 290px;
+    text-decoration: none;
+    background-color: var(--projectCtaColor);
+    color: white;
+    font-weight: $fw-semibold;
+    padding: 1rem 0;
+    gap: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.45);
+
+    &:hover {
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.25);
+        filter: brightness(1.2);
+    }
+
+    @media(hover: none){
+        &:hover {
+            transform: translateY(0) scale(1);
+            box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.45);
+            filter: brightness(1);
+        }
+    }
+
+    @include respond(mobileMd){
+        width: 100%;
+        min-width: auto;
+    }
+}
+.liveLinkIcon{
+    @include respond(mobileSm){
+        display: none;
+    }
+}
+.liveLinkText{
+    p{
+        &:last-child{
+            font-weight: $fw-regular;
+        }
+    }
 }
 
 // SECTION DIVIDER =========================================================================
@@ -349,4 +413,19 @@
     @extend .infoCard;
     align-items: start;
     text-align: left;
+}
+.portraitImageContainer{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+
+    @include respond(tablet){
+        gap: 1rem;
+    }
+}
+.portraitImage{
+    object-fit: contain;
+    height: auto;
+    border-radius: 0.5rem;
 }

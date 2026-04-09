@@ -59,6 +59,13 @@ export const allProjectsQuery = groq`
     title,
     value,
   },
+  ctaColor,
+  liveLinks[]{
+    text,
+    subText,
+    ctaIcon,
+    url,
+  },
   "closingImage": closingImage.asset->url,
   
   // Category with slug

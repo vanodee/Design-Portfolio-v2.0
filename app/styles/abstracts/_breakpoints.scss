@@ -1,3 +1,5 @@
+@use "sass:map";
+
 // ------------------------------
 // BREAKPOINTS
 // ------------------------------
@@ -19,7 +21,7 @@ $breakpoints: (
 // @include respond(mobile, portrait) { ... }
 // ------------------------------
 @mixin respond($bp, $orientation: null) {
-  $size: map-get($breakpoints, $bp);
+  $size: map.get($breakpoints, $bp);
 
   @if $size == null {
     @error "Breakpoint `#{$bp}` not found in \$breakpoints map.";

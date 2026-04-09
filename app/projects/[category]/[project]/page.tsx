@@ -115,6 +115,7 @@ export default async function ProjectPage({
         "--projectBgColor": projectData.previewColor, 
         "--projectColor": projectData.projectColor,
         "--projectColorDark": projectData.projectColorDark,
+        "--projectCtaColor": projectData.ctaColor,
       } as React.CSSProperties}
     >
       

@@ -20,6 +20,36 @@ export function UxCaseStudiesBody({ projectData, styles }: { projectData: any; s
           ))}
         </div>
 
+        {/* Project Live Links ----------------------------------------------------------- */}
+        <div className={styles.liveLinkContainer}>
+          {projectData.liveLinks?.map((liveLink: any, index: number) => (
+            <a
+              key={index}
+              href={liveLink.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.liveLink}
+            >
+              <Image
+                className={styles.liveLinkIcon}
+                src={`/${liveLink.ctaIcon}LinkIcon.svg`}
+                height={50}
+                width={50}
+                alt="Live Link Icon"
+              />
+
+              <div className={styles.liveLinkText}>
+                <p>{liveLink.text}</p>
+
+                {liveLink.subText && (
+                  <p>{`[${liveLink.subText}]`}</p>
+                )}
+                
+              </div>
+            </a>
+          ))}
+        </div>
+
         {/* Text + Image Row ------------------------------- */}
         <div className={`${styles.textImageRow} ${styles["textImageRow--reverse"]}`}>
           <div className={styles.textContainer}>
@@ -80,8 +110,11 @@ export function UxCaseStudiesBody({ projectData, styles }: { projectData: any; s
           <p>{projectData.competitiveAnalysisIntro}</p>
         </div>
 
-        {projectData.competitors?.map((competitor: any) => (
-          <div key={competitor.competitorName} className={`${styles.textImageRow} ${styles["textImageRow--reverse"]}`}>
+        {projectData.competitors?.map((competitor: any, index: number) => (
+          <div 
+            key={competitor.competitorName} 
+            className={`${styles.textImageRow} ${index % 2 === 0 ? styles["textImageRow--reverse"] : ""}`}
+          >
             <div className={styles.textContainer}>
               <h3>{`${competitor.competitorName} (${competitor.competitorType})`}</h3>
               <p>
@@ -368,6 +401,36 @@ export function UxCaseStudiesBody({ projectData, styles }: { projectData: any; s
           </ul>
         </div>
 
+        {/* Project Live Links ----------------------------------------------------------- */}
+        <div className={styles.liveLinkContainer}>
+          {projectData.liveLinks?.map((liveLink: any, index: number) => (
+            <a
+              key={index}
+              href={liveLink.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.liveLink}
+            >
+              <Image
+                className={styles.liveLinkIcon}
+                src={`/${liveLink.ctaIcon}LinkIcon.svg`}
+                height={50}
+                width={50}
+                alt="Live Link Icon"
+              />
+
+              <div className={styles.liveLinkText}>
+                <p>{liveLink.text}</p>
+
+                {liveLink.subText && (
+                  <p>{`[${liveLink.subText}]`}</p>
+                )}
+                
+              </div>
+            </a>
+          ))}
+        </div>
+
         {/* Prototype Validation ---------------------------------------- */}
         <div className={styles.soloTextContainer}>
           <h3>{projectData.validationHeading}</h3>
@@ -418,8 +481,7 @@ export function UxCaseStudiesBody({ projectData, styles }: { projectData: any; s
           <div className={styles.rowImageContainer}>
             <Image
               className={styles.dividerImage}
-              // src={projectData.prototypeUpdatesImage}
-              src={projectData.studyResultsImage}
+              src={projectData.prototypeUpdatesImage}
               height={1080}
               width={1920}
               alt="Project Rationale Image"
