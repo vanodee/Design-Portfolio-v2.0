@@ -6,7 +6,7 @@ export function WebAppsBody({ projectData, styles }: { projectData: any; styles:
   return (
     <>
       <section className={styles.customSection}>
-        {/* Teaser Images ----------------------------------------------- */}
+        {/* Teaser Images & Videos ----------------------------------------------- */}
         {projectData.webApp_teaserImages?.map((teaserImage: any) => (
           <div key={teaserImage} className={styles.soloImageContainer}>
             <Image
@@ -16,6 +16,25 @@ export function WebAppsBody({ projectData, styles }: { projectData: any; styles:
               width={1920}
               alt="Web App teaser Image"
             />
+          </div>
+        ))}
+
+        {projectData.webApp_teaserVideos?.map((teaserVideo: any, index: number) => (
+          <div key={`${teaserVideo}-${index}`} className={styles.soloImageContainer}>
+            <video
+              className={styles.dividerImage}
+              src={teaserVideo}
+              poster={projectData.webApp_teaserVideoPosters?.[index]}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+            >
+              <source src={teaserVideo} type="video/mp4" />
+              <source src={teaserVideo} type="video/webm" />
+              Your browser does not support the video tag.
+            </video>
           </div>
         ))}
 
@@ -57,13 +76,32 @@ export function WebAppsBody({ projectData, styles }: { projectData: any; styles:
           </div>
 
           <div className={styles.rowImageContainer}>
-            <Image
-              className={styles.dividerImage}
-              src={projectData.webApp_productContextImage}
-              height={1080}
-              width={1920}
-              alt="Project Rationale Image"
-            />
+            {projectData.webApp_productContextVideo ? (
+              <video
+                className={styles.dividerImage}
+                src={projectData.webApp_productContextVideo}
+                poster={projectData.webApp_productContextVideoPoster}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+              >
+                <source src={projectData.webApp_productContextVideo} type="video/mp4" />
+                <source src={projectData.webApp_productContextVideo} type="video/webm" />
+                Your browser does not support the video tag.
+              </video>
+            ) : (
+              projectData.webApp_productContextImage && (
+                <Image
+                  className={styles.dividerImage}
+                  src={projectData.webApp_productContextImage}
+                  height={1080}
+                  width={1920}
+                  alt="Project Rationale Image"
+                />
+              )
+            )}
           </div>
         </div>
       </section>
@@ -105,13 +143,32 @@ export function WebAppsBody({ projectData, styles }: { projectData: any; styles:
           </div>
 
           <div className={styles.rowImageContainer}>
-            <Image
-              className={styles.dividerImage}
-              src={projectData.webApp_uxHypothesisImage}
-              height={1080}
-              width={1920}
-              alt="UX Hypothesis Image"
-            />
+            {projectData.webApp_uxHypothesisVideo ? (
+              <video
+                className={styles.dividerImage}
+                src={projectData.webApp_uxHypothesisVideo}
+                poster={projectData.webApp_uxHypothesisVideoPoster}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+              >
+                <source src={projectData.webApp_uxHypothesisVideo} type="video/mp4" />
+                <source src={projectData.webApp_uxHypothesisVideo} type="video/webm" />
+                Your browser does not support the video tag.
+              </video>
+            ) : (
+              projectData.webApp_uxHypothesisImage && (
+                <Image
+                  className={styles.dividerImage}
+                  src={projectData.webApp_uxHypothesisImage}
+                  height={1080}
+                  width={1920}
+                  alt="UX Hypothesis Image"
+                />
+              )
+            )}
           </div>
         </div>
 
@@ -124,6 +181,24 @@ export function WebAppsBody({ projectData, styles }: { projectData: any; styles:
               width={1920}
               alt="Initial Design Image"
             />
+          </div>
+        ))}
+        {projectData.webApp_initialDesignVideos?.map((initialVideo: any, index: number) => (
+          <div key={`${initialVideo}-${index}`} className={styles.soloImageContainer}>
+            <video
+              className={styles.dividerImage}
+              src={initialVideo}
+              poster={projectData.webApp_initialDesignVideoPosters?.[index]}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+            >
+              <source src={initialVideo} type="video/mp4" />
+              <source src={initialVideo} type="video/webm" />
+              Your browser does not support the video tag.
+            </video>
           </div>
         ))}
       </section>
@@ -157,6 +232,24 @@ export function WebAppsBody({ projectData, styles }: { projectData: any; styles:
             <Image className={styles.dividerImage} src={designImg} height={1080} width={1920} alt="Design Image" />
           </div>
         ))}
+        {projectData.webApp_designSectionVideos?.map((designVideo: any, index: number) => (
+          <div key={`${designVideo}-${index}`} className={styles.soloImageContainer}>
+            <video
+              className={styles.dividerImage}
+              src={designVideo}
+              poster={projectData.webApp_designSectionVideoPosters?.[index]}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+            >
+              <source src={designVideo} type="video/mp4" />
+              <source src={designVideo} type="video/webm" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        ))}
 
         {projectData.webApp_designSectionItems?.map((item: any, index: number) => (
           <div
@@ -174,13 +267,32 @@ export function WebAppsBody({ projectData, styles }: { projectData: any; styles:
             </div>
 
             <div className={styles.rowImageContainer}>
-              <Image
-                className={styles.dividerImage}
-                src={item.itemImage}
-                height={1080}
-                width={1920}
-                alt={`${item.itemName} Image`}
-              />
+              {item.itemVideo ? (
+                <video
+                  className={styles.dividerImage}
+                  src={item.itemVideo}
+                  poster={item.itemVideoPoster}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                >
+                  <source src={item.itemVideo} type="video/mp4" />
+                  <source src={item.itemVideo} type="video/webm" />
+                  Your browser does not support the video tag.
+                </video>
+              ) : (
+                item.itemImage && (
+                  <Image
+                    className={styles.dividerImage}
+                    src={item.itemImage}
+                    height={1080}
+                    width={1920}
+                    alt={`${item.itemName} Image`}
+                  />
+                )
+              )}
             </div>
           </div>
         ))}
@@ -204,6 +316,24 @@ export function WebAppsBody({ projectData, styles }: { projectData: any; styles:
             />
           </div>
         ))}
+        {projectData.webApp_devSectionVideos?.map((devVideo: any, index: number) => (
+          <div key={`${devVideo}-${index}`} className={styles.soloImageContainer}>
+            <video
+              className={styles.dividerImage}
+              src={devVideo}
+              poster={projectData.webApp_devSectionVideoPosters?.[index]}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+            >
+              <source src={devVideo} type="video/mp4" />
+              <source src={devVideo} type="video/webm" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        ))}
 
         {projectData.webApp_devSectionItems?.map((item: any, index: number) => (
           <div
@@ -216,13 +346,32 @@ export function WebAppsBody({ projectData, styles }: { projectData: any; styles:
             </div>
 
             <div className={styles.rowImageContainer}>
-              <Image
-                className={styles.dividerImage}
-                src={item.itemImage}
-                height={1080}
-                width={1920}
-                alt={`${item.itemName} Image`}
-              />
+              {item.itemVideo ? (
+                <video
+                  className={styles.dividerImage}
+                  src={item.itemVideo}
+                  poster={item.itemVideoPoster}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                >
+                  <source src={item.itemVideo} type="video/mp4" />
+                  <source src={item.itemVideo} type="video/webm" />
+                  Your browser does not support the video tag.
+                </video>
+              ) : (
+                item.itemImage && (
+                  <Image
+                    className={styles.dividerImage}
+                    src={item.itemImage}
+                    height={1080}
+                    width={1920}
+                    alt={`${item.itemName} Image`}
+                  />
+                )
+              )}
             </div>
           </div>
         ))}
@@ -244,6 +393,24 @@ export function WebAppsBody({ projectData, styles }: { projectData: any; styles:
               width={1920}
               alt="Finished Product Image"
             />
+          </div>
+        ))}
+        {projectData.webApp_finishedProdVideos?.map((finishedVideo: any, index: number) => (
+          <div key={`${finishedVideo}-${index}`} className={styles.soloImageContainer}>
+            <video
+              className={styles.dividerImage}
+              src={finishedVideo}
+              poster={projectData.webApp_finishedProdVideoPosters?.[index]}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+            >
+              <source src={finishedVideo} type="video/mp4" />
+              <source src={finishedVideo} type="video/webm" />
+              Your browser does not support the video tag.
+            </video>
           </div>
         ))}
 
@@ -317,13 +484,32 @@ export function WebAppsBody({ projectData, styles }: { projectData: any; styles:
           </div>
 
           <div className={styles.rowImageContainer}>
-            <Image
-              className={styles.dividerImage}
-              src={projectData.webApp_keyLearnImage}
-              height={1080}
-              width={1920}
-              alt="Key Learning Image"
-            />
+            {projectData.webApp_keyLearnVideo ? (
+              <video
+                className={styles.dividerImage}
+                src={projectData.webApp_keyLearnVideo}
+                poster={projectData.webApp_keyLearnVideoPoster}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+              >
+                <source src={projectData.webApp_keyLearnVideo} type="video/mp4" />
+                <source src={projectData.webApp_keyLearnVideo} type="video/webm" />
+                Your browser does not support the video tag.
+              </video>
+            ) : (
+              projectData.webApp_keyLearnImage && (
+                <Image
+                  className={styles.dividerImage}
+                  src={projectData.webApp_keyLearnImage}
+                  height={1080}
+                  width={1920}
+                  alt="Key Learning Image"
+                />
+              )
+            )}
           </div>
         </div>
 
@@ -344,13 +530,32 @@ export function WebAppsBody({ projectData, styles }: { projectData: any; styles:
           </div>
 
           <div className={styles.rowImageContainer}>
-            <Image
-              className={styles.dividerImage}
-              src={projectData.webApp_whatWorkedImage}
-              height={1080}
-              width={1920}
-              alt="What Worked Image"
-            />
+            {projectData.webApp_whatWorkedVideo ? (
+              <video
+                className={styles.dividerImage}
+                src={projectData.webApp_whatWorkedVideo}
+                poster={projectData.webApp_whatWorkedVideoPoster}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+              >
+                <source src={projectData.webApp_whatWorkedVideo} type="video/mp4" />
+                <source src={projectData.webApp_whatWorkedVideo} type="video/webm" />
+                Your browser does not support the video tag.
+              </video>
+            ) : (
+              projectData.webApp_whatWorkedImage && (
+                <Image
+                  className={styles.dividerImage}
+                  src={projectData.webApp_whatWorkedImage}
+                  height={1080}
+                  width={1920}
+                  alt="What Worked Image"
+                />
+              )
+            )}
           </div>
         </div>
       </section>

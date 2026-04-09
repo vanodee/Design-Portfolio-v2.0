@@ -12,6 +12,24 @@ export function LogosBrandingBody({ projectData, styles }: { projectData: any; s
             <Image className={styles.dividerImage} src={teaserImage} height={1080} width={1920} alt="Logo teaser Image" />
           </div>
         ))}
+        {projectData.teaserVideos?.map((teaserVideo: any, index: number) => (
+          <div key={`${teaserVideo}-${index}`} className={styles.soloImageContainer}>
+            <video
+              className={styles.dividerImage}
+              src={teaserVideo}
+              poster={projectData.teaserVideoPosters?.[index]}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+            >
+              <source src={teaserVideo} type="video/mp4" />
+              <source src={teaserVideo} type="video/webm" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        ))}
 
         {/* Business Context ---------------------------------- */}
         <div className={styles.soloTextContainer}>
@@ -32,13 +50,32 @@ export function LogosBrandingBody({ projectData, styles }: { projectData: any; s
           </div>
 
           <div className={styles.rowImageContainer}>
-            <Image
-              className={styles.dividerImage}
-              src={projectData.problemsIdentifiedImage}
-              height={1080}
-              width={1920}
-              alt="Project Rationale Image"
-            />
+            {projectData.problemsIdentifiedVideo ? (
+              <video
+                className={styles.dividerImage}
+                src={projectData.problemsIdentifiedVideo}
+                poster={projectData.problemsIdentifiedVideoPoster}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+              >
+                <source src={projectData.problemsIdentifiedVideo} type="video/mp4" />
+                <source src={projectData.problemsIdentifiedVideo} type="video/webm" />
+                Your browser does not support the video tag.
+              </video>
+            ) : (
+              projectData.problemsIdentifiedImage && (
+                <Image
+                  className={styles.dividerImage}
+                  src={projectData.problemsIdentifiedImage}
+                  height={1080}
+                  width={1920}
+                  alt="Project Rationale Image"
+                />
+              )
+            )}
           </div>
         </div>
 
@@ -55,13 +92,32 @@ export function LogosBrandingBody({ projectData, styles }: { projectData: any; s
           </div>
 
           <div className={styles.rowImageContainer}>
-            <Image
-              className={styles.dividerImage}
-              src={projectData.designObjectivesImage}
-              height={1080}
-              width={1920}
-              alt="Project Rationale Image"
-            />
+            {projectData.designObjectivesVideo ? (
+              <video
+                className={styles.dividerImage}
+                src={projectData.designObjectivesVideo}
+                poster={projectData.designObjectivesVideoPoster}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+              >
+                <source src={projectData.designObjectivesVideo} type="video/mp4" />
+                <source src={projectData.designObjectivesVideo} type="video/webm" />
+                Your browser does not support the video tag.
+              </video>
+            ) : (
+              projectData.designObjectivesImage && (
+                <Image
+                  className={styles.dividerImage}
+                  src={projectData.designObjectivesImage}
+                  height={1080}
+                  width={1920}
+                  alt="Project Rationale Image"
+                />
+              )
+            )}
           </div>
         </div>
       </section>
@@ -108,6 +164,24 @@ export function LogosBrandingBody({ projectData, styles }: { projectData: any; s
             <Image className={styles.dividerImage} src={firstCoreLandscapeImage} height={1080} width={1920} alt="Persona" />
           </div>
         ))}
+        {projectData.firstCoreLandscapeVideos?.map((firstCoreLandscapeVideo: any, index: number) => (
+          <div key={`${firstCoreLandscapeVideo}-${index}`} className={styles.soloImageContainer}>
+            <video
+              className={styles.dividerImage}
+              src={firstCoreLandscapeVideo}
+              poster={projectData.firstCoreLandscapeVideoPosters?.[index]}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+            >
+              <source src={firstCoreLandscapeVideo} type="video/mp4" />
+              <source src={firstCoreLandscapeVideo} type="video/webm" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        ))}
 
         <div className={styles.infoCardContainer}>
           
@@ -124,6 +198,27 @@ export function LogosBrandingBody({ projectData, styles }: { projectData: any; s
                 width={1080} 
                 alt="Portrait Image" 
               />
+            ))}
+          </div>
+        )}
+        {projectData.firstCorePortraitVideos && (
+          <div className={styles.portraitImageContainer}>
+            {projectData.firstCorePortraitVideos?.map((firstCorePortraitVideo: any, index: number) => (
+              <video
+                key={`${firstCorePortraitVideo}-${index}`}
+                className={styles.portraitImage}
+                src={firstCorePortraitVideo}
+                poster={projectData.firstCorePortraitVideoPosters?.[index]}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+              >
+                <source src={firstCorePortraitVideo} type="video/mp4" />
+                <source src={firstCorePortraitVideo} type="video/webm" />
+                Your browser does not support the video tag.
+              </video>
             ))}
           </div>
         )}
@@ -150,6 +245,24 @@ export function LogosBrandingBody({ projectData, styles }: { projectData: any; s
             <Image className={styles.dividerImage} src={secondCoreLandscapeImage} height={1080} width={1920} alt="Persona" />
           </div>
         ))}
+        {projectData.secondCoreLandscapeVideos?.map((secondCoreLandscapeVideo: any, index: number) => (
+          <div key={`${secondCoreLandscapeVideo}-${index}`} className={styles.soloImageContainer}>
+            <video
+              className={styles.dividerImage}
+              src={secondCoreLandscapeVideo}
+              poster={projectData.secondCoreLandscapeVideoPosters?.[index]}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+            >
+              <source src={secondCoreLandscapeVideo} type="video/mp4" />
+              <source src={secondCoreLandscapeVideo} type="video/webm" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        ))}
 
         {projectData.secondCorePortraitImages && (
           <div className={styles.portraitImageContainer}>
@@ -162,6 +275,27 @@ export function LogosBrandingBody({ projectData, styles }: { projectData: any; s
                 width={1080} 
                 alt="Portrait Image" 
               />
+            ))}
+          </div>
+        )}
+        {projectData.secondCorePortraitVideos && (
+          <div className={styles.portraitImageContainer}>
+            {projectData.secondCorePortraitVideos?.map((secondCorePortraitVideo: any, index: number) => (
+              <video
+                key={`${secondCorePortraitVideo}-${index}`}
+                className={styles.portraitImage}
+                src={secondCorePortraitVideo}
+                poster={projectData.secondCorePortraitVideoPosters?.[index]}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+              >
+                <source src={secondCorePortraitVideo} type="video/mp4" />
+                <source src={secondCorePortraitVideo} type="video/webm" />
+                Your browser does not support the video tag.
+              </video>
             ))}
           </div>
         )}
@@ -189,6 +323,24 @@ export function LogosBrandingBody({ projectData, styles }: { projectData: any; s
             <Image className={styles.dividerImage} src={thirdCoreLandscapeImage} height={1080} width={1920} alt="Persona" />
           </div>
         ))}
+        {projectData.thirdCoreLandscapeVideos?.map((thirdCoreLandscapeVideo: any, index: number) => (
+          <div key={`${thirdCoreLandscapeVideo}-${index}`} className={styles.soloImageContainer}>
+            <video
+              className={styles.dividerImage}
+              src={thirdCoreLandscapeVideo}
+              poster={projectData.thirdCoreLandscapeVideoPosters?.[index]}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+            >
+              <source src={thirdCoreLandscapeVideo} type="video/mp4" />
+              <source src={thirdCoreLandscapeVideo} type="video/webm" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        ))}
 
         {projectData.thirdCorePortraitImages && (
           <div className={styles.portraitImageContainer}>
@@ -201,6 +353,27 @@ export function LogosBrandingBody({ projectData, styles }: { projectData: any; s
                 width={1080} 
                 alt="Portrait Image" 
               />
+            ))}
+          </div>
+        )}
+        {projectData.thirdCorePortraitVideos && (
+          <div className={styles.portraitImageContainer}>
+            {projectData.thirdCorePortraitVideos?.map((thirdCorePortraitVideo: any, index: number) => (
+              <video
+                key={`${thirdCorePortraitVideo}-${index}`}
+                className={styles.portraitImage}
+                src={thirdCorePortraitVideo}
+                poster={projectData.thirdCorePortraitVideoPosters?.[index]}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+              >
+                <source src={thirdCorePortraitVideo} type="video/mp4" />
+                <source src={thirdCorePortraitVideo} type="video/webm" />
+                Your browser does not support the video tag.
+              </video>
             ))}
           </div>
         )}
@@ -245,7 +418,26 @@ export function LogosBrandingBody({ projectData, styles }: { projectData: any; s
           </div>
 
           <div className={styles.rowImageContainer}>
-            <Image className={styles.dividerImage} src={projectData.keyLearnImage} height={1080} width={1920} alt="Key Learning Image" />
+            {projectData.keyLearnVideo ? (
+              <video
+                className={styles.dividerImage}
+                src={projectData.keyLearnVideo}
+                poster={projectData.keyLearnVideoPoster}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+              >
+                <source src={projectData.keyLearnVideo} type="video/mp4" />
+                <source src={projectData.keyLearnVideo} type="video/webm" />
+                Your browser does not support the video tag.
+              </video>
+            ) : (
+              projectData.keyLearnImage && (
+                <Image className={styles.dividerImage} src={projectData.keyLearnImage} height={1080} width={1920} alt="Key Learning Image" />
+              )
+            )}
           </div>
         </div>
 
@@ -266,7 +458,26 @@ export function LogosBrandingBody({ projectData, styles }: { projectData: any; s
           </div>
 
           <div className={styles.rowImageContainer}>
-            <Image className={styles.dividerImage} src={projectData.whatWorkedImage} height={1080} width={1920} alt="What Worked Image" />
+            {projectData.whatWorkedVideo ? (
+              <video
+                className={styles.dividerImage}
+                src={projectData.whatWorkedVideo}
+                poster={projectData.whatWorkedVideoPoster}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+              >
+                <source src={projectData.whatWorkedVideo} type="video/mp4" />
+                <source src={projectData.whatWorkedVideo} type="video/webm" />
+                Your browser does not support the video tag.
+              </video>
+            ) : (
+              projectData.whatWorkedImage && (
+                <Image className={styles.dividerImage} src={projectData.whatWorkedImage} height={1080} width={1920} alt="What Worked Image" />
+              )
+            )}
           </div>
         </div>
       </section>

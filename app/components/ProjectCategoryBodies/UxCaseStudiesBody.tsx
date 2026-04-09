@@ -7,16 +7,33 @@ export function UxCaseStudiesBody({ projectData, styles }: { projectData: any; s
     <>
       <section className={styles.customSection}>
         {/* Platform Gifs ------------------------------- */}
-        <div className={styles.platformImageContainer}>
+        <div className={styles.soloImageContainer}>
           {projectData.platformImages?.map((platformImage: any) => (
             <Image
               key={platformImage}
-              className={styles.platformImage}
+              className={styles.dividerImage}
               src={platformImage}
               height={1080}
               width={1920}
               alt="Platform Image"
             />
+          ))}
+          {projectData.platformVideos?.map((platformVideo: any, index: number) => (
+            <video
+              key={`${platformVideo}-${index}`}
+              className={styles.dividerImage}
+              src={platformVideo}
+              poster={projectData.platformVideoPosters?.[index]}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+            >
+              <source src={platformVideo} type="video/mp4" />
+              <source src={platformVideo} type="video/webm" />
+              Your browser does not support the video tag.
+            </video>
           ))}
         </div>
 
@@ -58,13 +75,32 @@ export function UxCaseStudiesBody({ projectData, styles }: { projectData: any; s
           </div>
 
           <div className={styles.rowImageContainer}>
-            <Image
-              className={styles.dividerImage}
-              src={projectData.projectRationaleImage}
-              height={1080}
-              width={1920}
-              alt="Project Rationale Image"
-            />
+            {projectData.projectRationaleVideo ? (
+              <video
+                className={styles.dividerImage}
+                src={projectData.projectRationaleVideo}
+                poster={projectData.projectRationaleVideoPoster}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+              >
+                <source src={projectData.projectRationaleVideo} type="video/mp4" />
+                <source src={projectData.projectRationaleVideo} type="video/webm" />
+                Your browser does not support the video tag.
+              </video>
+            ) : (
+              projectData.projectRationaleImage && (
+                <Image
+                  className={styles.dividerImage}
+                  src={projectData.projectRationaleImage}
+                  height={1080}
+                  width={1920}
+                  alt="Project Rationale Image"
+                />
+              )
+            )}
           </div>
         </div>
       </section>
@@ -73,13 +109,32 @@ export function UxCaseStudiesBody({ projectData, styles }: { projectData: any; s
       <div className={styles.dividerImageContainer}>
         <h2>{projectData.researchSectionTitle}</h2>
 
-        <Image
-          className={styles.dividerImage}
-          src={projectData.researchSectionImage}
-          height={1080}
-          width={1920}
-          alt="Research Divider Image"
-        />
+        {projectData.researchSectionVideo ? (
+          <video
+            className={styles.dividerImage}
+            src={projectData.researchSectionVideo}
+            poster={projectData.researchSectionVideoPoster}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+          >
+            <source src={projectData.researchSectionVideo} type="video/mp4" />
+            <source src={projectData.researchSectionVideo} type="video/webm" />
+            Your browser does not support the video tag.
+          </video>
+        ) : (
+          projectData.researchSectionImage && (
+            <Image
+              className={styles.dividerImage}
+              src={projectData.researchSectionImage}
+              height={1080}
+              width={1920}
+              alt="Research Divider Image"
+            />
+          )
+        )}
       </div>
       {/* ====================================== ************* =================================== */}
 
@@ -92,13 +147,32 @@ export function UxCaseStudiesBody({ projectData, styles }: { projectData: any; s
           </div>
 
           <div className={styles.rowImageContainer}>
-            <Image
-              className={styles.dividerImage}
-              src={projectData.marketResearchVisual}
-              height={1080}
-              width={1920}
-              alt="Market Research Image"
-            />
+            {projectData.marketResearchVisualVideo ? (
+              <video
+                className={styles.dividerImage}
+                src={projectData.marketResearchVisualVideo}
+                poster={projectData.marketResearchVisualVideoPoster}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+              >
+                <source src={projectData.marketResearchVisualVideo} type="video/mp4" />
+                <source src={projectData.marketResearchVisualVideo} type="video/webm" />
+                Your browser does not support the video tag.
+              </video>
+            ) : (
+              projectData.marketResearchVisual && (
+                <Image
+                  className={styles.dividerImage}
+                  src={projectData.marketResearchVisual}
+                  height={1080}
+                  width={1920}
+                  alt="Market Research Image"
+                />
+              )
+            )}
           </div>
         </div>
       </section>
@@ -131,13 +205,32 @@ export function UxCaseStudiesBody({ projectData, styles }: { projectData: any; s
             </div>
 
             <div className={styles.rowImageContainer}>
-              <Image
-                className={styles.dividerImage}
-                src={competitor.competitorImage}
-                height={1080}
-                width={1920}
-                alt={`${competitor.competitorName} - Competitor Image`}
-              />
+              {competitor.competitorVideo ? (
+                <video
+                  className={styles.dividerImage}
+                  src={competitor.competitorVideo}
+                  poster={competitor.competitorVideoPoster}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                >
+                  <source src={competitor.competitorVideo} type="video/mp4" />
+                  <source src={competitor.competitorVideo} type="video/webm" />
+                  Your browser does not support the video tag.
+                </video>
+              ) : (
+                competitor.competitorImage && (
+                  <Image
+                    className={styles.dividerImage}
+                    src={competitor.competitorImage}
+                    height={1080}
+                    width={1920}
+                    alt={`${competitor.competitorName} - Competitor Image`}
+                  />
+                )
+              )}
             </div>
           </div>
         ))}
@@ -155,13 +248,32 @@ export function UxCaseStudiesBody({ projectData, styles }: { projectData: any; s
           </div>
 
           <div className={styles.rowImageContainer}>
-            <Image
-              className={styles.dividerImage}
-              src={projectData.opportunitiesImage}
-              height={1080}
-              width={1920}
-              alt="Opportunities Image"
-            />
+            {projectData.opportunitiesVideo ? (
+              <video
+                className={styles.dividerImage}
+                src={projectData.opportunitiesVideo}
+                poster={projectData.opportunitiesVideoPoster}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+              >
+                <source src={projectData.opportunitiesVideo} type="video/mp4" />
+                <source src={projectData.opportunitiesVideo} type="video/webm" />
+                Your browser does not support the video tag.
+              </video>
+            ) : (
+              projectData.opportunitiesImage && (
+                <Image
+                  className={styles.dividerImage}
+                  src={projectData.opportunitiesImage}
+                  height={1080}
+                  width={1920}
+                  alt="Opportunities Image"
+                />
+              )
+            )}
           </div>
         </div>
       </section>
@@ -178,6 +290,24 @@ export function UxCaseStudiesBody({ projectData, styles }: { projectData: any; s
             <Image className={styles.dividerImage} src={surveyChart} height={1080} width={1920} alt="Survery Chart" />
           </div>
         ))}
+        {projectData.surveyChartsVideo?.map((surveyChartVideo: any, index: number) => (
+          <div key={`${surveyChartVideo}-${index}`} className={styles.soloImageContainer}>
+            <video
+              className={styles.dividerImage}
+              src={surveyChartVideo}
+              poster={projectData.surveyChartsVideoPoster?.[index]}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+            >
+              <source src={surveyChartVideo} type="video/mp4" />
+              <source src={surveyChartVideo} type="video/webm" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        ))}
 
         {/* Assumptions Validated ---------------------------------------------------- */}
         <div className={`${styles.textImageRow} ${styles["textImageRow--reverse"]}`}>
@@ -192,13 +322,32 @@ export function UxCaseStudiesBody({ projectData, styles }: { projectData: any; s
           </div>
 
           <div className={styles.rowImageContainer}>
-            <Image
-              className={styles.dividerImage}
-              src={projectData.assumptionValidationImage}
-              height={1080}
-              width={1920}
-              alt="Section Image"
-            />
+            {projectData.assumptionValidationVideo ? (
+              <video
+                className={styles.dividerImage}
+                src={projectData.assumptionValidationVideo}
+                poster={projectData.assumptionValidationVideoPoster}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+              >
+                <source src={projectData.assumptionValidationVideo} type="video/mp4" />
+                <source src={projectData.assumptionValidationVideo} type="video/webm" />
+                Your browser does not support the video tag.
+              </video>
+            ) : (
+              projectData.assumptionValidationImage && (
+                <Image
+                  className={styles.dividerImage}
+                  src={projectData.assumptionValidationImage}
+                  height={1080}
+                  width={1920}
+                  alt="Section Image"
+                />
+              )
+            )}
           </div>
         </div>
       </section>
@@ -236,6 +385,24 @@ export function UxCaseStudiesBody({ projectData, styles }: { projectData: any; s
             <Image className={styles.dividerImage} src={persona} height={1080} width={1920} alt="Persona" />
           </div>
         ))}
+        {projectData.personasVideo?.map((personaVideo: any, index: number) => (
+          <div key={`${personaVideo}-${index}`} className={styles.soloImageContainer}>
+            <video
+              className={styles.dividerImage}
+              src={personaVideo}
+              poster={projectData.personasVideoPoster?.[index]}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+            >
+              <source src={personaVideo} type="video/mp4" />
+              <source src={personaVideo} type="video/webm" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        ))}
       </section>
 
       {/* Problem Statement / Research Summary ---------------------------------------------------- */}
@@ -263,13 +430,32 @@ export function UxCaseStudiesBody({ projectData, styles }: { projectData: any; s
       <div className={styles.dividerImageContainer}>
         <h2>{projectData.ideationSectionTitle}</h2>
 
-        <Image
-          className={styles.dividerImage}
-          src={projectData.ideationSectionImage}
-          height={1080}
-          width={1920}
-          alt="Ideation Divider Image"
-        />
+        {projectData.ideationSectionVideo ? (
+          <video
+            className={styles.dividerImage}
+            src={projectData.ideationSectionVideo}
+            poster={projectData.ideationSectionVideoPoster}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+          >
+            <source src={projectData.ideationSectionVideo} type="video/mp4" />
+            <source src={projectData.ideationSectionVideo} type="video/webm" />
+            Your browser does not support the video tag.
+          </video>
+        ) : (
+          projectData.ideationSectionImage && (
+            <Image
+              className={styles.dividerImage}
+              src={projectData.ideationSectionImage}
+              height={1080}
+              width={1920}
+              alt="Ideation Divider Image"
+            />
+          )
+        )}
       </div>
       {/* ====================================== ************* =================================== */}
 
@@ -291,6 +477,24 @@ export function UxCaseStudiesBody({ projectData, styles }: { projectData: any; s
             />
           </div>
         ))}
+        {projectData.userFlowDiagramsVideo?.map((userFlowDiagramVideo: any, index: number) => (
+          <div key={`${userFlowDiagramVideo}-${index}`} className={styles.soloImageContainer}>
+            <video
+              className={styles.dividerImage}
+              src={userFlowDiagramVideo}
+              poster={projectData.userFlowDiagramsVideoPoster?.[index]}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+            >
+              <source src={userFlowDiagramVideo} type="video/mp4" />
+              <source src={userFlowDiagramVideo} type="video/webm" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        ))}
       </section>
 
       {/* Infomation Architecture ---------------------------------------------------- */}
@@ -301,13 +505,32 @@ export function UxCaseStudiesBody({ projectData, styles }: { projectData: any; s
         </div>
 
         <div className={styles.soloImageContainer}>
-          <Image
-            className={styles.dividerImage}
-            src={projectData.informationArchitectureImage}
-            height={1080}
-            width={1920}
-            alt="Information Architecture Diagram"
-          />
+          {projectData.informationArchitectureVideo ? (
+            <video
+              className={styles.dividerImage}
+              src={projectData.informationArchitectureVideo}
+              poster={projectData.informationArchitectureVideoPoster}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+            >
+              <source src={projectData.informationArchitectureVideo} type="video/mp4" />
+              <source src={projectData.informationArchitectureVideo} type="video/webm" />
+              Your browser does not support the video tag.
+            </video>
+          ) : (
+            projectData.informationArchitectureImage && (
+              <Image
+                className={styles.dividerImage}
+                src={projectData.informationArchitectureImage}
+                height={1080}
+                width={1920}
+                alt="Information Architecture Diagram"
+              />
+            )
+          )}
         </div>
       </section>
 
@@ -323,19 +546,56 @@ export function UxCaseStudiesBody({ projectData, styles }: { projectData: any; s
             <Image className={styles.dividerImage} src={wireframeImage} height={1080} width={1920} alt="User Flow Diagram" />
           </div>
         ))}
+        {projectData.wireframeVideos?.map((wireframeVideo: any, index: number) => (
+          <div key={`${wireframeVideo}-${index}`} className={styles.soloImageContainer}>
+            <video
+              className={styles.dividerImage}
+              src={wireframeVideo}
+              poster={projectData.wireframeVideoPosters?.[index]}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+            >
+              <source src={wireframeVideo} type="video/mp4" />
+              <source src={wireframeVideo} type="video/webm" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        ))}
       </section>
 
       {/* ====================================== SECTION DIVIDER =================================== */}
       <div className={styles.dividerImageContainer}>
         <h2>{projectData.visualDesignSectionTitle}</h2>
 
-        <Image
-          className={styles.dividerImage}
-          src={projectData.visualDesignSectionImage}
-          height={1080}
-          width={1920}
-          alt="Ideation Divider Image"
-        />
+        {projectData.visualDesignSectionVideo ? (
+          <video
+            className={styles.dividerImage}
+            src={projectData.visualDesignSectionVideo}
+            poster={projectData.visualDesignSectionVideoPoster}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+          >
+            <source src={projectData.visualDesignSectionVideo} type="video/mp4" />
+            <source src={projectData.visualDesignSectionVideo} type="video/webm" />
+            Your browser does not support the video tag.
+          </video>
+        ) : (
+          projectData.visualDesignSectionImage && (
+            <Image
+              className={styles.dividerImage}
+              src={projectData.visualDesignSectionImage}
+              height={1080}
+              width={1920}
+              alt="Ideation Divider Image"
+            />
+          )
+        )}
       </div>
       {/* ====================================== ************* =================================== */}
 
@@ -349,6 +609,24 @@ export function UxCaseStudiesBody({ projectData, styles }: { projectData: any; s
         {projectData.styleGuideImages?.map((styleGuideImage: any) => (
           <div key={styleGuideImage} className={styles.soloImageContainer}>
             <Image className={styles.dividerImage} src={styleGuideImage} height={1080} width={1920} alt="User Flow Diagram" />
+          </div>
+        ))}
+        {projectData.styleGuideVideos?.map((styleGuideVideo: any, index: number) => (
+          <div key={`${styleGuideVideo}-${index}`} className={styles.soloImageContainer}>
+            <video
+              className={styles.dividerImage}
+              src={styleGuideVideo}
+              poster={projectData.styleGuideVideoPosters?.[index]}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+            >
+              <source src={styleGuideVideo} type="video/mp4" />
+              <source src={styleGuideVideo} type="video/webm" />
+              Your browser does not support the video tag.
+            </video>
           </div>
         ))}
       </section>
@@ -374,6 +652,24 @@ export function UxCaseStudiesBody({ projectData, styles }: { projectData: any; s
             <Image className={styles.dividerImage} src={highFidelityMockup} height={1080} width={1920} alt="Mockup" />
           </div>
         ))}
+        {projectData.highFidelityMockupsVideo?.map((highFidelityVideo: any, index: number) => (
+          <div key={`${highFidelityVideo}-${index}`} className={styles.soloImageContainer}>
+            <video
+              className={styles.dividerImage}
+              src={highFidelityVideo}
+              poster={projectData.highFidelityMockupsVideoPoster?.[index]}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+            >
+              <source src={highFidelityVideo} type="video/mp4" />
+              <source src={highFidelityVideo} type="video/webm" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        ))}
       </section>
 
       {/* Prototype Section ---------------------------------------- */}
@@ -386,6 +682,24 @@ export function UxCaseStudiesBody({ projectData, styles }: { projectData: any; s
         {projectData.prototypeImages?.map((prototypeImage: any) => (
           <div key={prototypeImage} className={styles.soloImageContainer}>
             <Image className={styles.dividerImage} src={prototypeImage} height={1080} width={1920} alt="Prototype Image" />
+          </div>
+        ))}
+        {projectData.prototypeVideos?.map((prototypeVideo: any, index: number) => (
+          <div key={`${prototypeVideo}-${index}`} className={styles.soloImageContainer}>
+            <video
+              className={styles.dividerImage}
+              src={prototypeVideo}
+              poster={projectData.prototypeVideoPosters?.[index]}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+            >
+              <source src={prototypeVideo} type="video/mp4" />
+              <source src={prototypeVideo} type="video/webm" />
+              Your browser does not support the video tag.
+            </video>
           </div>
         ))}
 
@@ -456,13 +770,32 @@ export function UxCaseStudiesBody({ projectData, styles }: { projectData: any; s
           </div>
 
           <div className={styles.rowImageContainer}>
-            <Image
-              className={styles.dividerImage}
-              src={projectData.studyResultsImage}
-              height={1080}
-              width={1920}
-              alt="Project Rationale Image"
-            />
+            {projectData.studyResultsVideo ? (
+              <video
+                className={styles.dividerImage}
+                src={projectData.studyResultsVideo}
+                poster={projectData.studyResultsVideoPoster}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+              >
+                <source src={projectData.studyResultsVideo} type="video/mp4" />
+                <source src={projectData.studyResultsVideo} type="video/webm" />
+                Your browser does not support the video tag.
+              </video>
+            ) : (
+              projectData.studyResultsImage && (
+                <Image
+                  className={styles.dividerImage}
+                  src={projectData.studyResultsImage}
+                  height={1080}
+                  width={1920}
+                  alt="Project Rationale Image"
+                />
+              )
+            )}
           </div>
         </div>
 
@@ -479,13 +812,32 @@ export function UxCaseStudiesBody({ projectData, styles }: { projectData: any; s
           </div>
 
           <div className={styles.rowImageContainer}>
-            <Image
-              className={styles.dividerImage}
-              src={projectData.prototypeUpdatesImage}
-              height={1080}
-              width={1920}
-              alt="Project Rationale Image"
-            />
+            {projectData.prototypeUpdatesVideo ? (
+              <video
+                className={styles.dividerImage}
+                src={projectData.prototypeUpdatesVideo}
+                poster={projectData.prototypeUpdatesVideoPoster}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+              >
+                <source src={projectData.prototypeUpdatesVideo} type="video/mp4" />
+                <source src={projectData.prototypeUpdatesVideo} type="video/webm" />
+                Your browser does not support the video tag.
+              </video>
+            ) : (
+              projectData.prototypeUpdatesImage && (
+                <Image
+                  className={styles.dividerImage}
+                  src={projectData.prototypeUpdatesImage}
+                  height={1080}
+                  width={1920}
+                  alt="Project Rationale Image"
+                />
+              )
+            )}
           </div>
         </div>
       </section>
@@ -506,13 +858,32 @@ export function UxCaseStudiesBody({ projectData, styles }: { projectData: any; s
         </div>
 
         <div className={styles.soloImageContainer}>
-          <Image
-            className={styles.dividerImage}
-            src={projectData.accessibilityMockup}
-            height={1080}
-            width={1920}
-            alt="Accessibility Mockup"
-          />
+          {projectData.accessibilityMockupVideo ? (
+            <video
+              className={styles.dividerImage}
+              src={projectData.accessibilityMockupVideo}
+              poster={projectData.accessibilityMockupVideoPoster}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+            >
+              <source src={projectData.accessibilityMockupVideo} type="video/mp4" />
+              <source src={projectData.accessibilityMockupVideo} type="video/webm" />
+              Your browser does not support the video tag.
+            </video>
+          ) : (
+            projectData.accessibilityMockup && (
+              <Image
+                className={styles.dividerImage}
+                src={projectData.accessibilityMockup}
+                height={1080}
+                width={1920}
+                alt="Accessibility Mockup"
+              />
+            )
+          )}
         </div>
       </section>
 
@@ -520,13 +891,32 @@ export function UxCaseStudiesBody({ projectData, styles }: { projectData: any; s
       <div className={styles.dividerImageContainer}>
         <h2>{projectData.finalThoughtsSectionHeading}</h2>
 
-        <Image
-          className={styles.dividerImage}
-          src={projectData.finalThoughtsSectionImage}
-          height={1080}
-          width={1920}
-          alt="Final Thoughts Divider Image"
-        />
+        {projectData.finalThoughtsSectionVideo ? (
+          <video
+            className={styles.dividerImage}
+            src={projectData.finalThoughtsSectionVideo}
+            poster={projectData.finalThoughtsSectionVideoPoster}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+          >
+            <source src={projectData.finalThoughtsSectionVideo} type="video/mp4" />
+            <source src={projectData.finalThoughtsSectionVideo} type="video/webm" />
+            Your browser does not support the video tag.
+          </video>
+        ) : (
+          projectData.finalThoughtsSectionImage && (
+            <Image
+              className={styles.dividerImage}
+              src={projectData.finalThoughtsSectionImage}
+              height={1080}
+              width={1920}
+              alt="Final Thoughts Divider Image"
+            />
+          )
+        )}
       </div>
       {/* ====================================== ************* =================================== */}
 
@@ -556,13 +946,32 @@ export function UxCaseStudiesBody({ projectData, styles }: { projectData: any; s
           </div>
 
           <div className={styles.rowImageContainer}>
-            <Image
-              className={styles.dividerImage}
-              src={projectData.keyLearningsImage}
-              height={1080}
-              width={1920}
-              alt="Project Rationale Image"
-            />
+            {projectData.keyLearningsVideo ? (
+              <video
+                className={styles.dividerImage}
+                src={projectData.keyLearningsVideo}
+                poster={projectData.keyLearningsVideoPoster}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+              >
+                <source src={projectData.keyLearningsVideo} type="video/mp4" />
+                <source src={projectData.keyLearningsVideo} type="video/webm" />
+                Your browser does not support the video tag.
+              </video>
+            ) : (
+              projectData.keyLearningsImage && (
+                <Image
+                  className={styles.dividerImage}
+                  src={projectData.keyLearningsImage}
+                  height={1080}
+                  width={1920}
+                  alt="Project Rationale Image"
+                />
+              )
+            )}
           </div>
         </div>
       </section>

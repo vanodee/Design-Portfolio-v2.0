@@ -12,6 +12,24 @@ export const websiteFields = [
     description: 'Images showing early teasers of the final designs',
     hidden: ({ parent }) => parent?.categoryName !== 'Websites',
   }),
+  defineField({
+    name: 'website_teaserVideos',
+    title: 'Teaser Videos',
+    type: 'array',
+    group: 'project-specific',
+    of: [{ type: 'file', options: { accept: 'video/mp4,video/webm' } }],
+    description: 'Videos showing early teasers of the final designs',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
+  defineField({
+    name: 'website_teaserVideoPosters',
+    title: 'Teaser Video Posters',
+    type: 'array',
+    group: 'project-specific',
+    of: [{ type: 'image', options: { hotspot: true } }],
+    description: 'Optional fallback poster images for videos showing early teasers of the final designs',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
 
   // ===== Business Context ===============================================================
   defineField({
@@ -59,6 +77,24 @@ export const websiteFields = [
     description: 'Image supporting Problems Identified',
     hidden: ({ parent }) => parent?.categoryName !== 'Websites',
   }),
+  defineField({
+    name: 'website_problemsIdentifiedVideo',
+    title: 'Problems Identified Video',
+    type: 'file',
+    group: 'project-specific',
+    options: { accept: 'video/mp4,video/webm' },
+    description: 'Video supporting Problems Identified',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
+  defineField({
+    name: 'website_problemsIdentifiedVideoPoster',
+    title: 'Problems Identified Video Poster',
+    type: 'image',
+    group: 'project-specific',
+    options: { hotspot: true },
+    description: 'Optional fallback poster image for video supporting Problems Identified',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
 
   // ===== Design Objectives ===============================================================
   defineField({
@@ -85,6 +121,24 @@ export const websiteFields = [
     group: 'project-specific',
     options: { hotspot: true },
     description: 'Image supporting Design Objectives',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
+  defineField({
+    name: 'website_designObjectivesVideo',
+    title: 'Design Objectives Video',
+    type: 'file',
+    group: 'project-specific',
+    options: { accept: 'video/mp4,video/webm' },
+    description: 'Video supporting Design Objectives',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
+  defineField({
+    name: 'website_designObjectivesVideoPoster',
+    title: 'Design Objectives Video Poster',
+    type: 'image',
+    group: 'project-specific',
+    options: { hotspot: true },
+    description: 'Optional fallback poster image for video supporting Design Objectives',
     hidden: ({ parent }) => parent?.categoryName !== 'Websites',
   }),
 
@@ -160,6 +214,24 @@ export const websiteFields = [
     description: 'Images for the information Architecture section',
     hidden: ({ parent }) => parent?.categoryName !== 'Websites',
   }),
+  defineField({
+    name: 'website_informationArcVideos',
+    title: 'Information Architecture Section Videos',
+    type: 'array',
+    group: 'project-specific',
+    of: [{ type: 'file', options: { accept: 'video/mp4,video/webm' } }],
+    description: 'Videos for the information Architecture section',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
+  defineField({
+    name: 'website_informationArcVideoPosters',
+    title: 'Information Architecture Section Video Posters',
+    type: 'array',
+    group: 'project-specific',
+    of: [{ type: 'image', options: { hotspot: true } }],
+    description: 'Optional fallback poster images for videos for the information Architecture section',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
 
   // ===== UX Structure & Planning ===============================================================
   defineField({
@@ -191,6 +263,8 @@ export const websiteFields = [
           { name: 'structureName', title: 'Structure Name', type: 'string' },
           { name: 'structurePoints', title: 'structure Points', type: 'array', of: [{ type: 'string' }], description: 'List of considerations' },
           { name: 'structureImage', title: 'structure Image', type: 'image', options: { hotspot: true }, description: 'Screenshot or visual supporting considerations' },
+          { name: 'structureVideo', title: 'structure Video', type: 'file', options: { accept: 'video/mp4,video/webm' }, description: 'Screenshot or visual supporting considerations' },
+          { name: 'structureVideoPoster', title: 'structure Video Poster', type: 'image', options: { hotspot: true }, description: 'Optional fallback poster image for screenshot or visual supporting considerations' },
         ],
       },
     ],
@@ -225,6 +299,24 @@ export const websiteFields = [
     description: 'Images for the Visual design section',
     hidden: ({ parent }) => parent?.categoryName !== 'Websites',
   }),
+  defineField({
+    name: 'website_visualDesignVideos',
+    title: 'Visual Design Section Videos',
+    type: 'array',
+    group: 'project-specific',
+    of: [{ type: 'file', options: { accept: 'video/mp4,video/webm' } }],
+    description: 'Videos for the Visual design section',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
+  defineField({
+    name: 'website_visualDesignVideoPosters',
+    title: 'Visual Design Section Video Posters',
+    type: 'array',
+    group: 'project-specific',
+    of: [{ type: 'image', options: { hotspot: true } }],
+    description: 'Optional fallback poster images for videos for the Visual design section',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
 
   // ===== Website Build & Implementation ===============================================================
   defineField({
@@ -256,6 +348,8 @@ export const websiteFields = [
           { name: 'buildItemName', title: 'Build Item Name', type: 'string' },
           { name: 'buildItemPoints', title: 'Build Item Points', type: 'text', rows: 3, description: 'Build Item Description' },
           { name: 'buildItemImage', title: 'Build Item Image', type: 'image', options: { hotspot: true }, description: 'Screenshot or visual supporting build item' },
+          { name: 'buildItemVideo', title: 'Build Item Video', type: 'file', options: { accept: 'video/mp4,video/webm' }, description: 'Screenshot or visual supporting build item' },
+          { name: 'buildItemVideoPoster', title: 'Build Item Video Poster', type: 'image', options: { hotspot: true }, description: 'Optional fallback poster image for screenshot or visual supporting build item' },
         ],
       },
     ],
@@ -269,6 +363,24 @@ export const websiteFields = [
     group: 'project-specific',
     of: [{ type: 'image', options: { hotspot: true } }],
     description: 'Images for the Website Build section',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
+  defineField({
+    name: 'website_websiteBuildVideos',
+    title: 'Website Build Section Videos',
+    type: 'array',
+    group: 'project-specific',
+    of: [{ type: 'file', options: { accept: 'video/mp4,video/webm' } }],
+    description: 'Videos for the Website Build section',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
+  defineField({
+    name: 'website_websiteBuildVideoPosters',
+    title: 'Website Build Section Video Posters',
+    type: 'array',
+    group: 'project-specific',
+    of: [{ type: 'image', options: { hotspot: true } }],
+    description: 'Optional fallback poster images for videos for the Website Build section',
     hidden: ({ parent }) => parent?.categoryName !== 'Websites',
   }),
 
@@ -299,6 +411,24 @@ export const websiteFields = [
     description: 'Images for the Accessibility section',
     hidden: ({ parent }) => parent?.categoryName !== 'Websites',
   }),
+  defineField({
+    name: 'website_accessibilityVideos',
+    title: 'Accessibility Section Videos',
+    type: 'array',
+    group: 'project-specific',
+    of: [{ type: 'file', options: { accept: 'video/mp4,video/webm' } }],
+    description: 'Videos for the Accessibility section',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
+  defineField({
+    name: 'website_accessibilityVideoPosters',
+    title: 'Accessibility Section Video Posters',
+    type: 'array',
+    group: 'project-specific',
+    of: [{ type: 'image', options: { hotspot: true } }],
+    description: 'Optional fallback poster images for videos for the Accessibility section',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
 
   // ===== Pre-Launch ===============================================================
   defineField({
@@ -325,6 +455,24 @@ export const websiteFields = [
     group: 'project-specific',
     options: { hotspot: true },
     description: 'Image supporting Pre-Launch',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
+  defineField({
+    name: 'website_preLaunchVideo',
+    title: 'Pre-Launch Video',
+    type: 'file',
+    group: 'project-specific',
+    options: { accept: 'video/mp4,video/webm' },
+    description: 'Video supporting Pre-Launch',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
+  defineField({
+    name: 'website_preLaunchVideoPoster',
+    title: 'Pre-Launch Video Poster',
+    type: 'image',
+    group: 'project-specific',
+    options: { hotspot: true },
+    description: 'Optional fallback poster image for video supporting Pre-Launch',
     hidden: ({ parent }) => parent?.categoryName !== 'Websites',
   }),
 
@@ -408,6 +556,24 @@ export const websiteFields = [
     description: 'Image supporting Key Learnings',
     hidden: ({ parent }) => parent?.categoryName !== 'Websites',
   }),
+  defineField({
+    name: 'website_keyLearnVideo',
+    title: 'Key Learnings Video',
+    type: 'file',
+    group: 'project-specific',
+    options: { accept: 'video/mp4,video/webm' },
+    description: 'Video supporting Key Learnings',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
+  defineField({
+    name: 'website_keyLearnVideoPoster',
+    title: 'Key Learnings Video Poster',
+    type: 'image',
+    group: 'project-specific',
+    options: { hotspot: true },
+    description: 'Optional fallback poster image for video supporting Key Learnings',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
 
   // ===== What Worked Section ===============================================================
   defineField({
@@ -443,6 +609,24 @@ export const websiteFields = [
     group: 'project-specific',
     options: { hotspot: true },
     description: 'Image supporting What Worked',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
+  defineField({
+    name: 'website_whatWorkedVideo',
+    title: 'What Worked Video',
+    type: 'file',
+    group: 'project-specific',
+    options: { accept: 'video/mp4,video/webm' },
+    description: 'Video supporting What Worked',
+    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
+  }),
+  defineField({
+    name: 'website_whatWorkedVideoPoster',
+    title: 'What Worked Video Poster',
+    type: 'image',
+    group: 'project-specific',
+    options: { hotspot: true },
+    description: 'Optional fallback poster image for video supporting What Worked',
     hidden: ({ parent }) => parent?.categoryName !== 'Websites',
   }),
 ]
