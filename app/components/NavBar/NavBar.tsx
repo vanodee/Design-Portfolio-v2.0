@@ -14,7 +14,7 @@ export const navItems = [
   { name: 'Contact', path: '/contact' },
 ]
 
-export const myResume = "https://drive.google.com/file/d/1BWGzFkHhIhSlI-BYySXd3o1inPUDCeAS/view?usp=sharing";
+export const myResume = "https://drive.google.com/file/d/191cebUAyLPtZY_4VGr2kEpw64V5nOoCV/view?usp=sharing";
 
 
 export default function NavBar() {

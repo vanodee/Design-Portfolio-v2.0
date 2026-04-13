@@ -13,7 +13,7 @@ const experiences = [
   },
   {
     yearRange: '2020 - 2025',
-    title: 'Graphic Desiger / Front-End Dev',
+    title: 'Sr. Designer & Front-End Developer',
     company: 'T3CK Innovations'
   },
   {
