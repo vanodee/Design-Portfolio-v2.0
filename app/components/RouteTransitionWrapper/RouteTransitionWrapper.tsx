@@ -47,15 +47,15 @@ export default function RouteTransitionWrapper({ children }: { children: React.R
   lastTop.current = currentTop;
   lastDepth.current = currentDepth;
 
-  // // Handles Scroll reset on hard refresh / initial page load
-  // useEffect(() => {
-  //   window.scrollTo(0, 0);
-  // }, []);
+  // Handles Scroll reset on hard refresh / initial page load
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
-  // // Handles Scroll reset onroute changes
-  // useEffect(() => {
-  //   window.scrollTo(0, 0);
-  // }, [pathname]);
+  // Handles Scroll reset onroute changes
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   return (
     <motion.div
