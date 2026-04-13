@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import { motion } from "motion/react";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 export default function RouteTransitionWrapper({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -46,6 +46,16 @@ export default function RouteTransitionWrapper({ children }: { children: React.R
   // Update refs
   lastTop.current = currentTop;
   lastDepth.current = currentDepth;
+
+  // // Handles Scroll reset on hard refresh / initial page load
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // }, []);
+
+  // // Handles Scroll reset onroute changes
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // }, [pathname]);
 
   return (
     <motion.div

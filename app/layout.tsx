@@ -4,7 +4,6 @@ import "./styles/globals.scss";
 import NavBar from "./components/NavBar/NavBar";
 import RouteTransitionWrapper from "./components/RouteTransitionWrapper/RouteTransitionWrapper";
 import Footer from "./components/Footer/Footer";
-import FadeBackground from "./components/FadeBackground/FadeBackground";
 import Aurora from "./components/AnimatedGradientBackdrop/Aurora";
 
 
@@ -59,7 +58,13 @@ export default function RootLayout({
             }),
           }}
         />
-        {/* <FadeBackground /> */}
+
+        {/* Disable browser scroll restoration before hydration */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `history.scrollRestoration = 'manual';`,
+          }}
+        />
 
         <Aurora />
 
