@@ -5,6 +5,8 @@ import NavBar from "./components/NavBar/NavBar";
 import RouteTransitionWrapper from "./components/RouteTransitionWrapper/RouteTransitionWrapper";
 import Footer from "./components/Footer/Footer";
 import Aurora from "./components/AnimatedGradientBackdrop/Aurora";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 
 const outfit = Outfit({
@@ -77,6 +79,9 @@ export default function RootLayout({
         </main>
 
         <Footer />
+
+        <Analytics />
+        <SpeedInsights />
 
       </body>
     </html>
