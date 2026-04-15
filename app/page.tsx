@@ -33,7 +33,7 @@ export default async function Home() {
         </h1>
 
         <p className={styles.heroBody}>
-          As someone with decent experience in translating ideas to design <i>(while also being able to centre a div)</i>, It's safe to say that I design like a strategist and build like I'll maintain it. No mystery layers, no <i>“final_v7_revised_FINAL.fig”</i>. Just thoughtful UX, scalable frontend, and brands that don't crumble under real traffic.
+          As someone who bridges design and development with equal confidence, it's safe to say I design like a strategist and build like an engineer. No broken handoffs, no implementation surprises. Just thoughtful UX, scalable frontend, and brands that hold up under real traffic.
         </p>
 
         <div className={styles.buttonGroup}>

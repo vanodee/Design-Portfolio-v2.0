@@ -41,7 +41,7 @@ const brands = [
   {name: "Siqure Asset", logo: "/brandLogos/siqure_logo.png"},
   {name: "Showmax", logo: "/brandLogos/showmax_logo.png"},
   {name: "GoTV", logo: "/brandLogos/gotv_logo.png"},
-  {name: "The Singleton", logo: "/brandLogos/singleton_logo.png"},
+  {name: "The Singleton", logo: "/brandLogos/singleton_logo1.png"},
   {name: "Dunbar Ross International", logo: "/brandLogos/dunbarross_logo.png"},
   {name: "Siblings Laundromat", logo: "/brandLogos/siblings_logo.png"},
   {name: "Pretsl", logo: "/brandLogos/pretsl_logo.png"},
