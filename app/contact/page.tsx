@@ -7,16 +7,16 @@ import DigitalClock from "../components/DigitalClock/DigitalClock";
 import CopyEmail from "../components/CopyEmail/CopyEmail";
 
 export const metadata: Metadata = {
-  title: "Contact Stevano Peters - Senior Digital Designer",
+  title: "Contact Stevano Peters - Senior Product Designer",
   description:
-    "Get in touch with Senior Digital Designer and front-end developer Stevano Peters to discuss projects, collaborations, or freelance opportunities.",
+    "Get in touch with Senior Product Designer and front-end developer Stevano Peters to discuss projects, collaborations, or freelance opportunities.",
   alternates: {
     canonical: "/contact",
   },
   openGraph: {
-    title: "Contact Stevano Peters - Senior Digital Designer",
+    title: "Contact Stevano Peters - Senior Product Designer",
     description:
-      "Reach out to Senior Digital Designer Stevano Peters for new projects, collaborations, and design partnerships.",
+      "Reach out to Senior Product Designer Stevano Peters for new projects, collaborations, and design partnerships.",
     url: "/contact",
   },
 };

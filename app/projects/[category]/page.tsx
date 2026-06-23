@@ -34,7 +34,7 @@ export async function generateMetadata(
     return {
       title: "Projects - Portfolio of Stevano Peters",
       description:
-        "Explore design and development projects by Senior Digital Designer Stevano Peters, including web apps, websites, UX case studies, and branding work.",
+        "Explore design and development projects by Senior Product Designer Stevano Peters, including web apps, websites, UX case studies, and branding work.",
       alternates: {
         canonical: `/projects/${category}`,
       },
@@ -44,7 +44,7 @@ export async function generateMetadata(
   const title = `${categoryData.title} - Stevano Peters Portfolio Projects`;
   const description =
     categoryData.description ||
-    `View ${categoryData.title} projects from the portfolio of Senior Digital Designer Stevano Peters.`;
+    `View ${categoryData.title} projects from the portfolio of Senior Product Designer Stevano Peters.`;
   const url = `/projects/${category}`;
 
   return {

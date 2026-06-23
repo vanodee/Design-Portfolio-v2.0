@@ -53,16 +53,16 @@ const brands = [
 ];
 
 export const metadata: Metadata = {
-  title: "About Stevano Peters - Senior Digital Designer",
+  title: "About Stevano Peters - Senior Product Designer",
   description:
-    "Learn more about Senior Digital Designer Stevano Peters, his 6+ years of experience, selected clients, and the tools he uses to design and build digital experiences.",
+    "Learn more about Senior Product Designer Stevano Peters, his 6+ years of experience, selected clients, and the tools he uses to design and build digital experiences.",
   alternates: {
     canonical: "/about",
   },
   openGraph: {
-    title: "About Stevano Peters - Senior Digital Designer",
+    title: "About Stevano Peters - Senior Product Designer",
     description:
-      "Discover the background, experience, and selected brands of Senior Digital Designer Stevano Peters.",
+      "Discover the background, experience, and selected brands of Senior Product Designer Stevano Peters.",
     url: "/about",
   },
 };

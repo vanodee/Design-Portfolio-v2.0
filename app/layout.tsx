@@ -18,24 +18,24 @@ const outfit = Outfit({
 export const metadata: Metadata = {
   metadataBase: new URL("https://stevano.dev"),
   title: {
-    default: "Stevano Peters - Senior Digital Designer & Developer",
-    template: "%s | Stevano Peters - Senior Digital Designer",
+    default: "Stevano Peters - Senior Product Designer & Developer",
+    template: "%s | Stevano Peters - Senior Product Designer",
   },
   description:
-    "Portfolio of Stevano Peters, Senior Digital Designer and front-end developer with 6+ years of experience crafting web apps, websites, UX case studies, and brand identities.",
+    "Portfolio of Stevano Peters, Senior Product Designer and front-end developer with 6+ years of experience crafting web apps, websites, UX case studies, and brand identities.",
   openGraph: {
-    title: "Stevano Peters - Senior Digital Designer & Developer",
+    title: "Stevano Peters - Senior Product Designer & Developer",
     description:
-      "Explore the portfolio of Senior Digital Designer Stevano Peters, featuring web applications, marketing websites, UX case studies, and logos & branding projects.",
+      "Explore the portfolio of Senior Product Designer Stevano Peters, featuring web applications, marketing websites, UX case studies, and logos & branding projects.",
     url: "/",
-    siteName: "Stevano Peters - Senior Digital Designer",
+    siteName: "Stevano Peters - Senior Product Designer",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Stevano Peters - Senior Digital Designer & Developer",
+    title: "Stevano Peters - Senior Product Designer & Developer",
     description:
-      "Senior Digital Designer and front-end developer with 6+ years of experience delivering web apps, marketing websites, UX case studies, and brand identities.",
+      "Senior Product Designer and front-end developer with 6+ years of experience delivering web apps, marketing websites, UX case studies, and brand identities.",
   },
 };
 
@@ -55,7 +55,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Person",
               name: "Stevano Peters",
-              jobTitle: "Senior Digital Designer",
+              jobTitle: "Senior Product Designer",
               url: "https://stevano.dev",
             }),
           }}

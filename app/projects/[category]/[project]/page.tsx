@@ -38,7 +38,7 @@ export async function generateMetadata(
     return {
       title: "Project Case Study - Stevano Peters",
       description:
-        "A design and development case study from the portfolio of Senior Digital Designer Stevano Peters.",
+        "A design and development case study from the portfolio of Senior Product Designer Stevano Peters.",
       alternates: {
         canonical: `/projects/${category}/${project}`,
       },
@@ -52,7 +52,7 @@ export async function generateMetadata(
   const description =
     projectData.heroDescription ||
     projectData.heroSubheading ||
-    `A detailed ${categoryTitle.toLowerCase()} case study by Senior Digital Designer Stevano Peters.`;
+    `A detailed ${categoryTitle.toLowerCase()} case study by Senior Product Designer Stevano Peters.`;
   const url = `/projects/${category}/${project}`;
 
   return {
@@ -100,7 +100,7 @@ export default async function ProjectPage({
     author: {
       "@type": "Person",
       name: "Stevano Peters",
-      jobTitle: "Senior Digital Designer",
+      jobTitle: "Senior Product Designer",
       url: "https://stevano.dev",
     },
     keywords: projectData.projectTags,

@@ -7,16 +7,16 @@ import Link from "next/link";
 import { myResume } from "./components/NavBar/NavBar";
 
 export const metadata: Metadata = {
-  title: "Stevano Peters - Senior Digital Designer Portfolio",
+  title: "Stevano Peters - Senior Product Designer Portfolio",
   description:
-    "Discover the portfolio of Senior Digital Designer and front-end developer Stevano Peters, showcasing web apps, marketing websites, UX case studies, and logos & branding projects.",
+    "Discover the portfolio of Senior Product Designer and front-end developer Stevano Peters, showcasing web apps, marketing websites, UX case studies, and logos & branding projects.",
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "Stevano Peters - Senior Digital Designer Portfolio",
+    title: "Stevano Peters - Senior Product Designer Portfolio",
     description:
-      "Explore featured web apps, websites, UX case studies, and branding work from Senior Digital Designer, Stevano Peters.",
+      "Explore featured web apps, websites, UX case studies, and branding work from Senior Product Designer, Stevano Peters.",
     url: "/",
   },
 };

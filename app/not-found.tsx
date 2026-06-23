@@ -7,7 +7,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Page Not Found - Stevano Peters",
   description:
-    "The page you are looking for does not exist on stevano.dev. Explore the portfolio of Senior Digital Designer Stevano Peters instead.",
+    "The page you are looking for does not exist on stevano.dev. Explore the portfolio of Senior Product Designer Stevano Peters instead.",
   alternates: {
     canonical: "/404",
   },
