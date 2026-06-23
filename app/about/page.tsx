@@ -8,7 +8,7 @@ import { featuredToolsQuery } from "@/lib/queries";
 const experiences = [
   {
     yearRange: '2025 - Present',
-    title: 'Sr. Digital Designer',
+    title: 'Sr. Product Designer',
     company: 'Pretsl (via Peanut Technologies)'
   },
   {
