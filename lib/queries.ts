@@ -98,7 +98,7 @@ export const allProjectsQuery = groq`
 
 
   // ===== Web App Fields (Conditional) ===============================================
-  categoryName == "Web Apps" => {
+  category->title == "Web Apps" => {
     
     // Teaser Image
     "webApp_teaserImages": webApp_teaserImages[].asset->url,
@@ -203,7 +203,7 @@ export const allProjectsQuery = groq`
 
   
   // ===== Website Fields (Conditional) ===============================================
-  categoryName == "Websites" => {
+  category->title == "Websites" => {
 
     // Teaser Image
     "website_teaserImages": website_teaserImages[].asset->url,
@@ -318,7 +318,7 @@ export const allProjectsQuery = groq`
 
 
   // ===== UX Case Study Fields (Conditional) ===============================================
-  categoryName == "UX Case Studies" => {
+  category->title == "UX Case Studies" => {
 
     // Platform Display
     "platformImages": platformImages[].asset->url,
@@ -508,7 +508,7 @@ export const allProjectsQuery = groq`
 
 
   // ===== Logo & Branding Fields (Conditional) ===============================================
-  categoryName == "Logos & Branding" => {
+  category->title == "Logos & Branding" => {
     
     // Teaser Image
     "teaserImages": teaserImages[].asset->url,

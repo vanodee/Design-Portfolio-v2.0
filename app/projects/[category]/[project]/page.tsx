@@ -195,19 +195,19 @@ export default async function ProjectPage({
       </section>
 
       
-      {projectData.categoryName === "Web Apps" && (
+      {projectData.category?.title === "Web Apps" && (
         <WebAppsBody projectData={projectData} styles={styles} />
       )}
 
-      {projectData.categoryName === "Websites" && (
+      {projectData.category?.title === "Websites" && (
         <WebsitesBody projectData={projectData} styles={styles} />
       )}
 
-      {projectData.categoryName === "UX Case Studies" && (
+      {projectData.category?.title === "UX Case Studies" && (
         <UxCaseStudiesBody projectData={projectData} styles={styles} />
       )}
 
-      {projectData.categoryName === "Logos & Branding" && (
+      {projectData.category?.title === "Logos & Branding" && (
         <LogosBrandingBody projectData={projectData} styles={styles} />
       )}
 
