@@ -6,7 +6,10 @@ export const sanityConfig = {
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET!,
   apiVersion: "2025-01-01", // use current date or a stable date string
-  useCdn: process.env.NODE_ENV === 'production',
+  // Always read straight from the live API, not the CDN: the on-demand revalidation webhook
+  // (app/api/revalidate/route.ts) busts Next's Data Cache the instant a document publishes, but
+  // the Sanity CDN has its own separate TTL that would otherwise still serve the pre-edit version.
+  useCdn: false,
 };
 
 export const client = createClient(sanityConfig);

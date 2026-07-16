@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 
 
 export default async function ContactPage() {
-  const siteSettings = await client.fetch(siteSettingsQuery);
+  const siteSettings = await client.fetch(siteSettingsQuery, {}, { next: { tags: ["siteSettings"] } });
   const socialLinks = siteSettings.socialLinks ?? [];
 
   return (

@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 
 
 export default async function ProjectsIndexPage() {
-  const categories = await client.fetch(categorySlugsQuery);
+  const categories = await client.fetch(categorySlugsQuery, {}, { next: { tags: ["category"] } });
 
   if (!categories?.length) {
     return <div>No categories found.</div>;

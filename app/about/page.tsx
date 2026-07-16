@@ -21,8 +21,8 @@ export const metadata: Metadata = {
 
 
 export default async function AboutPage() {
-  const tools = await client.fetch(featuredToolsQuery);
-  const siteSettings = await client.fetch(siteSettingsQuery);
+  const tools = await client.fetch(featuredToolsQuery, {}, { next: { tags: ["tools"] } });
+  const siteSettings = await client.fetch(siteSettingsQuery, {}, { next: { tags: ["siteSettings"] } });
   const experiences = siteSettings.experience ?? [];
   const brands = siteSettings.clients ?? [];
 

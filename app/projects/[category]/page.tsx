@@ -11,7 +11,11 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const { category } = await params;
 
-  const categoryData = await client.fetch(categoryWithProjectsQuery, { category });
+  const categoryData = await client.fetch(
+    categoryWithProjectsQuery,
+    { category },
+    { next: { tags: ["category", "project"] } }
+  );
 
   if (!categoryData) {
     return {
@@ -47,7 +51,7 @@ export async function generateMetadata(
 
 // Static Params for Dynamic Routing
 export async function generateStaticParams() {
-  const categories = await client.fetch(categorySlugsQuery);
+  const categories = await client.fetch(categorySlugsQuery, {}, { next: { tags: ["category"] } });
 
   return categories.map((cat: { slug: string }) => ({
     category: cat.slug,
@@ -63,7 +67,11 @@ export default async function CategoryPage({
 }) {
   const { category } = await params;
 
-  const categoryData = await client.fetch(categoryWithProjectsQuery, { category });
+  const categoryData = await client.fetch(
+    categoryWithProjectsQuery,
+    { category },
+    { next: { tags: ["category", "project"] } }
+  );
 
   if (!categoryData) return notFound();
 

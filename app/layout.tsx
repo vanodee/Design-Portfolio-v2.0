@@ -46,7 +46,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const siteSettings = await client.fetch(siteSettingsQuery);
+  const siteSettings = await client.fetch(siteSettingsQuery, {}, { next: { tags: ["siteSettings"] } });
 
   return (
     <html lang="en">

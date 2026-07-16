@@ -11,7 +11,11 @@ import { LogosBrandingBody } from "@/app/components/ProjectCategoryBodies/LogosB
 
 
 export async function generateStaticParams() {
-  const projects = await client.fetch(projectAndCategorySlugsQuery);
+  const projects = await client.fetch(
+    projectAndCategorySlugsQuery,
+    {},
+    { next: { tags: ["project", "category"] } }
+  );
 
   return projects.map((p: { category: string; project: string }) => ({
     category: p.category,
@@ -24,7 +28,11 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const { category, project } = await params;
 
-  const projectData = await client.fetch(allProjectsQuery, { category, project });
+  const projectData = await client.fetch(
+    allProjectsQuery,
+    { category, project },
+    { next: { tags: ["project", "category", "tools"] } }
+  );
 
   if (!projectData) {
     return {
@@ -78,7 +86,11 @@ export default async function ProjectPage({
 }) {
   const { category, project } = await params;
 
-  const projectData = await client.fetch(allProjectsQuery, { category, project });
+  const projectData = await client.fetch(
+    allProjectsQuery,
+    { category, project },
+    { next: { tags: ["project", "category", "tools"] } }
+  );
 
   if (!projectData) return notFound();
 

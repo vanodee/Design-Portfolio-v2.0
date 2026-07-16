@@ -4,7 +4,7 @@ import CategoryNavClient from "./CategoryNavClient";
 
 
 export default async function CategoryNav() {
-  const categories = await client.fetch(categoryNavQuery);
+  const categories = await client.fetch(categoryNavQuery, {}, { next: { tags: ["category"] } });
 
   return <CategoryNavClient categories={categories} />;
 }

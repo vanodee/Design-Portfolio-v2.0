@@ -21,8 +21,12 @@ export const metadata: Metadata = {
 };
 
 export default async function Home() {
-  const categories = await client.fetch(categoriesWithToolsQuery);
-  const siteSettings = await client.fetch(siteSettingsQuery);
+  const categories = await client.fetch(
+    categoriesWithToolsQuery,
+    {},
+    { next: { tags: ["category", "project", "tools"] } }
+  );
+  const siteSettings = await client.fetch(siteSettingsQuery, {}, { next: { tags: ["siteSettings"] } });
   const resumeUrl = siteSettings.resumeUrl;
   const categoryImageUrls = categories.map((category: any) =>
     urlFor(category.image).width(1200).auto('format').url()
