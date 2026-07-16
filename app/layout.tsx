@@ -7,6 +7,8 @@ import Footer from "./components/Footer/Footer";
 import Aurora from "./components/AnimatedGradientBackdrop/Aurora";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { client } from "@/lib/sanity.client";
+import { siteSettingsQuery } from "@/lib/queries";
 
 
 const outfit = Outfit({
@@ -39,11 +41,13 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const siteSettings = await client.fetch(siteSettingsQuery);
+
   return (
     <html lang="en">
       <body className={outfit.variable}>
@@ -70,7 +74,7 @@ export default function RootLayout({
 
         <Aurora />
 
-        <NavBar />
+        <NavBar resumeUrl={siteSettings.resumeUrl} />
 
         <main>
           <RouteTransitionWrapper>
@@ -78,7 +82,7 @@ export default function RootLayout({
           </RouteTransitionWrapper>
         </main>
 
-        <Footer />
+        <Footer socialLinks={siteSettings.socialLinks} />
 
         <Analytics />
         <SpeedInsights />

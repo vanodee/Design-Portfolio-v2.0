@@ -1,5 +1,15 @@
 import { groq } from "next-sanity";
 
+// SITE SETTINGS (global — used by app/layout.tsx, Footer.tsx, and the About page) ==============
+export const siteSettingsQuery = groq`
+  *[_type == "siteSettings"][0]{
+    resumeUrl,
+    experience,
+    "clients": clients[]{ _key, name, "logoUrl": logo.asset->url, websiteUrl },
+    socialLinks
+  }
+`;
+
 export const categoriesQuery = groq`
   *[_type == "category"]{
     _id,

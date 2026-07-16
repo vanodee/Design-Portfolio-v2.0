@@ -2,9 +2,8 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import styles from "./home.module.scss";
 import { client } from "../lib/sanity.client";
-import { categoriesWithToolsQuery } from "@/lib/queries";
+import { categoriesWithToolsQuery, siteSettingsQuery } from "@/lib/queries";
 import Link from "next/link";
-import { myResume } from "./components/NavBar/NavBar";
 
 export const metadata: Metadata = {
   title: "Stevano Peters - Senior Product Designer Portfolio",
@@ -23,6 +22,8 @@ export const metadata: Metadata = {
 
 export default async function Home() {
   const categories = await client.fetch(categoriesWithToolsQuery);
+  const siteSettings = await client.fetch(siteSettingsQuery);
+  const resumeUrl = siteSettings.resumeUrl;
 
   return (
       <div className={styles.homePageContainer}>
@@ -45,7 +46,7 @@ export default async function Home() {
           </Link>
           
           <a
-            href={myResume}
+            href={resumeUrl}
             target="_blank"
             rel="noopener noreferrer"
             className={styles.resumeButton}
@@ -128,8 +129,8 @@ export default async function Home() {
         </Link>
 
         {/* MY RESUME ------------------------------------------- */}
-        <a 
-          href={myResume}
+        <a
+          href={resumeUrl}
           target="_blank"
           rel="noopener noreferrer"
           className={styles.resumeCard}

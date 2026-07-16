@@ -14,10 +14,8 @@ export const navItems = [
   { name: 'Contact', path: '/contact' },
 ]
 
-export const myResume = "https://drive.google.com/file/d/1Ry2Llmg5DlfiX_2dwWiNyVQ4rrK9O_xX/view?usp=sharing";
 
-
-export default function NavBar() {
+export default function NavBar({ resumeUrl }: { resumeUrl: string }) {
   const pathname = usePathname();
   const path = pathname.replace(/\/$/, "");
   const segments = path.split("/").filter(Boolean); 
@@ -87,7 +85,7 @@ export default function NavBar() {
         </nav>
 
         <a
-          href={myResume}
+          href={resumeUrl}
           target="_blank"
           rel="noopener noreferrer"
           className={styles.resumeButton}
@@ -131,7 +129,7 @@ export default function NavBar() {
         })}
 
         <a
-          href={myResume}
+          href={resumeUrl}
           target="_blank"
           rel="noopener noreferrer"
           className={styles.mobileNavCta}

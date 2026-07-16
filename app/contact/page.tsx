@@ -2,9 +2,11 @@ import Image from "next/image"
 import type { Metadata } from "next";
 import TallyContactForm from "../components/ContactForm/TallyContactForm"
 import styles from "./contactPage.module.scss"
-import { contactIcons } from "../components/Footer/Footer"
+import { socialIconsByPlatform } from "../components/Footer/Footer"
 import DigitalClock from "../components/DigitalClock/DigitalClock";
 import CopyEmail from "../components/CopyEmail/CopyEmail";
+import { client } from "@/lib/sanity.client";
+import { siteSettingsQuery } from "@/lib/queries";
 
 export const metadata: Metadata = {
   title: "Contact Stevano Peters - Senior Product Designer",
@@ -22,7 +24,10 @@ export const metadata: Metadata = {
 };
 
 
-export default function ContactPage() {
+export default async function ContactPage() {
+  const siteSettings = await client.fetch(siteSettingsQuery);
+  const socialLinks = siteSettings.socialLinks ?? [];
+
   return (
     <div className={styles.contactPageContainer}>
 
@@ -56,22 +61,22 @@ export default function ContactPage() {
         
         {/* SOCIALS ------------------------------------------- */}
         <div className={styles.fourthCard}>
-          {contactIcons
-          .filter(icon => icon.name !== 'Email')
-          .map(({name, glassSrc, href}) => (
-            
+          {socialLinks
+          .filter((link: { platform: string }) => link.platform !== 'Email')
+          .map(({_key, platform, url}: { _key: string; platform: string; url: string }) => (
+
             <a
-              key={name}
-              href={href}
+              key={_key}
+              href={url}
               target="_blank"
               rel="noopener noreferrer"
               className={styles.contactIconContainer}
             >
               <Image
-                src={glassSrc}
+                src={socialIconsByPlatform[platform].glassSrc}
                 height={95}
                 width={95}
-                alt={name}
+                alt={platform}
                 className={styles.contactIcon}
               />
             </a>

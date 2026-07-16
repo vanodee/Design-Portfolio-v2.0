@@ -2,55 +2,7 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import styles from "./aboutPage.module.scss";
 import { client } from "@/lib/sanity.client";
-import { featuredToolsQuery } from "@/lib/queries";
-
-
-const experiences = [
-  {
-    yearRange: '2025 - Present',
-    title: 'Sr. Product Designer',
-    company: 'Pretsl (via Peanut Technologies)'
-  },
-  {
-    yearRange: '2020 - 2025',
-    title: 'Sr. Designer & Front-End Developer',
-    company: 'T3CK Innovations'
-  },
-  {
-    yearRange: '2023 - 2025',
-    title: 'UI/UX Designer',
-    company: 'ONDEKA Corporation'
-  },
-  {
-    yearRange: '2022 - 2023',
-    title: 'UX/UI Designer',
-    company: 'Fottify Software Solutions'
-  }
-];
-
-const brands = [
-  {name: "Janettotty", logo: "/brandLogos/janettotty_logo.png"},
-  {name: "DSTV", logo: "/brandLogos/dstv_logo.png"},
-  {name: "Carlo Rossi", logo: "/brandLogos/carlorossi_logo.png"},
-  {name: "John Hett Sports Foundation", logo: "/brandLogos/johnhett_logo.png"},
-  {name: "Quintessential Communications", logo: "/brandLogos/quintessential_logo.png"},
-  {name: "The Oracle Experience", logo: "/brandLogos/oracle_logo.png"},
-  {name: "Ideashouse", logo: "/brandLogos/ideashouse_logo.png"},
-  {name: "Nigerian Idols", logo: "/brandLogos/idols_logo.png"},
-  {name: "Nigerian Breweries", logo: "/brandLogos/nb_logo.png"},
-  {name: "Siqure Asset", logo: "/brandLogos/siqure_logo.png"},
-  {name: "Showmax", logo: "/brandLogos/showmax_logo.png"},
-  {name: "GoTV", logo: "/brandLogos/gotv_logo.png"},
-  {name: "The Singleton", logo: "/brandLogos/singleton_logo1.png"},
-  {name: "Dunbar Ross International", logo: "/brandLogos/dunbarross_logo.png"},
-  {name: "Siblings Laundromat", logo: "/brandLogos/siblings_logo.png"},
-  {name: "Pretsl", logo: "/brandLogos/pretsl_logo.png"},
-  {name: "Gracia Planta", logo: "/brandLogos/graciaplanta_logo.png"},
-  {name: "New Innovatives", logo: "/brandLogos/newinnovatives_logo.png"},
-  // {name: "Beta Computers", logo: "/brandLogos/beta_logo.png"},
-  {name: "Fottify Software Solutions", logo: "/brandLogos/fottify_logo.png"},
-  {name: "Peanut Technologies", logo: "/brandLogos/peanut_logo.png"},
-];
+import { featuredToolsQuery, siteSettingsQuery } from "@/lib/queries";
 
 export const metadata: Metadata = {
   title: "About Stevano Peters - Senior Product Designer",
@@ -70,6 +22,9 @@ export const metadata: Metadata = {
 
 export default async function AboutPage() {
   const tools = await client.fetch(featuredToolsQuery);
+  const siteSettings = await client.fetch(siteSettingsQuery);
+  const experiences = siteSettings.experience ?? [];
+  const brands = siteSettings.clients ?? [];
 
   return (
     <div className={styles.aboutPageContainer}>
@@ -139,9 +94,9 @@ export default async function AboutPage() {
         <div className={styles.fourthCard}>
           <div className={styles.roleLine}/>
 
-          {experiences.map((experience, index) => (
-            <div 
-              key={index}
+          {experiences.map((experience: any) => (
+            <div
+              key={experience._key}
               className={styles.roleContainer}
             >
               <div className={styles.roleDot}/>
@@ -173,11 +128,11 @@ export default async function AboutPage() {
 
         {/* BRANDS ------------------------------------------- */}
         <div className={styles.sixthCard}>
-          {brands.map((brand, index) => (
+          {brands.map((brand: any) => (
             <Image
-              key={index}
+              key={brand._key}
               className={styles.brandLogo}
-              src={brand.logo}
+              src={brand.logoUrl}
               width={300}
               height={100}
               alt={`${brand.name} Logo`}
