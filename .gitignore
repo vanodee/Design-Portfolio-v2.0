@@ -41,3 +41,8 @@ yarn-error.log*
 next-env.d.ts
 
 sanity/.env
+
+# local-only schema/integration reference docs (kept out of git, see CLAUDE.md)
+sanity/SCHEMA.md
+sanity/FRONTEND_INTEGRATION.md
+sanity/OPTIMIZATION_CHECKLIST.md
