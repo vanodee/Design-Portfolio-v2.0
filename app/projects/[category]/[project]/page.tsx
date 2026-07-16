@@ -1,10 +1,9 @@
-import { groq } from "next-sanity";
 import type { Metadata } from "next";
 import { client, urlFor, hotspotPosition } from "../../../../lib/sanity.client";
 import styles from "./projectPage.module.scss";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { allProjectsQuery } from "@/lib/queries";
+import { allProjectsQuery, projectAndCategorySlugsQuery } from "@/lib/queries";
 import { WebAppsBody } from "@/app/components/ProjectCategoryBodies/WebAppsBody";
 import { WebsitesBody } from "@/app/components/ProjectCategoryBodies/WebsitesBody";
 import { UxCaseStudiesBody } from "@/app/components/ProjectCategoryBodies/UxCaseStudiesBody";
@@ -12,14 +11,7 @@ import { LogosBrandingBody } from "@/app/components/ProjectCategoryBodies/LogosB
 
 
 export async function generateStaticParams() {
-  const query = groq`
-    *[_type == "project"]{
-      "category": category->slug.current,
-      "project": slug.current
-    }
-  `;
-
-  const projects = await client.fetch(query);
+  const projects = await client.fetch(projectAndCategorySlugsQuery);
 
   return projects.map((p: { category: string; project: string }) => ({
     category: p.category,

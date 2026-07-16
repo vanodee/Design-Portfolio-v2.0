@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 import type { Metadata } from "next";
-import { groq } from "next-sanity";
 import { client } from "../../lib/sanity.client";
+import { categorySlugsQuery } from "@/lib/queries";
 
 
 export const metadata: Metadata = {
@@ -21,8 +21,7 @@ export const metadata: Metadata = {
 
 
 export default async function ProjectsIndexPage() {
-  const query = groq`*[_type == "category"] | order(_createdAt desc){ "slug": slug.current }`;
-  const categories = await client.fetch(query);
+  const categories = await client.fetch(categorySlugsQuery);
 
   if (!categories?.length) {
     return <div>No categories found.</div>;

@@ -1,34 +1,17 @@
-import { groq } from "next-sanity";
 import type { Metadata } from "next";
 import { client } from "../../../lib/sanity.client";
+import { categoryWithProjectsQuery, categorySlugsQuery } from "@/lib/queries";
 import styles from "./categoryPage.module.scss";
 import CategoryNav from "@/app/components/CategoryNav/CategoryNav";
 import { notFound } from "next/navigation";
 import ProjectCards from "@/app/components/ProjectCards/ProjectCards";
-
-const categoryQuery = groq`
-  *[_type == "category" && slug.current == $category][0]{
-    title,
-    "slug": slug.current,
-    description,
-    
-    // Fetch all projects belonging to this category
-    "projects": *[_type == "project" && category->slug.current == $category] | order(_createdAt desc){
-      title,
-      "slug": slug.current,
-      description,
-      previewColor,
-      "previewImage": previewImage{ ..., "url": asset->url }
-    }
-  }
-`;
 
 export async function generateMetadata(
   { params }: { params: { category: string } }
 ): Promise<Metadata> {
   const { category } = await params;
 
-  const categoryData = await client.fetch(categoryQuery, { category });
+  const categoryData = await client.fetch(categoryWithProjectsQuery, { category });
 
   if (!categoryData) {
     return {
@@ -64,8 +47,7 @@ export async function generateMetadata(
 
 // Static Params for Dynamic Routing
 export async function generateStaticParams() {
-  const query = groq`*[_type == "category"]{ "slug": slug.current }`;
-  const categories = await client.fetch(query);
+  const categories = await client.fetch(categorySlugsQuery);
 
   return categories.map((cat: { slug: string }) => ({
     category: cat.slug,
@@ -81,7 +63,7 @@ export default async function CategoryPage({
 }) {
   const { category } = await params;
 
-  const categoryData = await client.fetch(categoryQuery, { category });
+  const categoryData = await client.fetch(categoryWithProjectsQuery, { category });
 
   if (!categoryData) return notFound();
 

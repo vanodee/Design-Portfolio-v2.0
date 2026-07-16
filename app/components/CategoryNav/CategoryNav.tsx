@@ -1,15 +1,10 @@
-import { groq } from "next-sanity";
 import { client } from "@/lib/sanity.client";
+import { categoryNavQuery } from "@/lib/queries";
 import CategoryNavClient from "./CategoryNavClient";
 
 
 export default async function CategoryNav() {
-  const query = groq`*[_type == "category"] | order(_createdAt desc){
-    title,
-    "slug": slug.current
-  }`;
-
-  const categories = await client.fetch(query);
+  const categories = await client.fetch(categoryNavQuery);
 
   return <CategoryNavClient categories={categories} />;
 }

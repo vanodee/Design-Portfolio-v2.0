@@ -10,15 +10,6 @@ export const siteSettingsQuery = groq`
   }
 `;
 
-export const categoriesQuery = groq`
-  *[_type == "category"]{
-    _id,
-    title,
-    slug,
-    "imageUrl": image.asset->url,
-  }
-`;
-
 // HOME PAGE ====================================================================
 export const categoriesWithToolsQuery = groq`
  *[_type == "category"] | order(_createdAt desc){
@@ -48,6 +39,41 @@ export const featuredToolsQuery = groq`
     isFeatured
   }
 `;
+
+// PROJECTS PAGES (category listing, /projects redirect, and CategoryNav) ======================
+export const categoryWithProjectsQuery = groq`
+  *[_type == "category" && slug.current == $category][0]{
+    title,
+    "slug": slug.current,
+    description,
+
+    // Fetch all projects belonging to this category
+    "projects": *[_type == "project" && category->slug.current == $category] | order(_createdAt desc){
+      title,
+      "slug": slug.current,
+      description,
+      previewColor,
+      "previewImage": previewImage{ ..., "url": asset->url }
+    }
+  }
+`;
+
+// Category slugs — used for the category listing page's generateStaticParams and the /projects
+// redirect page's "pick the first category" lookup. Ordering is harmless for the former and
+// required for the latter's stable target.
+export const categorySlugsQuery = groq`*[_type == "category"] | order(_createdAt desc){ "slug": slug.current }`;
+
+export const projectAndCategorySlugsQuery = groq`
+  *[_type == "project"]{
+    "category": category->slug.current,
+    "project": slug.current
+  }
+`;
+
+export const categoryNavQuery = groq`*[_type == "category"] | order(_createdAt desc){
+  title,
+  "slug": slug.current
+}`;
 
 // PROJECT DETAILS PAGE ====================================================================
 export const allProjectsQuery = groq`
