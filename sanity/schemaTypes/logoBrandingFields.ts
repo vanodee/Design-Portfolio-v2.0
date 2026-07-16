@@ -1,35 +1,10 @@
 // schemas/logoBrandingFields.ts
 import { defineField } from 'sanity'
+import { makeTeaserFields, makeOutcomesFields, makeKeyLearningsFields, makeWhatWorkedFields } from './shared/fieldGroups'
 
 export const logoBrandingFields = [
   // ===== Teaser Image Section =========================================================
-  defineField({
-    name: 'teaserImages',
-    title: 'Teaser Images',
-    type: 'array',
-    group: 'project-specific',
-    of: [{ type: 'imageWithAlt' }],
-    description: 'Images showing early teasers of the final designs',
-    hidden: ({ parent }) => parent?.categoryName !== 'Logos & Branding',
-  }),
-  defineField({
-    name: 'teaserVideos',
-    title: 'Teaser Videos',
-    type: 'array',
-    group: 'project-specific',
-    of: [{ type: 'file', options: { accept: 'video/mp4,video/webm' } }],
-    description: 'Videos showing early teasers of the final designs',
-    hidden: ({ parent }) => parent?.categoryName !== 'Logos & Branding',
-  }),
-  defineField({
-    name: 'teaserVideoPosters',
-    title: 'Teaser Video Posters',
-    type: 'array',
-    group: 'project-specific',
-    of: [{ type: 'imageWithAlt' }],
-    description: 'Optional fallback poster images for videos showing early teasers of the final designs',
-    hidden: ({ parent }) => parent?.categoryName !== 'Logos & Branding',
-  }),
+  ...makeTeaserFields('', 'Logos & Branding'),
 
   // ===== Business Context ===============================================================
   defineField({
@@ -267,7 +242,7 @@ export const logoBrandingFields = [
     description: 'Optional fallback poster images for portrait Videos for the first core section',
     hidden: ({ parent }) => parent?.categoryName !== 'Logos & Branding',
   }),
-  
+
   // ===== Second Core Section =========================================================
   defineField({
     name: 'secondCoreSectionHeading',
@@ -433,156 +408,11 @@ export const logoBrandingFields = [
   }),
 
   // ===== Outcomes Section =========================================================
-  defineField({
-    name: 'outcomesSectionHeading',
-    title: 'Outcomes Section Heading',
-    type: 'string',
-    group: 'project-specific',
-    description: 'Heading for outcomes section',
-    hidden: ({ parent }) => parent?.categoryName !== 'Logos & Branding',
-  }),
-  defineField({
-    name: 'mainOutcomeHeading',
-    title: 'Main Outcome Heading',
-    type: 'string',
-    group: 'project-specific',
-    description: 'Heading for Main Outcome',
-    hidden: ({ parent }) => parent?.categoryName !== 'Logos & Branding',
-  }),
-  defineField({
-    name: 'mainOutcomeText',
-    title: 'Main Outcome Text',
-    type: 'text',
-    group: 'project-specific',
-    rows: 3,
-    description: 'Text explaining the main outcome',
-    hidden: ({ parent }) => parent?.categoryName !== 'Logos & Branding',
-  }),
-  defineField({
-    name: 'otherOutcomes',
-    title: 'Other Outcomes',
-    type: 'array',
-    group: 'project-specific',
-    of: [
-      {
-        type: 'object',
-        fields: [
-          { name: 'outcomeTitle', title: 'Outcome Title', type: 'string', description: 'e.g., "Strategic Impact", "Visual Impact"' },
-          { name: 'outcomeDescription', title: 'Outcome Description', type: 'text', rows: 2, description: 'Description of what the outcome' },
-        ],
-      },
-    ],
-    description: 'List of Design approach methods and their details',
-    hidden: ({ parent }) => parent?.categoryName !== 'Logos & Branding',
-  }),
+  ...makeOutcomesFields('', 'Logos & Branding'),
 
   // ===== Key Learnings Section ===============================================================
-  defineField({
-    name: 'keyLearnHeading',
-    title: 'Key learnings Heading',
-    type: 'string',
-    group: 'project-specific',
-    description: 'Heading for Key Learnings',
-    hidden: ({ parent }) => parent?.categoryName !== 'Logos & Branding',
-  }),
-  defineField({
-    name: 'keyLearnText',
-    title: 'Key Learnings Text',
-    type: 'text',
-    group: 'project-specific',
-    rows: 3,
-    description: 'Text for key learnings',
-    hidden: ({ parent }) => parent?.categoryName !== 'Logos & Branding',
-  }),
-  defineField({
-    name: 'keyLearnList',
-    title: 'Key Learnings List',
-    type: 'array',
-    group: 'project-specific',
-    of: [{ type: 'string' }],
-    description: 'List of key learnings',
-    hidden: ({ parent }) => parent?.categoryName !== 'Logos & Branding',
-  }),
-  defineField({
-    name: 'keyLearnImage',
-    title: 'Key Learnings Image',
-    type: 'imageWithAlt',
-    group: 'project-specific',
-    options: { hotspot: true },
-    description: 'Image supporting Key Learnings',
-    hidden: ({ parent }) => parent?.categoryName !== 'Logos & Branding',
-  }),
-  defineField({
-    name: 'keyLearnVideo',
-    title: 'Key Learnings Video',
-    type: 'file',
-    group: 'project-specific',
-    options: { accept: 'video/mp4,video/webm' },
-    description: 'Video supporting Key Learnings',
-    hidden: ({ parent }) => parent?.categoryName !== 'Logos & Branding',
-  }),
-  defineField({
-    name: 'keyLearnVideoPoster',
-    title: 'Key Learnings Video Poster',
-    type: 'imageWithAlt',
-    group: 'project-specific',
-    options: { hotspot: true },
-    description: 'Optional fallback poster image for video supporting Key Learnings',
-    hidden: ({ parent }) => parent?.categoryName !== 'Logos & Branding',
-  }),
+  ...makeKeyLearningsFields('', 'Logos & Branding'),
 
   // ===== What Worked Section ===============================================================
-  defineField({
-    name: 'whatWorkedHeading',
-    title: 'What Worked Heading',
-    type: 'string',
-    group: 'project-specific',
-    description: 'Heading for What Worked',
-    hidden: ({ parent }) => parent?.categoryName !== 'Logos & Branding',
-  }),
-  defineField({
-    name: 'whatWorkedText',
-    title: 'What Worked Text',
-    type: 'text',
-    group: 'project-specific',
-    rows: 3,
-    description: 'Text for What Worked',
-    hidden: ({ parent }) => parent?.categoryName !== 'Logos & Branding',
-  }),
-  defineField({
-    name: 'whatWorkedList',
-    title: 'What Worked List',
-    type: 'array',
-    group: 'project-specific',
-    of: [{ type: 'string' }],
-    description: 'List of What Worked',
-    hidden: ({ parent }) => parent?.categoryName !== 'Logos & Branding',
-  }),
-  defineField({
-    name: 'whatWorkedImage',
-    title: 'What Worked Image',
-    type: 'imageWithAlt',
-    group: 'project-specific',
-    options: { hotspot: true },
-    description: 'Image supporting What Worked',
-    hidden: ({ parent }) => parent?.categoryName !== 'Logos & Branding',
-  }),
-  defineField({
-    name: 'whatWorkedVideo',
-    title: 'What Worked Video',
-    type: 'file',
-    group: 'project-specific',
-    options: { accept: 'video/mp4,video/webm' },
-    description: 'Video supporting What Worked',
-    hidden: ({ parent }) => parent?.categoryName !== 'Logos & Branding',
-  }),
-  defineField({
-    name: 'whatWorkedVideoPoster',
-    title: 'What Worked Video Poster',
-    type: 'imageWithAlt',
-    group: 'project-specific',
-    options: { hotspot: true },
-    description: 'Optional fallback poster image for video supporting What Worked',
-    hidden: ({ parent }) => parent?.categoryName !== 'Logos & Branding',
-  }),
+  ...makeWhatWorkedFields('', 'Logos & Branding'),
 ]

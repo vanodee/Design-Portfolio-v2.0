@@ -179,7 +179,7 @@ export const allProjectsQuery = groq`
     "webApp_devSectionVideoPostersAlt": webApp_devSectionVideoPosters[].alt,
     webApp_devSectionItems[]{
       itemName,
-      itemPoints,
+      itemPoints[],
       "itemImage": itemImage.asset->url,
       "itemImageAlt": itemImage.alt,
       "itemVideo": itemVideo.asset->url,
@@ -304,7 +304,7 @@ export const allProjectsQuery = groq`
     website_websiteBuildText,
     website_websiteBuildItems[]{
       buildItemName,
-      buildItemPoints,
+      buildItemPoints[],
       "buildItemImage": buildItemImage.asset->url,
       "buildItemImageAlt": buildItemImage.alt,
       "buildItemVideo": buildItemVideo.asset->url,

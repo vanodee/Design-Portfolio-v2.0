@@ -1,35 +1,10 @@
 // schemas/websiteFields.ts
 import { defineField } from 'sanity'
+import { makeTeaserFields, makeOutcomesFields, makeKeyLearningsFields, makeWhatWorkedFields, makeItemFields } from './shared/fieldGroups'
 
 export const websiteFields = [
   // ===== Teaser Image Section =========================================================
-  defineField({
-    name: 'website_teaserImages',
-    title: 'Teaser Images',
-    type: 'array',
-    group: 'project-specific',
-    of: [{ type: 'imageWithAlt' }],
-    description: 'Images showing early teasers of the final designs',
-    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
-  }),
-  defineField({
-    name: 'website_teaserVideos',
-    title: 'Teaser Videos',
-    type: 'array',
-    group: 'project-specific',
-    of: [{ type: 'file', options: { accept: 'video/mp4,video/webm' } }],
-    description: 'Videos showing early teasers of the final designs',
-    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
-  }),
-  defineField({
-    name: 'website_teaserVideoPosters',
-    title: 'Teaser Video Posters',
-    type: 'array',
-    group: 'project-specific',
-    of: [{ type: 'imageWithAlt' }],
-    description: 'Optional fallback poster images for videos showing early teasers of the final designs',
-    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
-  }),
+  ...makeTeaserFields('website_', 'Websites'),
 
   // ===== Business Context ===============================================================
   defineField({
@@ -168,7 +143,7 @@ export const websiteFields = [
     description: 'Heading for Target Audience section',
     hidden: ({ parent }) => parent?.categoryName !== 'Websites',
   }),
- 
+
   defineField({
     name: 'website_targetAudience',
     title: 'Target Audience',
@@ -259,13 +234,7 @@ export const websiteFields = [
     of: [
       {
         type: 'object',
-        fields: [
-          { name: 'structureName', title: 'Structure Name', type: 'string' },
-          { name: 'structurePoints', title: 'structure Points', type: 'array', of: [{ type: 'string' }], description: 'List of considerations' },
-          { name: 'structureImage', title: 'structure Image', type: 'imageWithAlt', options: { hotspot: true }, description: 'Screenshot or visual supporting considerations' },
-          { name: 'structureVideo', title: 'structure Video', type: 'file', options: { accept: 'video/mp4,video/webm' }, description: 'Screenshot or visual supporting considerations' },
-          { name: 'structureVideoPoster', title: 'structure Video Poster', type: 'imageWithAlt', options: { hotspot: true }, description: 'Optional fallback poster image for screenshot or visual supporting considerations' },
-        ],
+        fields: makeItemFields('structure', 'Structure'),
       },
     ],
     description: 'List of UX structure considerations with details',
@@ -344,13 +313,7 @@ export const websiteFields = [
     of: [
       {
         type: 'object',
-        fields: [
-          { name: 'buildItemName', title: 'Build Item Name', type: 'string' },
-          { name: 'buildItemPoints', title: 'Build Item Points', type: 'text', rows: 3, description: 'Build Item Description' },
-          { name: 'buildItemImage', title: 'Build Item Image', type: 'imageWithAlt', options: { hotspot: true }, description: 'Screenshot or visual supporting build item' },
-          { name: 'buildItemVideo', title: 'Build Item Video', type: 'file', options: { accept: 'video/mp4,video/webm' }, description: 'Screenshot or visual supporting build item' },
-          { name: 'buildItemVideoPoster', title: 'Build Item Video Poster', type: 'imageWithAlt', options: { hotspot: true }, description: 'Optional fallback poster image for screenshot or visual supporting build item' },
-        ],
+        fields: makeItemFields('buildItem', 'Build Item'),
       },
     ],
     description: 'List of Website Build considerations with details',
@@ -477,156 +440,11 @@ export const websiteFields = [
   }),
 
   // ===== Outcomes Section =========================================================
-  defineField({
-    name: 'website_outcomesSectionHeading',
-    title: 'Outcomes Section Heading',
-    type: 'string',
-    group: 'project-specific',
-    description: 'Heading for outcomes section',
-    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
-  }),
-  defineField({
-    name: 'website_mainOutcomeHeading',
-    title: 'Main Outcome Heading',
-    type: 'string',
-    group: 'project-specific',
-    description: 'Heading for Main Outcome',
-    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
-  }),
-  defineField({
-    name: 'website_mainOutcomeText',
-    title: 'Main Outcome Text',
-    type: 'text',
-    group: 'project-specific',
-    rows: 3,
-    description: 'Text explaining the main outcome',
-    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
-  }),
-  defineField({
-    name: 'website_otherOutcomes',
-    title: 'Other Outcomes',
-    type: 'array',
-    group: 'project-specific',
-    of: [
-      {
-        type: 'object',
-        fields: [
-          { name: 'outcomeTitle', title: 'Outcome Title', type: 'string', description: 'e.g., "Strategic Impact", "Visual Impact"' },
-          { name: 'outcomeDescription', title: 'Outcome Description', type: 'text', rows: 2, description: 'Description of what the outcome' },
-        ],
-      },
-    ],
-    description: 'List of Design approach methods and their details',
-    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
-  }),
+  ...makeOutcomesFields('website_', 'Websites'),
 
   // ===== Key Learnings Section ===============================================================
-  defineField({
-    name: 'website_keyLearnHeading',
-    title: 'Key learnings Heading',
-    type: 'string',
-    group: 'project-specific',
-    description: 'Heading for Key Learnings',
-    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
-  }),
-  defineField({
-    name: 'website_keyLearnText',
-    title: 'Key Learnings Text',
-    type: 'text',
-    group: 'project-specific',
-    rows: 3,
-    description: 'Text for key learnings',
-    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
-  }),
-  defineField({
-    name: 'website_keyLearnList',
-    title: 'Key Learnings List',
-    type: 'array',
-    group: 'project-specific',
-    of: [{ type: 'string' }],
-    description: 'List of key learnings',
-    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
-  }),
-  defineField({
-    name: 'website_keyLearnImage',
-    title: 'Key Learnings Image',
-    type: 'imageWithAlt',
-    group: 'project-specific',
-    options: { hotspot: true },
-    description: 'Image supporting Key Learnings',
-    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
-  }),
-  defineField({
-    name: 'website_keyLearnVideo',
-    title: 'Key Learnings Video',
-    type: 'file',
-    group: 'project-specific',
-    options: { accept: 'video/mp4,video/webm' },
-    description: 'Video supporting Key Learnings',
-    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
-  }),
-  defineField({
-    name: 'website_keyLearnVideoPoster',
-    title: 'Key Learnings Video Poster',
-    type: 'imageWithAlt',
-    group: 'project-specific',
-    options: { hotspot: true },
-    description: 'Optional fallback poster image for video supporting Key Learnings',
-    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
-  }),
+  ...makeKeyLearningsFields('website_', 'Websites'),
 
   // ===== What Worked Section ===============================================================
-  defineField({
-    name: 'website_whatWorkedHeading',
-    title: 'What Worked Heading',
-    type: 'string',
-    group: 'project-specific',
-    description: 'Heading for What Worked',
-    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
-  }),
-  defineField({
-    name: 'website_whatWorkedText',
-    title: 'What Worked Text',
-    type: 'text',
-    group: 'project-specific',
-    rows: 3,
-    description: 'Text for What Worked',
-    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
-  }),
-  defineField({
-    name: 'website_whatWorkedList',
-    title: 'What Worked List',
-    type: 'array',
-    group: 'project-specific',
-    of: [{ type: 'string' }],
-    description: 'List of What Worked',
-    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
-  }),
-  defineField({
-    name: 'website_whatWorkedImage',
-    title: 'What Worked Image',
-    type: 'imageWithAlt',
-    group: 'project-specific',
-    options: { hotspot: true },
-    description: 'Image supporting What Worked',
-    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
-  }),
-  defineField({
-    name: 'website_whatWorkedVideo',
-    title: 'What Worked Video',
-    type: 'file',
-    group: 'project-specific',
-    options: { accept: 'video/mp4,video/webm' },
-    description: 'Video supporting What Worked',
-    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
-  }),
-  defineField({
-    name: 'website_whatWorkedVideoPoster',
-    title: 'What Worked Video Poster',
-    type: 'imageWithAlt',
-    group: 'project-specific',
-    options: { hotspot: true },
-    description: 'Optional fallback poster image for video supporting What Worked',
-    hidden: ({ parent }) => parent?.categoryName !== 'Websites',
-  }),
+  ...makeWhatWorkedFields('website_', 'Websites'),
 ]

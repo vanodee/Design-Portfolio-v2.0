@@ -1,35 +1,10 @@
 // schemas/webAppFields.ts
 import { defineField } from 'sanity'
+import { makeTeaserFields, makeOutcomesFields, makeKeyLearningsFields, makeWhatWorkedFields, makeItemFields } from './shared/fieldGroups'
 
 export const webAppFields = [
   // ===== Teaser Image Section =========================================================
-  defineField({
-    name: 'webApp_teaserImages',
-    title: 'Teaser Images',
-    type: 'array',
-    group: 'project-specific',
-    of: [{ type: 'imageWithAlt' }],
-    description: 'Images showing early teasers of the final designs',
-    hidden: ({ parent }) => parent?.categoryName !== 'Web Apps',
-  }),
-  defineField({
-    name: 'webApp_teaserVideos',
-    title: 'Teaser Videos',
-    type: 'array',
-    group: 'project-specific',
-    of: [{ type: 'file', options: { accept: 'video/mp4,video/webm' } }],
-    description: 'Videos showing early teasers of the final designs',
-    hidden: ({ parent }) => parent?.categoryName !== 'Web Apps',
-  }),
-  defineField({
-    name: 'webApp_teaserVideoPosters',
-    title: 'Teaser Video Posters',
-    type: 'array',
-    group: 'project-specific',
-    of: [{ type: 'imageWithAlt' }],
-    description: 'Optional fallback poster images for videos showing early teasers of the final designs',
-    hidden: ({ parent }) => parent?.categoryName !== 'Web Apps',
-  }),
+  ...makeTeaserFields('webApp_', 'Web Apps'),
 
   // ===== Product Context ===============================================================
   defineField({
@@ -206,7 +181,7 @@ export const webAppFields = [
     description: 'Text explaining the project Product Scope',
     hidden: ({ parent }) => parent?.categoryName !== 'Web Apps',
   }),
- 
+
   defineField({
     name: 'webApp_prodScopeItems',
     title: 'Product Scope Items',
@@ -278,13 +253,7 @@ export const webAppFields = [
     of: [
       {
         type: 'object',
-        fields: [
-          { name: 'itemName', title: 'Design Item Name', type: 'string' },
-          { name: 'itemPoints', title: 'Design Item Points', type: 'array', of: [{ type: 'string' }], description: 'breakdown bullet points' },
-          { name: 'itemImage', title: 'Design Item Image', type: 'imageWithAlt', options: { hotspot: true }, description: 'Screenshot or visual supporting design item' },
-          { name: 'itemVideo', title: 'Design Item Video', type: 'file', options: { accept: 'video/mp4,video/webm' }, description: 'Screenshot or visual supporting design item' },
-          { name: 'itemVideoPoster', title: 'Design Item Video Poster', type: 'imageWithAlt', options: { hotspot: true }, description: 'Optional fallback poster image for screenshot or visual supporting design item' },
-        ],
+        fields: makeItemFields('item', 'Design Item'),
       },
     ],
     description: 'List of Design considerations with details',
@@ -317,13 +286,7 @@ export const webAppFields = [
     of: [
       {
         type: 'object',
-        fields: [
-          { name: 'itemName', title: 'Developer Item Name', type: 'string' },
-          { name: 'itemPoints', title: 'Developer Item Points', type: 'text', rows: 3, description: 'suporting text' },
-          { name: 'itemImage', title: 'Developer Item Image', type: 'imageWithAlt', options: { hotspot: true }, description: 'Screenshot or visual supporting Developer item' },
-          { name: 'itemVideo', title: 'Developer Item Video', type: 'file', options: { accept: 'video/mp4,video/webm' }, description: 'Screenshot or visual supporting Developer item' },
-          { name: 'itemVideoPoster', title: 'Developer Item Video Poster', type: 'imageWithAlt', options: { hotspot: true }, description: 'Optional fallback poster image for screenshot or visual supporting Developer item' },
-        ],
+        fields: makeItemFields('item', 'Developer Item'),
       },
     ],
     description: 'List of Developer considerations with details',
@@ -377,156 +340,11 @@ export const webAppFields = [
   }),
 
   // ===== Outcomes Section =========================================================
-  defineField({
-    name: 'webApp_outcomesSectionHeading',
-    title: 'Outcomes Section Heading',
-    type: 'string',
-    group: 'project-specific',
-    description: 'Heading for outcomes section',
-    hidden: ({ parent }) => parent?.categoryName !== 'Web Apps',
-  }),
-  defineField({
-    name: 'webApp_mainOutcomeHeading',
-    title: 'Main Outcome Heading',
-    type: 'string',
-    group: 'project-specific',
-    description: 'Heading for Main Outcome',
-    hidden: ({ parent }) => parent?.categoryName !== 'Web Apps',
-  }),
-  defineField({
-    name: 'webApp_mainOutcomeText',
-    title: 'Main Outcome Text',
-    type: 'text',
-    group: 'project-specific',
-    rows: 3,
-    description: 'Text explaining the main outcome',
-    hidden: ({ parent }) => parent?.categoryName !== 'Web Apps',
-  }),
-  defineField({
-    name: 'webApp_otherOutcomes',
-    title: 'Other Outcomes',
-    type: 'array',
-    group: 'project-specific',
-    of: [
-      {
-        type: 'object',
-        fields: [
-          { name: 'outcomeTitle', title: 'Outcome Title', type: 'string', description: 'e.g., "Strategic Impact", "Visual Impact"' },
-          { name: 'outcomeDescription', title: 'Outcome Description', type: 'text', rows: 2, description: 'Description of what the outcome' },
-        ],
-      },
-    ],
-    description: 'List of Design approach methods and their details',
-    hidden: ({ parent }) => parent?.categoryName !== 'Web Apps',
-  }),
+  ...makeOutcomesFields('webApp_', 'Web Apps'),
 
   // ===== Key Learnings Section ===============================================================
-  defineField({
-    name: 'webApp_keyLearnHeading',
-    title: 'Key learnings Heading',
-    type: 'string',
-    group: 'project-specific',
-    description: 'Heading for Key Learnings',
-    hidden: ({ parent }) => parent?.categoryName !== 'Web Apps',
-  }),
-  defineField({
-    name: 'webApp_keyLearnText',
-    title: 'Key Learnings Text',
-    type: 'text',
-    group: 'project-specific',
-    rows: 3,
-    description: 'Text for key learnings',
-    hidden: ({ parent }) => parent?.categoryName !== 'Web Apps',
-  }),
-  defineField({
-    name: 'webApp_keyLearnList',
-    title: 'Key Learnings List',
-    type: 'array',
-    group: 'project-specific',
-    of: [{ type: 'string' }],
-    description: 'List of key learnings',
-    hidden: ({ parent }) => parent?.categoryName !== 'Web Apps',
-  }),
-  defineField({
-    name: 'webApp_keyLearnImage',
-    title: 'Key Learnings Image',
-    type: 'imageWithAlt',
-    group: 'project-specific',
-    options: { hotspot: true },
-    description: 'Image supporting Key Learnings',
-    hidden: ({ parent }) => parent?.categoryName !== 'Web Apps',
-  }),
-  defineField({
-    name: 'webApp_keyLearnVideo',
-    title: 'Key Learnings Video',
-    type: 'file',
-    group: 'project-specific',
-    options: { accept: 'video/mp4,video/webm' },
-    description: 'Video supporting Key Learnings',
-    hidden: ({ parent }) => parent?.categoryName !== 'Web Apps',
-  }),
-  defineField({
-    name: 'webApp_keyLearnVideoPoster',
-    title: 'Key Learnings Video Poster',
-    type: 'imageWithAlt',
-    group: 'project-specific',
-    options: { hotspot: true },
-    description: 'Optional fallback poster image for video supporting Key Learnings',
-    hidden: ({ parent }) => parent?.categoryName !== 'Web Apps',
-  }),
+  ...makeKeyLearningsFields('webApp_', 'Web Apps'),
 
   // ===== What Worked Section ===============================================================
-  defineField({
-    name: 'webApp_whatWorkedHeading',
-    title: 'What Worked Heading',
-    type: 'string',
-    group: 'project-specific',
-    description: 'Heading for What Worked',
-    hidden: ({ parent }) => parent?.categoryName !== 'Web Apps',
-  }),
-  defineField({
-    name: 'webApp_whatWorkedText',
-    title: 'What Worked Text',
-    type: 'text',
-    group: 'project-specific',
-    rows: 3,
-    description: 'Text for What Worked',
-    hidden: ({ parent }) => parent?.categoryName !== 'Web Apps',
-  }),
-  defineField({
-    name: 'webApp_whatWorkedList',
-    title: 'What Worked List',
-    type: 'array',
-    group: 'project-specific',
-    of: [{ type: 'string' }],
-    description: 'List of What Worked',
-    hidden: ({ parent }) => parent?.categoryName !== 'Web Apps',
-  }),
-  defineField({
-    name: 'webApp_whatWorkedImage',
-    title: 'What Worked Image',
-    type: 'imageWithAlt',
-    group: 'project-specific',
-    options: { hotspot: true },
-    description: 'Image supporting What Worked',
-    hidden: ({ parent }) => parent?.categoryName !== 'Web Apps',
-  }),
-  defineField({
-    name: 'webApp_whatWorkedVideo',
-    title: 'What Worked Video',
-    type: 'file',
-    group: 'project-specific',
-    options: { accept: 'video/mp4,video/webm' },
-    description: 'Video supporting What Worked',
-    hidden: ({ parent }) => parent?.categoryName !== 'Web Apps',
-  }),
-  defineField({
-    name: 'webApp_whatWorkedVideoPoster',
-    title: 'What Worked Video Poster',
-    type: 'imageWithAlt',
-    group: 'project-specific',
-    options: { hotspot: true },
-    description: 'Optional fallback poster image for video supporting What Worked',
-    hidden: ({ parent }) => parent?.categoryName !== 'Web Apps',
-  }),
+  ...makeWhatWorkedFields('webApp_', 'Web Apps'),
 ]

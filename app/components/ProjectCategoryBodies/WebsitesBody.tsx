@@ -323,7 +323,12 @@ export function WebsitesBody({ projectData, styles }: { projectData: any; styles
           >
             <div className={styles.textContainer}>
               <h3>{item.buildItemName}</h3>
-              <p>{item.buildItemPoints}</p>
+
+              <ul className={styles.bulletList}>
+                {item.buildItemPoints?.map((Point: any) => (
+                  <li key={Point}>{Point}</li>
+                ))}
+              </ul>
             </div>
 
             <div className={styles.rowImageContainer}>

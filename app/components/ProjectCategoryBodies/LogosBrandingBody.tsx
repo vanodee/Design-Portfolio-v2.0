@@ -441,7 +441,7 @@ export function LogosBrandingBody({ projectData, styles }: { projectData: any; s
           </div>
         </div>
 
-        {/* Design Objectives ------------------------------------------------------- */}
+        {/* What Worked ------------------------------------------------------- */}
         <div className={styles.textImageRow}>
           <div className={styles.textContainer}>
             <h3>{projectData.whatWorkedHeading}</h3>
