@@ -7,14 +7,14 @@ export function WebsitesBody({ projectData, styles }: { projectData: any; styles
     <>
       <section className={styles.customSection}>
         {/* Teaser Images ----------------------------------------------- */}
-        {projectData.website_teaserImages?.map((teaserImage: any) => (
+        {projectData.website_teaserImages?.map((teaserImage: any, i: number) => (
           <div key={teaserImage} className={styles.soloImageContainer}>
             <Image
               className={styles.dividerImage}
               src={teaserImage}
               height={1080}
               width={1920}
-              alt="Website teaser Image"
+              alt={projectData.website_teaserImagesAlt?.[i] || "Website teaser Image"}
             />
           </div>
         ))}
@@ -108,7 +108,7 @@ export function WebsitesBody({ projectData, styles }: { projectData: any; styles
                   src={projectData.website_problemsIdentifiedImage}
                   height={1080}
                   width={1920}
-                  alt="Project Rationale Image"
+                  alt={projectData.website_problemsIdentifiedImageAlt || "Problems Identified Image"}
                 />
               )
             )}
@@ -150,7 +150,7 @@ export function WebsitesBody({ projectData, styles }: { projectData: any; styles
                   src={projectData.website_designObjectivesImage}
                   height={1080}
                   width={1920}
-                  alt="Project Rationale Image"
+                  alt={projectData.website_designObjectivesImageAlt || "Design Objectives Image"}
                 />
               )
             )}
@@ -186,14 +186,14 @@ export function WebsitesBody({ projectData, styles }: { projectData: any; styles
           <p>{projectData.website_informationArcText}</p>
         </div>
 
-        {projectData.website_informationArcImages?.map((iaImage: any) => (
+        {projectData.website_informationArcImages?.map((iaImage: any, i: number) => (
           <div key={iaImage} className={styles.soloImageContainer}>
             <Image
               className={styles.dividerImage}
               src={iaImage}
               height={1080}
               width={1920}
-              alt="Information Architecture Image"
+              alt={projectData.website_informationArcImagesAlt?.[i] || "Information Architecture Image"}
             />
           </div>
         ))}
@@ -262,7 +262,7 @@ export function WebsitesBody({ projectData, styles }: { projectData: any; styles
                     src={item.structureImage}
                     height={1080}
                     width={1920}
-                    alt={`${item.competitorName} - Competitor Image`}
+                    alt={item.structureImageAlt || `${item.structureName} - Structure Image`}
                   />
                 )
               )}
@@ -278,14 +278,14 @@ export function WebsitesBody({ projectData, styles }: { projectData: any; styles
           <p>{projectData.website_visualDesignText}</p>
         </div>
 
-        {projectData.website_visualDesignImages?.map((visualDesignImage: any) => (
+        {projectData.website_visualDesignImages?.map((visualDesignImage: any, i: number) => (
           <div key={visualDesignImage} className={styles.soloImageContainer}>
             <Image
               className={styles.dividerImage}
               src={visualDesignImage}
               height={1080}
               width={1920}
-              alt="Information Architecture Image"
+              alt={projectData.website_visualDesignImagesAlt?.[i] || "Visual Design Image"}
             />
           </div>
         ))}
@@ -349,7 +349,7 @@ export function WebsitesBody({ projectData, styles }: { projectData: any; styles
                     src={item.buildItemImage}
                     height={1080}
                     width={1920}
-                    alt={`${item.buildItemName} Image`}
+                    alt={item.buildItemImageAlt || `${item.buildItemName} Image`}
                   />
                 )
               )}
@@ -357,9 +357,9 @@ export function WebsitesBody({ projectData, styles }: { projectData: any; styles
           </div>
         ))}
 
-        {projectData.website_websiteBuildImages?.map((buildImage: any) => (
+        {projectData.website_websiteBuildImages?.map((buildImage: any, i: number) => (
           <div key={buildImage} className={styles.soloImageContainer}>
-            <Image className={styles.dividerImage} src={buildImage} height={1080} width={1920} alt="Website Build Image" />
+            <Image className={styles.dividerImage} src={buildImage} height={1080} width={1920} alt={projectData.website_websiteBuildImagesAlt?.[i] || "Website Build Image"} />
           </div>
         ))}
         {projectData.website_websiteBuildVideos?.map((buildVideo: any, index: number) => (
@@ -394,9 +394,9 @@ export function WebsitesBody({ projectData, styles }: { projectData: any; styles
           </ul>
         </div>
 
-        {projectData.website_accessibilityImages?.map((accessImage: any) => (
+        {projectData.website_accessibilityImages?.map((accessImage: any, i: number) => (
           <div key={accessImage} className={styles.soloImageContainer}>
-            <Image className={styles.dividerImage} src={accessImage} height={1080} width={1920} alt="Accessibility Image" />
+            <Image className={styles.dividerImage} src={accessImage} height={1080} width={1920} alt={projectData.website_accessibilityImagesAlt?.[i] || "Accessibility Image"} />
           </div>
         ))}
         {projectData.website_accessibilityVideos?.map((accessVideo: any, index: number) => (
@@ -452,7 +452,7 @@ export function WebsitesBody({ projectData, styles }: { projectData: any; styles
                   src={projectData.website_preLaunchImage}
                   height={1080}
                   width={1920}
-                  alt="Project Rationale Image"
+                  alt={projectData.website_preLaunchImageAlt || "Pre-Launch Image"}
                 />
               )
             )}
@@ -551,7 +551,7 @@ export function WebsitesBody({ projectData, styles }: { projectData: any; styles
                   src={projectData.website_keyLearnImage}
                   height={1080}
                   width={1920}
-                  alt="Key Learning Image"
+                  alt={projectData.website_keyLearnImageAlt || "Key Learning Image"}
                 />
               )
             )}
@@ -597,7 +597,7 @@ export function WebsitesBody({ projectData, styles }: { projectData: any; styles
                   src={projectData.website_whatWorkedImage}
                   height={1080}
                   width={1920}
-                  alt="What Worked Image"
+                  alt={projectData.website_whatWorkedImageAlt || "What Worked Image"}
                 />
               )
             )}

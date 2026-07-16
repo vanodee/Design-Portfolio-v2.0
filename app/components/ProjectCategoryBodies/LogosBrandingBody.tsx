@@ -7,9 +7,9 @@ export function LogosBrandingBody({ projectData, styles }: { projectData: any; s
     <>
       <section className={styles.customSection}>
         {/* Teaser Images ----------------------------------------------- */}
-        {projectData.teaserImages?.map((teaserImage: any) => (
+        {projectData.teaserImages?.map((teaserImage: any, i: number) => (
           <div key={teaserImage} className={styles.soloImageContainer}>
-            <Image className={styles.dividerImage} src={teaserImage} height={1080} width={1920} alt="Logo teaser Image" />
+            <Image className={styles.dividerImage} src={teaserImage} height={1080} width={1920} alt={projectData.teaserImagesAlt?.[i] || "Logo teaser Image"} />
           </div>
         ))}
         {projectData.teaserVideos?.map((teaserVideo: any, index: number) => (
@@ -72,7 +72,7 @@ export function LogosBrandingBody({ projectData, styles }: { projectData: any; s
                   src={projectData.problemsIdentifiedImage}
                   height={1080}
                   width={1920}
-                  alt="Project Rationale Image"
+                  alt={projectData.problemsIdentifiedImageAlt || "Problems Identified Image"}
                 />
               )
             )}
@@ -114,7 +114,7 @@ export function LogosBrandingBody({ projectData, styles }: { projectData: any; s
                   src={projectData.designObjectivesImage}
                   height={1080}
                   width={1920}
-                  alt="Project Rationale Image"
+                  alt={projectData.designObjectivesImageAlt || "Design Objectives Image"}
                 />
               )
             )}
@@ -159,9 +159,9 @@ export function LogosBrandingBody({ projectData, styles }: { projectData: any; s
           </ul>
         </div>
 
-        {projectData.firstCoreLandscapeImages?.map((firstCoreLandscapeImage: any) => (
+        {projectData.firstCoreLandscapeImages?.map((firstCoreLandscapeImage: any, i: number) => (
           <div key={firstCoreLandscapeImage} className={styles.soloImageContainer}>
-            <Image className={styles.dividerImage} src={firstCoreLandscapeImage} height={1080} width={1920} alt="Persona" />
+            <Image className={styles.dividerImage} src={firstCoreLandscapeImage} height={1080} width={1920} alt={projectData.firstCoreLandscapeImagesAlt?.[i] || "Landscape Image"} />
           </div>
         ))}
         {projectData.firstCoreLandscapeVideos?.map((firstCoreLandscapeVideo: any, index: number) => (
@@ -189,14 +189,14 @@ export function LogosBrandingBody({ projectData, styles }: { projectData: any; s
         
         {projectData.firstCorePortraitImages && (
           <div className={styles.portraitImageContainer}>
-            {projectData.firstCorePortraitImages?.map((firstCorePortraitImage: any) => (
-              <Image 
+            {projectData.firstCorePortraitImages?.map((firstCorePortraitImage: any, i: number) => (
+              <Image
                 key={firstCorePortraitImage}
-                className={styles.portraitImage} 
-                src={firstCorePortraitImage} 
-                height={1920} 
-                width={1080} 
-                alt="Portrait Image" 
+                className={styles.portraitImage}
+                src={firstCorePortraitImage}
+                height={1920}
+                width={1080}
+                alt={projectData.firstCorePortraitImagesAlt?.[i] || "Portrait Image"}
               />
             ))}
           </div>
@@ -240,9 +240,9 @@ export function LogosBrandingBody({ projectData, styles }: { projectData: any; s
           </ul>
         </div>
 
-        {projectData.secondCoreLandscapeImages?.map((secondCoreLandscapeImage: any) => (
+        {projectData.secondCoreLandscapeImages?.map((secondCoreLandscapeImage: any, i: number) => (
           <div key={secondCoreLandscapeImage} className={styles.soloImageContainer}>
-            <Image className={styles.dividerImage} src={secondCoreLandscapeImage} height={1080} width={1920} alt="Persona" />
+            <Image className={styles.dividerImage} src={secondCoreLandscapeImage} height={1080} width={1920} alt={projectData.secondCoreLandscapeImagesAlt?.[i] || "Landscape Image"} />
           </div>
         ))}
         {projectData.secondCoreLandscapeVideos?.map((secondCoreLandscapeVideo: any, index: number) => (
@@ -266,14 +266,14 @@ export function LogosBrandingBody({ projectData, styles }: { projectData: any; s
 
         {projectData.secondCorePortraitImages && (
           <div className={styles.portraitImageContainer}>
-            {projectData.secondCorePortraitImages?.map((secondCorePortraitImage: any) => (
-              <Image 
+            {projectData.secondCorePortraitImages?.map((secondCorePortraitImage: any, i: number) => (
+              <Image
                 key={secondCorePortraitImage}
-                className={styles.portraitImage} 
-                src={secondCorePortraitImage} 
-                height={1920} 
-                width={1080} 
-                alt="Portrait Image" 
+                className={styles.portraitImage}
+                src={secondCorePortraitImage}
+                height={1920}
+                width={1080}
+                alt={projectData.secondCorePortraitImagesAlt?.[i] || "Portrait Image"}
               />
             ))}
           </div>
@@ -318,9 +318,9 @@ export function LogosBrandingBody({ projectData, styles }: { projectData: any; s
           </ul>
         </div>
 
-        {projectData.thirdCoreLandscapeImages?.map((thirdCoreLandscapeImage: any) => (
+        {projectData.thirdCoreLandscapeImages?.map((thirdCoreLandscapeImage: any, i: number) => (
           <div key={thirdCoreLandscapeImage} className={styles.soloImageContainer}>
-            <Image className={styles.dividerImage} src={thirdCoreLandscapeImage} height={1080} width={1920} alt="Persona" />
+            <Image className={styles.dividerImage} src={thirdCoreLandscapeImage} height={1080} width={1920} alt={projectData.thirdCoreLandscapeImagesAlt?.[i] || "Landscape Image"} />
           </div>
         ))}
         {projectData.thirdCoreLandscapeVideos?.map((thirdCoreLandscapeVideo: any, index: number) => (
@@ -344,14 +344,14 @@ export function LogosBrandingBody({ projectData, styles }: { projectData: any; s
 
         {projectData.thirdCorePortraitImages && (
           <div className={styles.portraitImageContainer}>
-            {projectData.thirdCorePortraitImages?.map((thirdCorePortraitImage: any) => (
-              <Image 
+            {projectData.thirdCorePortraitImages?.map((thirdCorePortraitImage: any, i: number) => (
+              <Image
                 key={thirdCorePortraitImage}
-                className={styles.portraitImage} 
-                src={thirdCorePortraitImage} 
-                height={1920} 
-                width={1080} 
-                alt="Portrait Image" 
+                className={styles.portraitImage}
+                src={thirdCorePortraitImage}
+                height={1920}
+                width={1080}
+                alt={projectData.thirdCorePortraitImagesAlt?.[i] || "Portrait Image"}
               />
             ))}
           </div>
@@ -435,7 +435,7 @@ export function LogosBrandingBody({ projectData, styles }: { projectData: any; s
               </video>
             ) : (
               projectData.keyLearnImage && (
-                <Image className={styles.dividerImage} src={projectData.keyLearnImage} height={1080} width={1920} alt="Key Learning Image" />
+                <Image className={styles.dividerImage} src={projectData.keyLearnImage} height={1080} width={1920} alt={projectData.keyLearnImageAlt || "Key Learning Image"} />
               )
             )}
           </div>
@@ -475,7 +475,7 @@ export function LogosBrandingBody({ projectData, styles }: { projectData: any; s
               </video>
             ) : (
               projectData.whatWorkedImage && (
-                <Image className={styles.dividerImage} src={projectData.whatWorkedImage} height={1080} width={1920} alt="What Worked Image" />
+                <Image className={styles.dividerImage} src={projectData.whatWorkedImage} height={1080} width={1920} alt={projectData.whatWorkedImageAlt || "What Worked Image"} />
               )
             )}
           </div>

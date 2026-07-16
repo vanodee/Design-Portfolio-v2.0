@@ -8,14 +8,14 @@ export function UxCaseStudiesBody({ projectData, styles }: { projectData: any; s
       <section className={styles.customSection}>
         {/* Platform Gifs ------------------------------- */}
         <div className={styles.soloImageContainer}>
-          {projectData.platformImages?.map((platformImage: any) => (
+          {projectData.platformImages?.map((platformImage: any, i: number) => (
             <Image
               key={platformImage}
               className={styles.dividerImage}
               src={platformImage}
               height={1080}
               width={1920}
-              alt="Platform Image"
+              alt={projectData.platformImagesAlt?.[i] || "Platform Image"}
             />
           ))}
           {projectData.platformVideos?.map((platformVideo: any, index: number) => (
@@ -97,7 +97,7 @@ export function UxCaseStudiesBody({ projectData, styles }: { projectData: any; s
                   src={projectData.projectRationaleImage}
                   height={1080}
                   width={1920}
-                  alt="Project Rationale Image"
+                  alt={projectData.projectRationaleImageAlt || "Project Rationale Image"}
                 />
               )
             )}
@@ -131,7 +131,7 @@ export function UxCaseStudiesBody({ projectData, styles }: { projectData: any; s
               src={projectData.researchSectionImage}
               height={1080}
               width={1920}
-              alt="Research Divider Image"
+              alt={projectData.researchSectionImageAlt || "Research Divider Image"}
             />
           )
         )}
@@ -169,7 +169,7 @@ export function UxCaseStudiesBody({ projectData, styles }: { projectData: any; s
                   src={projectData.marketResearchVisual}
                   height={1080}
                   width={1920}
-                  alt="Market Research Image"
+                  alt={projectData.marketResearchVisualAlt || "Market Research Image"}
                 />
               )
             )}
@@ -227,7 +227,7 @@ export function UxCaseStudiesBody({ projectData, styles }: { projectData: any; s
                     src={competitor.competitorImage}
                     height={1080}
                     width={1920}
-                    alt={`${competitor.competitorName} - Competitor Image`}
+                    alt={competitor.competitorImageAlt || `${competitor.competitorName} - Competitor Image`}
                   />
                 )
               )}
@@ -270,7 +270,7 @@ export function UxCaseStudiesBody({ projectData, styles }: { projectData: any; s
                   src={projectData.opportunitiesImage}
                   height={1080}
                   width={1920}
-                  alt="Opportunities Image"
+                  alt={projectData.opportunitiesImageAlt || "Opportunities Image"}
                 />
               )
             )}
@@ -285,9 +285,9 @@ export function UxCaseStudiesBody({ projectData, styles }: { projectData: any; s
           <p>{projectData.userSurveyIntro}</p>
         </div>
 
-        {projectData.surveyCharts?.map((surveyChart: any) => (
+        {projectData.surveyCharts?.map((surveyChart: any, i: number) => (
           <div key={surveyChart} className={styles.soloImageContainer}>
-            <Image className={styles.dividerImage} src={surveyChart} height={1080} width={1920} alt="Survery Chart" />
+            <Image className={styles.dividerImage} src={surveyChart} height={1080} width={1920} alt={projectData.surveyChartsAlt?.[i] || "Survey Chart"} />
           </div>
         ))}
         {projectData.surveyChartsVideo?.map((surveyChartVideo: any, index: number) => (
@@ -344,7 +344,7 @@ export function UxCaseStudiesBody({ projectData, styles }: { projectData: any; s
                   src={projectData.assumptionValidationImage}
                   height={1080}
                   width={1920}
-                  alt="Section Image"
+                  alt={projectData.assumptionValidationImageAlt || "Assumption Validation Image"}
                 />
               )
             )}
@@ -380,9 +380,9 @@ export function UxCaseStudiesBody({ projectData, styles }: { projectData: any; s
           <p>{projectData.personasIntro}</p>
         </div>
 
-        {projectData.personas?.map((persona: any) => (
+        {projectData.personas?.map((persona: any, i: number) => (
           <div key={persona} className={styles.soloImageContainer}>
-            <Image className={styles.dividerImage} src={persona} height={1080} width={1920} alt="Persona" />
+            <Image className={styles.dividerImage} src={persona} height={1080} width={1920} alt={projectData.personasAlt?.[i] || "User Persona"} />
           </div>
         ))}
         {projectData.personasVideo?.map((personaVideo: any, index: number) => (
@@ -452,7 +452,7 @@ export function UxCaseStudiesBody({ projectData, styles }: { projectData: any; s
               src={projectData.ideationSectionImage}
               height={1080}
               width={1920}
-              alt="Ideation Divider Image"
+              alt={projectData.ideationSectionImageAlt || "Ideation Divider Image"}
             />
           )
         )}
@@ -466,14 +466,14 @@ export function UxCaseStudiesBody({ projectData, styles }: { projectData: any; s
           <p>{projectData.userFlowDescription}</p>
         </div>
 
-        {projectData.userFlowDiagrams?.map((userFlowDiagram: any) => (
+        {projectData.userFlowDiagrams?.map((userFlowDiagram: any, i: number) => (
           <div key={userFlowDiagram} className={styles.soloImageContainer}>
             <Image
               className={styles.dividerImage}
               src={userFlowDiagram}
               height={1080}
               width={1920}
-              alt="User Flow Diagram"
+              alt={projectData.userFlowDiagramsAlt?.[i] || "User Flow Diagram"}
             />
           </div>
         ))}
@@ -527,7 +527,7 @@ export function UxCaseStudiesBody({ projectData, styles }: { projectData: any; s
                 src={projectData.informationArchitectureImage}
                 height={1080}
                 width={1920}
-                alt="Information Architecture Diagram"
+                alt={projectData.informationArchitectureImageAlt || "Information Architecture Diagram"}
               />
             )
           )}
@@ -541,9 +541,9 @@ export function UxCaseStudiesBody({ projectData, styles }: { projectData: any; s
           <p>{projectData.wireframesDescription}</p>
         </div>
 
-        {projectData.wireframeImages?.map((wireframeImage: any) => (
+        {projectData.wireframeImages?.map((wireframeImage: any, i: number) => (
           <div key={wireframeImage} className={styles.soloImageContainer}>
-            <Image className={styles.dividerImage} src={wireframeImage} height={1080} width={1920} alt="User Flow Diagram" />
+            <Image className={styles.dividerImage} src={wireframeImage} height={1080} width={1920} alt={projectData.wireframeImagesAlt?.[i] || "Wireframe Image"} />
           </div>
         ))}
         {projectData.wireframeVideos?.map((wireframeVideo: any, index: number) => (
@@ -592,7 +592,7 @@ export function UxCaseStudiesBody({ projectData, styles }: { projectData: any; s
               src={projectData.visualDesignSectionImage}
               height={1080}
               width={1920}
-              alt="Ideation Divider Image"
+              alt={projectData.visualDesignSectionImageAlt || "Visual Design Divider Image"}
             />
           )
         )}
@@ -606,9 +606,9 @@ export function UxCaseStudiesBody({ projectData, styles }: { projectData: any; s
           <p>{projectData.styleGuideDescription}</p>
         </div>
 
-        {projectData.styleGuideImages?.map((styleGuideImage: any) => (
+        {projectData.styleGuideImages?.map((styleGuideImage: any, i: number) => (
           <div key={styleGuideImage} className={styles.soloImageContainer}>
-            <Image className={styles.dividerImage} src={styleGuideImage} height={1080} width={1920} alt="User Flow Diagram" />
+            <Image className={styles.dividerImage} src={styleGuideImage} height={1080} width={1920} alt={projectData.styleGuideImagesAlt?.[i] || "Style Guide Image"} />
           </div>
         ))}
         {projectData.styleGuideVideos?.map((styleGuideVideo: any, index: number) => (
@@ -647,9 +647,9 @@ export function UxCaseStudiesBody({ projectData, styles }: { projectData: any; s
           </ul>
         </div>
 
-        {projectData.highFidelityMockups?.map((highFidelityMockup: any) => (
+        {projectData.highFidelityMockups?.map((highFidelityMockup: any, i: number) => (
           <div key={highFidelityMockup} className={styles.soloImageContainer}>
-            <Image className={styles.dividerImage} src={highFidelityMockup} height={1080} width={1920} alt="Mockup" />
+            <Image className={styles.dividerImage} src={highFidelityMockup} height={1080} width={1920} alt={projectData.highFidelityMockupsAlt?.[i] || "Mockup"} />
           </div>
         ))}
         {projectData.highFidelityMockupsVideo?.map((highFidelityVideo: any, index: number) => (
@@ -679,9 +679,9 @@ export function UxCaseStudiesBody({ projectData, styles }: { projectData: any; s
           <p>{projectData.prototypeDescription}</p>
         </div>
 
-        {projectData.prototypeImages?.map((prototypeImage: any) => (
+        {projectData.prototypeImages?.map((prototypeImage: any, i: number) => (
           <div key={prototypeImage} className={styles.soloImageContainer}>
-            <Image className={styles.dividerImage} src={prototypeImage} height={1080} width={1920} alt="Prototype Image" />
+            <Image className={styles.dividerImage} src={prototypeImage} height={1080} width={1920} alt={projectData.prototypeImagesAlt?.[i] || "Prototype Image"} />
           </div>
         ))}
         {projectData.prototypeVideos?.map((prototypeVideo: any, index: number) => (
@@ -792,7 +792,7 @@ export function UxCaseStudiesBody({ projectData, styles }: { projectData: any; s
                   src={projectData.studyResultsImage}
                   height={1080}
                   width={1920}
-                  alt="Project Rationale Image"
+                  alt={projectData.studyResultsImageAlt || "Study Results Image"}
                 />
               )
             )}
@@ -834,7 +834,7 @@ export function UxCaseStudiesBody({ projectData, styles }: { projectData: any; s
                   src={projectData.prototypeUpdatesImage}
                   height={1080}
                   width={1920}
-                  alt="Project Rationale Image"
+                  alt={projectData.prototypeUpdatesImageAlt || "Prototype Updates Image"}
                 />
               )
             )}
@@ -880,7 +880,7 @@ export function UxCaseStudiesBody({ projectData, styles }: { projectData: any; s
                 src={projectData.accessibilityMockup}
                 height={1080}
                 width={1920}
-                alt="Accessibility Mockup"
+                alt={projectData.accessibilityMockupAlt || "Accessibility Mockup"}
               />
             )
           )}
@@ -913,7 +913,7 @@ export function UxCaseStudiesBody({ projectData, styles }: { projectData: any; s
               src={projectData.finalThoughtsSectionImage}
               height={1080}
               width={1920}
-              alt="Final Thoughts Divider Image"
+              alt={projectData.finalThoughtsSectionImageAlt || "Final Thoughts Divider Image"}
             />
           )
         )}
@@ -968,7 +968,7 @@ export function UxCaseStudiesBody({ projectData, styles }: { projectData: any; s
                   src={projectData.keyLearningsImage}
                   height={1080}
                   width={1920}
-                  alt="Project Rationale Image"
+                  alt={projectData.keyLearningsImageAlt || "Key Learnings Image"}
                 />
               )
             )}

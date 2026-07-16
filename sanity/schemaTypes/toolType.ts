@@ -15,7 +15,7 @@ export const toolType = defineType({
     defineField({
       name: 'icon',
       title: 'Tool Icon/Image',
-      type: 'image',
+      type: 'imageWithAlt',
       options: { hotspot: true },
     }),
     defineField({

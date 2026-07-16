@@ -90,7 +90,7 @@ export const projectType = defineType({
     defineField({
       name: 'previewImage',
       title: 'Preview Image',
-      type: 'image',
+      type: 'imageWithAlt',
       group: 'general',
       options: { hotspot: true },
     }),
@@ -135,7 +135,7 @@ export const projectType = defineType({
     defineField({
       name: 'heroImage',
       title: 'Hero Image',
-      type: 'image',
+      type: 'imageWithAlt',
       group: 'general',
       options: { hotspot: true },
     }),
@@ -221,7 +221,7 @@ export const projectType = defineType({
     defineField({
       name: 'closingImage',
       title: 'Closing Image',
-      type: 'image',
+      type: 'imageWithAlt',
       group: 'general',
       options: { hotspot: true },
       description: 'Final hero image or mockup to close the case study',

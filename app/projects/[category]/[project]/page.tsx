@@ -144,7 +144,7 @@ export default async function ProjectPage({
           style={{ objectPosition: hotspotPosition(projectData.heroImage) }}
           height={1080}
           width={1920}
-          alt="Hero Image"
+          alt={projectData.heroImage?.alt || "Hero Image"}
         />
       </div>
 
@@ -220,7 +220,7 @@ export default async function ProjectPage({
           style={{ objectPosition: hotspotPosition(projectData.closingImage) }}
           height={1080}
           width={1920}
-          alt="Closing Image"
+          alt={projectData.closingImage?.alt || "Closing Image"}
         />
       </div>
 

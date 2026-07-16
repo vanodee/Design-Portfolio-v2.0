@@ -25,13 +25,13 @@ export const categoryType = defineType({
     defineField({
       name: 'icon',
       title: 'Category Icon',
-      type: 'image',
+      type: 'imageWithAlt',
       options: { hotspot: true },
     }),
     defineField({
       name: 'image',
       title: 'Category Image',
-      type: 'image',
+      type: 'imageWithAlt',
       options: { hotspot: true },
     }),
     defineField({

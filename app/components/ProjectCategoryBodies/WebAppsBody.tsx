@@ -7,14 +7,14 @@ export function WebAppsBody({ projectData, styles }: { projectData: any; styles:
     <>
       <section className={styles.customSection}>
         {/* Teaser Images & Videos ----------------------------------------------- */}
-        {projectData.webApp_teaserImages?.map((teaserImage: any) => (
+        {projectData.webApp_teaserImages?.map((teaserImage: any, i: number) => (
           <div key={teaserImage} className={styles.soloImageContainer}>
             <Image
               className={styles.dividerImage}
               src={teaserImage}
               height={1080}
               width={1920}
-              alt="Web App teaser Image"
+              alt={projectData.webApp_teaserImagesAlt?.[i] || "Web App teaser Image"}
             />
           </div>
         ))}
@@ -98,7 +98,7 @@ export function WebAppsBody({ projectData, styles }: { projectData: any; styles:
                   src={projectData.webApp_productContextImage}
                   height={1080}
                   width={1920}
-                  alt="Project Rationale Image"
+                  alt={projectData.webApp_productContextImageAlt || "Project Rationale Image"}
                 />
               )
             )}
@@ -165,21 +165,21 @@ export function WebAppsBody({ projectData, styles }: { projectData: any; styles:
                   src={projectData.webApp_uxHypothesisImage}
                   height={1080}
                   width={1920}
-                  alt="UX Hypothesis Image"
+                  alt={projectData.webApp_uxHypothesisImageAlt || "UX Hypothesis Image"}
                 />
               )
             )}
           </div>
         </div>
 
-        {projectData.webApp_initialDesignImages?.map((initialImg: any) => (
+        {projectData.webApp_initialDesignImages?.map((initialImg: any, i: number) => (
           <div key={initialImg} className={styles.soloImageContainer}>
             <Image
               className={styles.dividerImage}
               src={initialImg}
               height={1080}
               width={1920}
-              alt="Initial Design Image"
+              alt={projectData.webApp_initialDesignImagesAlt?.[i] || "Initial Design Image"}
             />
           </div>
         ))}
@@ -227,9 +227,9 @@ export function WebAppsBody({ projectData, styles }: { projectData: any; styles:
           <p>{projectData.webApp_designSectionText}</p>
         </div>
 
-        {projectData.webApp_designSectionImages?.map((designImg: any) => (
+        {projectData.webApp_designSectionImages?.map((designImg: any, i: number) => (
           <div key={designImg} className={styles.soloImageContainer}>
-            <Image className={styles.dividerImage} src={designImg} height={1080} width={1920} alt="Design Image" />
+            <Image className={styles.dividerImage} src={designImg} height={1080} width={1920} alt={projectData.webApp_designSectionImagesAlt?.[i] || "Design Image"} />
           </div>
         ))}
         {projectData.webApp_designSectionVideos?.map((designVideo: any, index: number) => (
@@ -289,7 +289,7 @@ export function WebAppsBody({ projectData, styles }: { projectData: any; styles:
                     src={item.itemImage}
                     height={1080}
                     width={1920}
-                    alt={`${item.itemName} Image`}
+                    alt={item.itemImageAlt || `${item.itemName} Image`}
                   />
                 )
               )}
@@ -305,14 +305,14 @@ export function WebAppsBody({ projectData, styles }: { projectData: any; styles:
           <p>{projectData.webApp_devSectionText}</p>
         </div>
 
-        {projectData.webApp_devSectionImages?.map((devImg: any) => (
+        {projectData.webApp_devSectionImages?.map((devImg: any, i: number) => (
           <div key={devImg} className={styles.soloImageContainer}>
             <Image
               className={styles.dividerImage}
               src={devImg}
               height={1080}
               width={1920}
-              alt="Dev section Image"
+              alt={projectData.webApp_devSectionImagesAlt?.[i] || "Dev section Image"}
             />
           </div>
         ))}
@@ -368,7 +368,7 @@ export function WebAppsBody({ projectData, styles }: { projectData: any; styles:
                     src={item.itemImage}
                     height={1080}
                     width={1920}
-                    alt={`${item.itemName} Image`}
+                    alt={item.itemImageAlt || `${item.itemName} Image`}
                   />
                 )
               )}
@@ -384,14 +384,14 @@ export function WebAppsBody({ projectData, styles }: { projectData: any; styles:
           <p>{projectData.webApp_finishedProdText}</p>
         </div>
 
-        {projectData.webApp_finishedProdImages?.map((finishedImg: any) => (
+        {projectData.webApp_finishedProdImages?.map((finishedImg: any, i: number) => (
           <div key={finishedImg} className={styles.soloImageContainer}>
             <Image
               className={styles.dividerImage}
               src={finishedImg}
               height={1080}
               width={1920}
-              alt="Finished Product Image"
+              alt={projectData.webApp_finishedProdImagesAlt?.[i] || "Finished Product Image"}
             />
           </div>
         ))}
@@ -506,7 +506,7 @@ export function WebAppsBody({ projectData, styles }: { projectData: any; styles:
                   src={projectData.webApp_keyLearnImage}
                   height={1080}
                   width={1920}
-                  alt="Key Learning Image"
+                  alt={projectData.webApp_keyLearnImageAlt || "Key Learning Image"}
                 />
               )
             )}
@@ -552,7 +552,7 @@ export function WebAppsBody({ projectData, styles }: { projectData: any; styles:
                   src={projectData.webApp_whatWorkedImage}
                   height={1080}
                   width={1920}
-                  alt="What Worked Image"
+                  alt={projectData.webApp_whatWorkedImageAlt || "What Worked Image"}
                 />
               )
             )}
