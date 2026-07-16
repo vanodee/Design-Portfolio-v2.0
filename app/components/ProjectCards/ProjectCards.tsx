@@ -3,7 +3,7 @@
 import { motion, cubicBezier } from "motion/react";
 import styles from "../../projects/[category]/categoryPage.module.scss";
 import Link from "next/link";
-import { urlFor } from "@/lib/sanity.client";
+import { urlFor, hotspotPosition } from "@/lib/sanity.client";
 
 const container = {
   hidden: {},
@@ -57,7 +57,8 @@ export default function ProjectCards({ categoryData }: { categoryData: any }) {
           >
             <div className={styles.imageContainer}>
               <img
-                src={urlFor(project.previewImage).width(1600).height(900).fit('crop').auto('format').url()}
+                src={urlFor(project.previewImage).width(800).auto('format').url()}
+                style={{ objectPosition: hotspotPosition(project.previewImage) }}
                 alt={project.title}
               />
             </div>

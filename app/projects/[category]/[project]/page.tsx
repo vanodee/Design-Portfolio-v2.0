@@ -1,6 +1,6 @@
 import { groq } from "next-sanity";
 import type { Metadata } from "next";
-import { client, urlFor } from "../../../../lib/sanity.client";
+import { client, urlFor, hotspotPosition } from "../../../../lib/sanity.client";
 import styles from "./projectPage.module.scss";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -140,7 +140,8 @@ export default async function ProjectPage({
       <div className={styles.heroImageContainer}>
         <Image
           className={styles.heroImage}
-          src={urlFor(projectData.heroImage).width(1920).height(1080).fit('crop').auto('format').url()}
+          src={urlFor(projectData.heroImage).width(1920).auto('format').url()}
+          style={{ objectPosition: hotspotPosition(projectData.heroImage) }}
           height={1080}
           width={1920}
           alt="Hero Image"
@@ -215,7 +216,8 @@ export default async function ProjectPage({
       <div className={styles.heroImageContainer}>
         <Image
           className={styles.heroImage}
-          src={urlFor(projectData.closingImage).width(1920).height(1080).fit('crop').auto('format').url()}
+          src={urlFor(projectData.closingImage).width(1920).auto('format').url()}
+          style={{ objectPosition: hotspotPosition(projectData.closingImage) }}
           height={1080}
           width={1920}
           alt="Closing Image"

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import type { Metadata } from "next";
 import styles from "./home.module.scss";
-import { client, urlFor } from "../lib/sanity.client";
+import { client, urlFor, hotspotPosition } from "../lib/sanity.client";
 import { categoriesWithToolsQuery, siteSettingsQuery } from "@/lib/queries";
 import Link from "next/link";
 
@@ -25,7 +25,10 @@ export default async function Home() {
   const siteSettings = await client.fetch(siteSettingsQuery);
   const resumeUrl = siteSettings.resumeUrl;
   const categoryImageUrls = categories.map((category: any) =>
-    urlFor(category.image).width(1200).height(900).fit('crop').auto('format').url()
+    urlFor(category.image).width(1200).auto('format').url()
+  );
+  const categoryImagePositions = categories.map((category: any) =>
+    hotspotPosition(category.image)
   );
 
   return (
@@ -67,7 +70,7 @@ export default async function Home() {
         <Link 
           href={`/projects/${categories[0].slug}`} 
           className={styles.webAppsCard}
-          style={{backgroundImage: `url(${categoryImageUrls[0]})`}}
+          style={{backgroundImage: `url(${categoryImageUrls[0]})`, backgroundPosition: categoryImagePositions[0]}}
         >
           <h2 className={styles.cardText}>{categories[0].title}</h2>
         </Link>
@@ -76,7 +79,7 @@ export default async function Home() {
         <Link 
           href={`/projects/${categories[1].slug}`} 
           className={styles.websitesCard}
-          style={{backgroundImage: `url(${categoryImageUrls[1]})`}}
+          style={{backgroundImage: `url(${categoryImageUrls[1]})`, backgroundPosition: categoryImagePositions[1]}}
         >
           <h2 className={styles.cardText}>{categories[1].title}</h2>
         </Link>
@@ -85,7 +88,7 @@ export default async function Home() {
         <Link 
           href={`/projects/${categories[2].slug}`} 
           className={styles.uxCasesCard}
-          style={{backgroundImage: `url(${categoryImageUrls[2]})`}}
+          style={{backgroundImage: `url(${categoryImageUrls[2]})`, backgroundPosition: categoryImagePositions[2]}}
         >
           <h2 className={styles.cardText}>{categories[2].title}</h2>
         </Link>
@@ -94,7 +97,7 @@ export default async function Home() {
         <Link 
           href={`/projects/${categories[3].slug}`} 
           className={styles.logosCard}
-          style={{backgroundImage: `url(${categoryImageUrls[3]})`}}
+          style={{backgroundImage: `url(${categoryImageUrls[3]})`, backgroundPosition: categoryImagePositions[3]}}
         >
           <h2 className={styles.cardText}>{categories[3].title}</h2>
         </Link>
