@@ -71,6 +71,19 @@ export const projectType = defineType({
         group: 'general',
         readOnly: true,
         // hidden: true, // Hide it in Studio
+        validation: (Rule) => Rule.custom(async (categoryName, context) => {
+          const categoryRef = (context.document as any)?.category?._ref;
+          if (!categoryRef) return true;
+          const client = context.getClient({ apiVersion: '2023-10-01' });
+          const category = await client.fetch<{ title: string } | null>(
+            `*[_id == $id][0]{title}`,
+            { id: categoryRef }
+          );
+          if (category?.title && category.title !== categoryName) {
+            return `categoryName ("${categoryName}") is out of sync with category ("${category.title}") — re-select the category field to re-trigger the sync.`;
+          }
+          return true;
+        }),
     }),
     // ---------------------------------------------------
     
