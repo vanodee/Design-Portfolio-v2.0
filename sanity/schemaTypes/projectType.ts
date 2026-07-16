@@ -34,6 +34,21 @@ export const projectType = defineType({
         options: {
             source: 'title',
             maxLength: 96,
+            isUnique: async (slug, context) => {
+                const { document, getClient } = context
+                if (!document) return true
+                const client = getClient({ apiVersion: '2023-10-01' })
+                const id = document._id.replace(/^drafts\./, '')
+                const categoryRef = (document as any).category?._ref
+                if (!categoryRef) return true
+                const params = { draft: `drafts.${id}`, published: id, slug, categoryRef }
+                const query = `!defined(*[
+                  !(_id in [$draft, $published]) &&
+                  slug.current == $slug &&
+                  category._ref == $categoryRef
+                ][0]._id)`
+                return client.fetch(query, params)
+            },
         },
         validation: (Rule) => Rule.required(),
     }),
