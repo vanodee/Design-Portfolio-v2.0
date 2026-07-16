@@ -11,7 +11,7 @@ export const socialIconsByPlatform: Record<string, { src: string; glassSrc: stri
   Twitter: { src: "/twitter_2.svg", glassSrc: "/twitter_glass.svg" },
 }
 
-type SocialLink = { _key: string; platform: string; url: string }
+type SocialLink = { _key: string; platform: string; url?: string; email?: string }
 
 export default function Footer({ socialLinks }: { socialLinks: SocialLink[] }) {
   return (
@@ -29,11 +29,11 @@ export default function Footer({ socialLinks }: { socialLinks: SocialLink[] }) {
       <div className={styles.footerContactInfo}>
 
         <div className={styles.contactItems}>
-          {socialLinks.map(({_key, platform, url}) => (
+          {socialLinks.map(({_key, platform, url, email}) => (
 
             <a
               key={_key}
-              href={url}
+              href={platform === 'Email' ? `mailto:${email}` : url}
               target="_blank"
               rel="noopener noreferrer"
               className={styles.contactIconContainer}

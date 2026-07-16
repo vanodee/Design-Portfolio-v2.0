@@ -4,15 +4,13 @@ import { useState } from 'react'
 import Image from "next/image"
 import styles from './CopyEmail.module.scss'
 
-export default function CopyEmail() {
-
-  const myEmail = "stevano.peters@gmail.com";
+export default function CopyEmail({ email }: { email: string }) {
 
   const [isCopied, setIsCopied] = useState(false)
 
   const handleCopyEmail = async () => {
     try {
-      await navigator.clipboard.writeText(myEmail)
+      await navigator.clipboard.writeText(email)
       setIsCopied(true)
       
       // Reset back to icon after 2 seconds
@@ -36,7 +34,7 @@ export default function CopyEmail() {
         />
       </div>
 
-      <p className={styles.emailText}>{myEmail}</p>
+      <p className={styles.emailText}>{email}</p>
 
       {isCopied ? (
         <p className={styles.copiedText}>Copied to clipboard!</p>

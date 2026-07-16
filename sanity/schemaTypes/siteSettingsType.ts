@@ -5,6 +5,10 @@ export const siteSettingsType = defineType({
   name: 'siteSettings',
   title: 'Site Settings',
   type: 'document',
+  preview: {
+    select: {},
+    prepare: () => ({ title: 'Site Settings', subtitle: 'Global site configuration' }),
+  },
   fields: [
     defineField({
       name: 'resumeUrl',
@@ -98,11 +102,26 @@ export const siteSettingsType = defineType({
               name: 'url',
               title: 'URL',
               type: 'url',
-              validation: (Rule) => Rule.required(),
+              hidden: ({ parent }) => (parent as any)?.platform === 'Email',
+              validation: (Rule) => Rule.custom((value, context) => {
+                if ((context.parent as any)?.platform === 'Email') return true
+                return value ? true : 'Required'
+              }),
+            }),
+            defineField({
+              name: 'email',
+              title: 'Email',
+              type: 'email',
+              hidden: ({ parent }) => (parent as any)?.platform !== 'Email',
+              validation: (Rule) => Rule.custom((value, context) => {
+                if ((context.parent as any)?.platform !== 'Email') return true
+                return value ? true : 'Required'
+              }),
             }),
           ],
           preview: {
-            select: { title: 'platform', subtitle: 'url' },
+            select: { title: 'platform', url: 'url', email: 'email' },
+            prepare: ({ title, url, email }) => ({ title, subtitle: url || email }),
           },
         },
       ],

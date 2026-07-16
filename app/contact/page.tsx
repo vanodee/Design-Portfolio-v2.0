@@ -27,6 +27,7 @@ export const metadata: Metadata = {
 export default async function ContactPage() {
   const siteSettings = await client.fetch(siteSettingsQuery, {}, { next: { tags: ["siteSettings"] } });
   const socialLinks = siteSettings.socialLinks ?? [];
+  const email = socialLinks.find((link: { platform: string }) => link.platform === "Email")?.email;
 
   return (
     <div className={styles.contactPageContainer}>
@@ -56,7 +57,7 @@ export default async function ContactPage() {
 
         {/* EMAIL ------------------------------------------- */}
         <div className={styles.thirdCard}>
-          <CopyEmail />
+          <CopyEmail email={email} />
         </div>
         
         {/* SOCIALS ------------------------------------------- */}
