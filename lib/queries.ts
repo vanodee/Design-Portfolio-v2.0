@@ -25,7 +25,7 @@ export const categoriesWithToolsQuery = groq`
   _id,
   title,
   "slug": slug.current,
-  "imageUrl": image.asset->url,
+  "image": image{ ..., "url": asset->url },
 
   "tools": *[_type == "project" && references(^._id)].tools[]->{
     _id,
@@ -62,8 +62,8 @@ export const allProjectsQuery = groq`
   heroHeading,
   heroSubheading,
   heroDescription,
-  "heroImage": heroImage.asset->url,
-  "previewImage": previewImage.asset->url,
+  "heroImage": heroImage{ ..., "url": asset->url },
+  "previewImage": previewImage{ ..., "url": asset->url },
   projectTags[],
   quickStats[]{
     title,
@@ -76,7 +76,7 @@ export const allProjectsQuery = groq`
     ctaIcon,
     url,
   },
-  "closingImage": closingImage.asset->url,
+  "closingImage": closingImage{ ..., "url": asset->url },
   
   // Category with slug
   category->{

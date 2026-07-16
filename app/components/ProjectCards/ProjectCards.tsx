@@ -3,6 +3,7 @@
 import { motion, cubicBezier } from "motion/react";
 import styles from "../../projects/[category]/categoryPage.module.scss";
 import Link from "next/link";
+import { urlFor } from "@/lib/sanity.client";
 
 const container = {
   hidden: {},
@@ -55,7 +56,10 @@ export default function ProjectCards({ categoryData }: { categoryData: any }) {
             style={{ "--hoverColor": project.previewColor } as React.CSSProperties}
           >
             <div className={styles.imageContainer}>
-              <img src={project.previewImage} alt={project.title} />
+              <img
+                src={urlFor(project.previewImage).width(1600).height(900).fit('crop').auto('format').url()}
+                alt={project.title}
+              />
             </div>
             
 

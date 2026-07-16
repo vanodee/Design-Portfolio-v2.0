@@ -1,6 +1,6 @@
 import { groq } from "next-sanity";
 import type { Metadata } from "next";
-import { client } from "../../../../lib/sanity.client";
+import { client, urlFor } from "../../../../lib/sanity.client";
 import styles from "./projectPage.module.scss";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -69,7 +69,7 @@ export async function generateMetadata(
       images: projectData.heroImage
         ? [
             {
-              url: projectData.heroImage,
+              url: projectData.heroImage.url,
               alt: projectTitle,
             },
           ]
@@ -95,7 +95,7 @@ export default async function ProjectPage({
     "@type": "CreativeWork",
     name: projectData.title,
     description: projectData.heroDescription || projectData.heroSubheading,
-    image: projectData.heroImage,
+    image: projectData.heroImage?.url,
     url: `https://stevano.dev/projects/${category}/${project}`,
     author: {
       "@type": "Person",
@@ -140,7 +140,7 @@ export default async function ProjectPage({
       <div className={styles.heroImageContainer}>
         <Image
           className={styles.heroImage}
-          src={projectData.heroImage}
+          src={urlFor(projectData.heroImage).width(1920).height(1080).fit('crop').auto('format').url()}
           height={1080}
           width={1920}
           alt="Hero Image"
@@ -215,7 +215,7 @@ export default async function ProjectPage({
       <div className={styles.heroImageContainer}>
         <Image
           className={styles.heroImage}
-          src={projectData.closingImage}
+          src={urlFor(projectData.closingImage).width(1920).height(1080).fit('crop').auto('format').url()}
           height={1080}
           width={1920}
           alt="Closing Image"

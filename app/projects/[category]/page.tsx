@@ -18,7 +18,7 @@ const categoryQuery = groq`
       "slug": slug.current,
       description,
       previewColor,
-      "previewImage": previewImage.asset->url
+      "previewImage": previewImage{ ..., "url": asset->url }
     }
   }
 `;

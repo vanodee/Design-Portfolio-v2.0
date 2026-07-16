@@ -1,7 +1,7 @@
 import Image from "next/image";
 import type { Metadata } from "next";
 import styles from "./home.module.scss";
-import { client } from "../lib/sanity.client";
+import { client, urlFor } from "../lib/sanity.client";
 import { categoriesWithToolsQuery, siteSettingsQuery } from "@/lib/queries";
 import Link from "next/link";
 
@@ -24,6 +24,9 @@ export default async function Home() {
   const categories = await client.fetch(categoriesWithToolsQuery);
   const siteSettings = await client.fetch(siteSettingsQuery);
   const resumeUrl = siteSettings.resumeUrl;
+  const categoryImageUrls = categories.map((category: any) =>
+    urlFor(category.image).width(1200).height(900).fit('crop').auto('format').url()
+  );
 
   return (
       <div className={styles.homePageContainer}>
@@ -64,7 +67,7 @@ export default async function Home() {
         <Link 
           href={`/projects/${categories[0].slug}`} 
           className={styles.webAppsCard}
-          style={{backgroundImage: `url(${categories[0].imageUrl})`}}
+          style={{backgroundImage: `url(${categoryImageUrls[0]})`}}
         >
           <h2 className={styles.cardText}>{categories[0].title}</h2>
         </Link>
@@ -73,7 +76,7 @@ export default async function Home() {
         <Link 
           href={`/projects/${categories[1].slug}`} 
           className={styles.websitesCard}
-          style={{backgroundImage: `url(${categories[1].imageUrl})`}}
+          style={{backgroundImage: `url(${categoryImageUrls[1]})`}}
         >
           <h2 className={styles.cardText}>{categories[1].title}</h2>
         </Link>
@@ -82,7 +85,7 @@ export default async function Home() {
         <Link 
           href={`/projects/${categories[2].slug}`} 
           className={styles.uxCasesCard}
-          style={{backgroundImage: `url(${categories[2].imageUrl})`}}
+          style={{backgroundImage: `url(${categoryImageUrls[2]})`}}
         >
           <h2 className={styles.cardText}>{categories[2].title}</h2>
         </Link>
@@ -91,7 +94,7 @@ export default async function Home() {
         <Link 
           href={`/projects/${categories[3].slug}`} 
           className={styles.logosCard}
-          style={{backgroundImage: `url(${categories[3].imageUrl})`}}
+          style={{backgroundImage: `url(${categoryImageUrls[3]})`}}
         >
           <h2 className={styles.cardText}>{categories[3].title}</h2>
         </Link>
